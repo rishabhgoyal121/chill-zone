@@ -267,3 +267,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Keep bordered card style.
 - Rationale: You requested cleaner cards with direct interaction and lightweight favourite control.
 - Impact: Simpler visual hierarchy and faster browsing interactions.
+
+## 2026-04-15 07:34 IST
+
+### D-030: Card Text Simplification and Typography Emphasis
+- Decision: Remove card subtext/synopsis from listing cards and emphasize centered, larger title text with a dedicated display-style font stack.
+- Alternatives considered:
+  - Keep synopsis and only enlarge title.
+  - Keep existing font and adjust spacing only.
+- Rationale: You requested cleaner cards with stronger centered typography and no subtext.
+- Impact: Cards are now minimal and visually focused on title + artwork.

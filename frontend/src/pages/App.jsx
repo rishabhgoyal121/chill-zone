@@ -437,7 +437,6 @@ export function App() {
                               </button>
                             </div>
                             <CardTitle>{item.title}</CardTitle>
-                            <p className="card-synopsis">{item.synopsis}</p>
                           </CardContent>
                         </Card>
                       );
