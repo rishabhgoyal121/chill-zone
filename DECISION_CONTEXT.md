@@ -181,3 +181,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Add static image placeholders without motion.
 - Rationale: You requested a highly colorful visual style with lots of images and animations.
 - Impact: Stronger visual identity, improved engagement, and consistent image coverage even when scraped sources lack posters.
+
+## 2026-04-15 05:38 IST
+
+### D-021: Guaranteed Visual Image Rendering
+- Decision: Use seeded remote image URLs for card posters with automatic fallback to generated SVG art on load failure.
+- Alternatives considered:
+  - Data-URI generated images only.
+  - Manual static image asset library.
+- Rationale: Ensures visibly rich cards across deployed browsers where data-URI rendering can be inconsistent.
+- Impact: Stronger visual reliability and consistent image presence in UI cards.

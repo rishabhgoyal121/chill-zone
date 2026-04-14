@@ -48,6 +48,25 @@ function makeTitleArt(title, zone) {
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
+function PosterImage({ title, zone }) {
+  const fallback = makeTitleArt(title, zone);
+  const [src, setSrc] = useState(`https://picsum.photos/seed/${encodeURIComponent(`${zone}-${title}`)}/420/560`);
+
+  return (
+    <img
+      src={src}
+      alt={title}
+      className="poster"
+      loading="lazy"
+      onError={() => {
+        if (src !== fallback) {
+          setSrc(fallback);
+        }
+      }}
+    />
+  );
+}
+
 export function App() {
   const { user, token, login, logout } = useAuth();
   const [email, setEmail] = useState('admin@chillzone.local');
@@ -219,12 +238,11 @@ export function App() {
             <div className="grid">
               {zoneData[zone.key].map((item, index) => {
                 const fav = favourites.some((f) => f.titleExternalId === item.externalId);
-                const imageSrc = makeTitleArt(item.title, item.zone);
 
                 return (
                   <Card key={item.externalId} className="card card-rich" style={{ animationDelay: `${(index + zoneIdx) * 45}ms` }}>
                     <div className="media-wrap">
-                      <img src={imageSrc} alt={item.title} className="poster" loading="lazy" />
+                      <PosterImage title={item.title} zone={item.zone} />
                     </div>
                     <h3>{item.title}</h3>
                     <p>{item.synopsis}</p>
