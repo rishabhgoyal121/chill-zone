@@ -140,6 +140,50 @@ function DetailPage({ item, onBack }) {
   );
 }
 
+function HeroCarousel({ slides, activeIndex, onPrev, onNext, onGoTo, onOpen }) {
+  if (!slides.length) {
+    return (
+      <div className="hero-carousel-card modern-card">
+        <p>No featured titles yet. Run a refresh to fill the hero carousel.</p>
+      </div>
+    );
+  }
+
+  const active = slides[activeIndex] || slides[0];
+
+  return (
+    <div className="hero-carousel">
+      <button className="hero-arrow left" onClick={onPrev} aria-label="Previous Slide">‹</button>
+      <div className="hero-carousel-card modern-card">
+        <div className="hero-carousel-media">
+          <PosterImage title={active.title} zone={active.zone} className="hero-poster" />
+        </div>
+        <div className="hero-carousel-copy">
+          <Badge variant="soft">{formatZone(active.zone)}</Badge>
+          <h3>{active.title}</h3>
+          <p>{active.synopsis || 'Top pick from today’s chill feed.'}</p>
+          <div className="hero-carousel-actions">
+            <Button onClick={() => onOpen(active)}>Open Details</Button>
+            <Button variant="secondary" onClick={onNext}>Next Slide</Button>
+          </div>
+        </div>
+      </div>
+      <button className="hero-arrow right" onClick={onNext} aria-label="Next Slide">›</button>
+
+      <div className="hero-dots">
+        {slides.map((s, i) => (
+          <button
+            key={`${s.externalId}-${i}`}
+            className={`hero-dot ${i === activeIndex ? 'active' : ''}`}
+            onClick={() => onGoTo(i)}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function App() {
   const { user, token, login, logout } = useAuth();
   const [email, setEmail] = useState('admin@chillzone.local');
@@ -153,6 +197,8 @@ export function App() {
   const [dataMode, setDataMode] = useState('live');
   const [newUser, setNewUser] = useState({ email: '', password: '', role: 'moderator' });
   const [route, setRoute] = useState(() => parseRoute(window.location.pathname));
+  const [heroIndex, setHeroIndex] = useState(0);
+  const [heroPaused, setHeroPaused] = useState(false);
 
   const isAdmin = useMemo(() => ['super_admin', 'content_admin', 'moderator'].includes(user?.role), [user]);
 
@@ -166,11 +212,29 @@ export function App() {
     return allItems.find((x) => x.zone === route.zone && x.externalId === route.id) || null;
   }, [route, allItems]);
 
+  const heroSlides = useMemo(() => allItems.slice(0, 8), [allItems]);
+
   useEffect(() => {
     const onPop = () => setRoute(parseRoute(window.location.pathname));
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
   }, []);
+
+  useEffect(() => {
+    if (!heroSlides.length || route.page === 'detail' || heroPaused) return undefined;
+    const id = window.setInterval(() => {
+      setHeroIndex((prev) => (prev + 1) % heroSlides.length);
+    }, 3600);
+    return () => window.clearInterval(id);
+  }, [heroSlides, route.page, heroPaused]);
+
+  useEffect(() => {
+    if (!heroSlides.length) {
+      setHeroIndex(0);
+      return;
+    }
+    setHeroIndex((prev) => (prev >= heroSlides.length ? 0 : prev));
+  }, [heroSlides.length]);
 
   function navigateHome() {
     window.history.pushState({}, '', '/');
@@ -307,9 +371,34 @@ export function App() {
           <DetailPage item={detailItem} onBack={navigateHome} />
         ) : (
           <>
-            <section id="hero-root" className="hero modern-hero">
-              <h1>Find Something Great Fast</h1>
-              <p>Modern picks for movies, shows, and games. Open any card to view full details.</p>
+            <section
+              id="hero-root"
+              className="hero modern-hero hero-large"
+              onMouseEnter={() => setHeroPaused(true)}
+              onMouseLeave={() => setHeroPaused(false)}
+            >
+              <div className="hero-layout">
+                <div className="hero-copy">
+                  <p className="hero-kicker">Fresh Picks</p>
+                  <h1>Big Hero Carousel For Your Chill Session</h1>
+                  <p>Browse rotating highlights across movies, TV, and games. Click any slide to open full details.</p>
+                  <div className="hero-main-actions">
+                    <Button onClick={() => jumpTo('zones-root')}>Explore All Zones</Button>
+                    <Button variant="secondary" onClick={() => heroSlides[heroIndex] && navigateDetail(heroSlides[heroIndex])}>
+                      Open Current Slide
+                    </Button>
+                  </div>
+                </div>
+
+                <HeroCarousel
+                  slides={heroSlides}
+                  activeIndex={heroIndex}
+                  onPrev={() => setHeroIndex((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
+                  onNext={() => setHeroIndex((prev) => (prev + 1) % heroSlides.length)}
+                  onGoTo={setHeroIndex}
+                  onOpen={navigateDetail}
+                />
+              </div>
             </section>
 
             <section className="panel auth-panel modern-card">

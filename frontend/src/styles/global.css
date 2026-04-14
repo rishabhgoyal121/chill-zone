@@ -95,6 +95,32 @@ body {
   border: 1px solid var(--line);
 }
 
+.hero-large {
+  padding: 26px;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.hero-copy {
+  display: grid;
+  align-content: center;
+  gap: 10px;
+}
+
+.hero-kicker {
+  margin: 0;
+  color: #4338ca;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
 .hero h1 {
   margin: 0;
   font-size: clamp(2rem, 4.2vw, 3.3rem);
@@ -105,6 +131,104 @@ body {
   margin: 8px 0 0;
   color: var(--muted);
   max-width: 660px;
+}
+
+.hero-main-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.hero-carousel {
+  position: relative;
+  display: grid;
+  gap: 10px;
+}
+
+.hero-carousel-card {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px;
+}
+
+.hero-carousel-media {
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+}
+
+.hero-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-carousel-copy {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.hero-carousel-copy h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.hero-carousel-copy p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.hero-carousel-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.hero-arrow {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  z-index: 2;
+  border: 1px solid #cbd5e1;
+  background: rgba(255, 255, 255, 0.92);
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.hero-arrow.left {
+  left: -12px;
+}
+
+.hero-arrow.right {
+  right: -12px;
+}
+
+.hero-dots {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 0;
+  background: #cbd5e1;
+  cursor: pointer;
+}
+
+.hero-dot.active {
+  background: #334155;
 }
 
 .panel {
@@ -376,6 +500,14 @@ select {
   .detail-grid {
     grid-template-columns: 1fr;
   }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-carousel-card {
+    grid-template-columns: 150px minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 920px) {
@@ -398,5 +530,13 @@ select {
 
   .top-actions {
     gap: 6px;
+  }
+
+  .hero-carousel-card {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-arrow {
+    display: none;
   }
 }

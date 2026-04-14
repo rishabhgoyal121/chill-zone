@@ -237,3 +237,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Hardcode fixed card heights.
 - Rationale: Improves visual alignment without truncating entire cards aggressively.
 - Impact: Cleaner, more uniform card grid and better scanability.
+
+## 2026-04-15 06:37 IST
+
+### D-027: Hero Carousel Upgrade
+- Decision: Replace static hero copy with a large, content-driven carousel (autoplay, arrows, dots, and open-detail actions).
+- Alternatives considered:
+  - Keep static hero with CTA only.
+  - Use a separate slider section below hero.
+- Rationale: You requested a big hero section with carousel and richer top-of-page engagement.
+- Impact: Stronger first impression and faster discovery of featured content.
