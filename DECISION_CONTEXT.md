@@ -227,3 +227,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Keep existing vivid style as-is.
 - Rationale: You requested the UI to no longer feel old/2005.
 - Impact: Contemporary look with improved readability and hierarchy.
+
+## 2026-04-15 06:26 IST
+
+### D-026: Card Alignment Normalization
+- Decision: Enforce consistent card row structure with clamped title/synopsis and bottom-aligned action row.
+- Alternatives considered:
+  - Keep natural content flow with variable card heights.
+  - Hardcode fixed card heights.
+- Rationale: Improves visual alignment without truncating entire cards aggressively.
+- Impact: Cleaner, more uniform card grid and better scanability.

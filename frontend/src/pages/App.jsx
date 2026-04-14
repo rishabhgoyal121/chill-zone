@@ -347,7 +347,7 @@ export function App() {
                               </div>
                             </button>
                             <CardTitle>{item.title}</CardTitle>
-                            <p>{item.synopsis}</p>
+                            <p className="card-synopsis">{item.synopsis}</p>
                             <div className="card-actions">
                               <Button variant="secondary" onClick={() => navigateDetail(item)}>View Details</Button>
                               <Button onClick={() => toggleFavourite(item.externalId)}>{fav ? 'Unfavourite' : 'Favourite'}</Button>
