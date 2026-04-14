@@ -370,6 +370,33 @@ select {
   color: #e11d48;
 }
 
+.hover-blurb {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  background: rgba(2, 6, 23, 0.76);
+  color: #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 9px;
+  font-size: 0.78rem;
+  line-height: 1.28;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-rich:hover .hover-blurb {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .admin {
   padding: 14px;
   display: grid;

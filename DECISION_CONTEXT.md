@@ -277,3 +277,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Keep existing font and adjust spacing only.
 - Rationale: You requested cleaner cards with stronger centered typography and no subtext.
 - Impact: Cards are now minimal and visually focused on title + artwork.
+
+## 2026-04-15 07:39 IST
+
+### D-031: Hover-Only Card Description
+- Decision: Show synopsis as a hover-reveal overlay on card media instead of persistent subtext.
+- Alternatives considered:
+  - Keep no synopsis on cards at all.
+  - Restore always-visible synopsis.
+- Rationale: Matches request for hover-based description while preserving minimal card layout.
+- Impact: Cleaner default card appearance with quick contextual info on hover.

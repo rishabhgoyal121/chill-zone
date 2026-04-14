@@ -435,6 +435,9 @@ export function App() {
                               >
                                 {fav ? '♥' : '♡'}
                               </button>
+                              <div className="hover-blurb">
+                                {item.synopsis || 'Open details to see more about this title.'}
+                              </div>
                             </div>
                             <CardTitle>{item.title}</CardTitle>
                           </CardContent>
