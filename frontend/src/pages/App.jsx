@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { api } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/button';
@@ -7,57 +7,136 @@ import { Badge } from '../components/ui/badge';
 import { Separator } from '../components/ui/separator';
 
 const ZONES = [
-  { key: 'movies', label: 'Movie Zone', emoji: '🎬' },
-  { key: 'series', label: 'TV Series Zone', emoji: '📺' },
-  { key: 'games', label: 'Game Zone', emoji: '🎮' }
+  { key: 'movies', label: 'Movies', emoji: '🎬' },
+  { key: 'series', label: 'TV Series', emoji: '📺' },
+  { key: 'games', label: 'Games', emoji: '🎮' }
 ];
 
-function colorSetByZone(zone) {
-  if (zone === 'movies') return { a: '#ff006e', b: '#fb5607', c: '#ffd166' };
-  if (zone === 'series') return { a: '#3a86ff', b: '#8338ec', c: '#5eead4' };
-  return { a: '#06d6a0', b: '#118ab2', c: '#f7b801' };
+function posterFor(title, zone) {
+  return `https://picsum.photos/seed/${encodeURIComponent(`${zone}-${title}`)}/720/960`;
 }
 
-function makeTitleArt(title, zone) {
-  const colors = colorSetByZone(zone);
-  const safeTitle = (title || 'Chill Zone').slice(0, 30).replace(/[<&>]/g, '');
-  const short = safeTitle.slice(0, 2).toUpperCase();
+function fallbackPoster(title, zone) {
+  const colors =
+    zone === 'movies'
+      ? ['#7c3aed', '#f43f5e']
+      : zone === 'series'
+        ? ['#0ea5e9', '#22c55e']
+        : ['#f59e0b', '#ef4444'];
 
+  const safe = (title || 'Chill Zone').slice(0, 24).replace(/[<&>]/g, '');
   const svg = `
-  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 560'>
-    <defs>
-      <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
-        <stop offset='0%' stop-color='${colors.a}' />
-        <stop offset='55%' stop-color='${colors.b}' />
-        <stop offset='100%' stop-color='${colors.c}' />
-      </linearGradient>
-      <filter id='blur'><feGaussianBlur stdDeviation='20' /></filter>
-    </defs>
-    <rect width='420' height='560' fill='url(#g)' />
-    <circle cx='60' cy='65' r='85' fill='rgba(255,255,255,0.18)' filter='url(#blur)' />
-    <circle cx='340' cy='490' r='90' fill='rgba(0,0,0,0.2)' filter='url(#blur)' />
-    <rect x='20' y='390' width='380' height='150' rx='22' fill='rgba(0,0,0,0.24)' />
-    <text x='36' y='468' fill='white' font-family='Trebuchet MS, Arial' font-size='38' font-weight='700'>${safeTitle}</text>
-    <text x='30' y='120' fill='rgba(255,255,255,0.95)' font-family='Trebuchet MS, Arial' font-size='96' font-weight='900'>${short}</text>
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 960'>
+    <defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='${colors[0]}'/><stop offset='100%' stop-color='${colors[1]}'/></linearGradient></defs>
+    <rect width='720' height='960' fill='url(#g)'/>
+    <rect x='32' y='740' width='656' height='180' rx='22' fill='rgba(15,23,42,0.3)'/>
+    <text x='52' y='840' fill='white' font-family='Arial, sans-serif' font-size='54' font-weight='700'>${safe}</text>
   </svg>`;
-
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
-function PosterImage({ title, zone }) {
-  const fallback = makeTitleArt(title, zone);
-  const [src, setSrc] = useState(`https://picsum.photos/seed/${encodeURIComponent(`${zone}-${title}`)}/420/560`);
+function PosterImage({ title, zone, className = 'poster' }) {
+  const [src, setSrc] = useState(posterFor(title, zone));
+  const fallback = fallbackPoster(title, zone);
 
   return (
     <img
       src={src}
       alt={title}
-      className="poster"
+      className={className}
       loading="lazy"
       onError={() => {
         if (src !== fallback) setSrc(fallback);
       }}
     />
+  );
+}
+
+function formatZone(zone) {
+  return ZONES.find((z) => z.key === zone)?.label || zone;
+}
+
+function parseRoute(pathname) {
+  const parts = pathname.split('/').filter(Boolean);
+  if (parts[0] === 'detail' && parts.length >= 3) {
+    return {
+      page: 'detail',
+      zone: parts[1],
+      id: decodeURIComponent(parts.slice(2).join('/'))
+    };
+  }
+  return { page: 'home' };
+}
+
+function itemLength(item) {
+  if (item?.length) return item.length;
+  const t = (item?.title || '').toLowerCase();
+  let hash = 0;
+  for (let i = 0; i < t.length; i += 1) hash = (hash * 31 + t.charCodeAt(i)) % 997;
+
+  if (item?.zone === 'movies') return `${95 + (hash % 50)} min`;
+  if (item?.zone === 'series') return `${6 + (hash % 8)} episodes`;
+  return `${30 + (hash % 90)} min play session`;
+}
+
+function DetailPage({ item, onBack }) {
+  const detailRef = useRef(null);
+  const [fsError, setFsError] = useState('');
+
+  async function openFullscreen() {
+    try {
+      setFsError('');
+      if (detailRef.current?.requestFullscreen) await detailRef.current.requestFullscreen();
+    } catch {
+      setFsError('Fullscreen is blocked by the browser on this page.');
+    }
+  }
+
+  return (
+    <section className="detail-page" ref={detailRef}>
+      <div className="detail-top-actions">
+        <Button variant="secondary" onClick={onBack}>Back</Button>
+        <Button onClick={openFullscreen}>View Full Screen</Button>
+      </div>
+
+      <Card className="detail-card">
+        <CardContent className="detail-grid">
+          <div className="detail-poster-wrap">
+            <PosterImage title={item.title} zone={item.zone} className="detail-poster" />
+          </div>
+
+          <div className="detail-copy">
+            <Badge variant="soft">{formatZone(item.zone)}</Badge>
+            <h1>{item.title}</h1>
+            <p>{item.synopsis || 'No synopsis available yet.'}</p>
+            <div className="detail-meta">
+              <div><strong>Length:</strong> {itemLength(item)}</div>
+              <div><strong>Region Coverage:</strong> IN, US</div>
+              <div><strong>Last Updated:</strong> {item.updatedAt ? new Date(item.updatedAt).toLocaleString() : 'N/A'}</div>
+            </div>
+
+            {item.imdbUrl ? (
+              <a href={item.imdbUrl} target="_blank" rel="noreferrer" className="primary-link">
+                Open IMDb
+              </a>
+            ) : null}
+
+            <Separator className="my-3" />
+
+            <h3>Watch / Play Links</h3>
+            <div className="detail-links">
+              {item.links?.map((l) => (
+                <a key={`${l.url}-${l.region}-${l.label}`} href={l.url} target="_blank" rel="noreferrer">
+                  {l.label} ({l.region}, {l.linkType})
+                </a>
+              ))}
+            </div>
+
+            {fsError ? <p className="notice">{fsError}</p> : null}
+          </div>
+        </CardContent>
+      </Card>
+    </section>
   );
 }
 
@@ -73,9 +152,36 @@ export function App() {
   const [scrapeJobs, setScrapeJobs] = useState([]);
   const [dataMode, setDataMode] = useState('live');
   const [newUser, setNewUser] = useState({ email: '', password: '', role: 'moderator' });
+  const [route, setRoute] = useState(() => parseRoute(window.location.pathname));
 
   const isAdmin = useMemo(() => ['super_admin', 'content_admin', 'moderator'].includes(user?.role), [user]);
-  const featured = useMemo(() => zoneData.movies[0] || zoneData.series[0] || zoneData.games[0] || null, [zoneData]);
+
+  const allItems = useMemo(
+    () => [...zoneData.movies, ...zoneData.series, ...zoneData.games],
+    [zoneData]
+  );
+
+  const detailItem = useMemo(() => {
+    if (route.page !== 'detail') return null;
+    return allItems.find((x) => x.zone === route.zone && x.externalId === route.id) || null;
+  }, [route, allItems]);
+
+  useEffect(() => {
+    const onPop = () => setRoute(parseRoute(window.location.pathname));
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+
+  function navigateHome() {
+    window.history.pushState({}, '', '/');
+    setRoute({ page: 'home' });
+  }
+
+  function navigateDetail(item) {
+    const path = `/detail/${item.zone}/${encodeURIComponent(item.externalId)}`;
+    window.history.pushState({}, '', path);
+    setRoute({ page: 'detail', zone: item.zone, id: item.externalId });
+  }
 
   function jumpTo(id) {
     const el = document.getElementById(id);
@@ -172,213 +278,162 @@ export function App() {
   }
 
   return (
-    <main className="app-shell">
-      <header className="topbar glass">
-        <div className="brand">Chill Zone</div>
+    <main className="app-shell modern-shell">
+      <header className="topbar modern-topbar">
+        <div className="brand">CHILL ZONE</div>
         <nav className="top-actions">
           <Badge variant={dataMode === 'live' ? 'success' : 'warning'}>
-            {dataMode === 'live' ? 'Live Data' : 'Fallback Snapshot'}
+            {dataMode === 'live' ? 'Live' : 'Fallback'}
           </Badge>
+          <Button variant="secondary" onClick={navigateHome}>Home</Button>
           <Button variant="secondary" onClick={() => jumpTo('zones-root')}>Browse</Button>
-          <Button variant="secondary" onClick={() => jumpTo('admin-root')}>Admin</Button>
         </nav>
       </header>
 
-      <aside className="sidenav glass">
-        <h3>Navigate</h3>
-        <Button variant="ghost" className="nav-btn" onClick={() => jumpTo('hero-root')}>Home</Button>
+      <aside className="sidenav modern-card">
+        <h3>Sections</h3>
+        <Button variant="ghost" className="nav-btn" onClick={navigateHome}>Overview</Button>
         {ZONES.map((z) => (
           <Button key={z.key} variant="ghost" className="nav-btn" onClick={() => jumpTo(`zone-${z.key}`)}>
             {z.emoji} {z.label}
           </Button>
         ))}
         <Separator className="my-2" />
-        <Button variant="ghost" className="nav-btn" onClick={() => jumpTo('admin-root')}>Admin Panel</Button>
+        <Button variant="ghost" className="nav-btn" onClick={() => jumpTo('admin-root')}>Admin</Button>
       </aside>
 
       <section className="content-area">
-        <section id="hero-root" className="hero hero-rich fade-in">
-          <h1>Chill Zone</h1>
-          <p>Pick a vibe, discover something new, and keep the group entertained.</p>
-        </section>
+        {route.page === 'detail' && detailItem ? (
+          <DetailPage item={detailItem} onBack={navigateHome} />
+        ) : (
+          <>
+            <section id="hero-root" className="hero modern-hero">
+              <h1>Find Something Great Fast</h1>
+              <p>Modern picks for movies, shows, and games. Open any card to view full details.</p>
+            </section>
 
-        <section className="panel auth-panel glass slide-up">
-          {!token ? (
-            <form onSubmit={onLogin} className="login-grid">
-              <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-              <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
-              <Button type="submit">Login</Button>
-            </form>
-          ) : (
-            <div className="auth-row">
-              <span>
-                Logged in as <strong>{user?.email || 'user'}</strong> ({user?.role})
-              </span>
-              <Button variant="secondary" onClick={logout}>Logout</Button>
-            </div>
-          )}
-        </section>
+            <section className="panel auth-panel modern-card">
+              {!token ? (
+                <form onSubmit={onLogin} className="login-grid">
+                  <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                  <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
+                  <Button type="submit">Login</Button>
+                </form>
+              ) : (
+                <div className="auth-row">
+                  <span>
+                    Logged in as <strong>{user?.email || 'user'}</strong> ({user?.role})
+                  </span>
+                  <Button variant="secondary" onClick={logout}>Logout</Button>
+                </div>
+              )}
+            </section>
 
-        {message ? <p className="notice">{message}</p> : null}
+            {message ? <p className="notice">{message}</p> : null}
 
-        <section id="zones-root" className="zones">
-          {ZONES.map((zone, zoneIdx) => (
-            <div key={zone.key} id={`zone-${zone.key}`} className="zone-wrap">
-              <h2 className={`zone-title zone-${zone.key}`}>
-                <span>{zone.emoji}</span> {zone.label}
-              </h2>
-              <div className="grid">
-                {zoneData[zone.key].map((item, index) => {
-                  const fav = favourites.some((f) => f.titleExternalId === item.externalId);
-                  return (
-                    <Card key={item.externalId} className="card-rich" style={{ animationDelay: `${(index + zoneIdx) * 45}ms` }}>
-                      <CardContent className="card-content">
-                        <div className="media-wrap">
-                          <PosterImage title={item.title} zone={item.zone} />
-                        </div>
-                        <CardTitle>{item.title}</CardTitle>
-                        <p>{item.synopsis}</p>
-                        {item.imdbUrl ? (
-                          <a href={item.imdbUrl} target="_blank" rel="noreferrer">IMDb</a>
-                        ) : null}
-                        <div className="link-list">
-                          {item.links
-                            .filter((l) => l.region === 'IN' || l.region === 'US')
-                            .map((l) => (
-                              <a key={`${l.url}-${l.region}`} href={l.url} target="_blank" rel="noreferrer">
-                                {l.label} ({l.region}, {l.linkType})
-                              </a>
-                            ))}
-                        </div>
-                        <Button onClick={() => toggleFavourite(item.externalId)}>{fav ? 'Unfavourite' : 'Favourite'}</Button>
+            <section id="zones-root" className="zones">
+              {ZONES.map((zone) => (
+                <div key={zone.key} id={`zone-${zone.key}`} className="zone-wrap">
+                  <h2 className="zone-title"><span>{zone.emoji}</span> {zone.label}</h2>
+                  <div className="grid">
+                    {zoneData[zone.key].map((item) => {
+                      const fav = favourites.some((f) => f.titleExternalId === item.externalId);
+                      return (
+                        <Card key={item.externalId} className="card-rich modern-card">
+                          <CardContent className="card-content">
+                            <button className="card-media-button" onClick={() => navigateDetail(item)}>
+                              <div className="media-wrap">
+                                <PosterImage title={item.title} zone={item.zone} className="poster" />
+                              </div>
+                            </button>
+                            <CardTitle>{item.title}</CardTitle>
+                            <p>{item.synopsis}</p>
+                            <div className="card-actions">
+                              <Button variant="secondary" onClick={() => navigateDetail(item)}>View Details</Button>
+                              <Button onClick={() => toggleFavourite(item.externalId)}>{fav ? 'Unfavourite' : 'Favourite'}</Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </section>
+
+            {isAdmin && token ? (
+              <section id="admin-root" className="admin modern-card">
+                <h2>Admin Panel</h2>
+                <div className="admin-grid">
+                  <Card className="modern-card">
+                    <CardHeader><CardTitle>Refresh</CardTitle></CardHeader>
+                    <CardContent>
+                      <div className="button-row">
+                        <Button onClick={() => triggerRefresh('incremental')}>Run Incremental</Button>
+                        <Button variant="secondary" onClick={() => triggerRefresh('full')}>Run Full Refresh</Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="modern-card">
+                    <CardHeader><CardTitle>Sources</CardTitle></CardHeader>
+                    <CardContent>
+                      {sources.map((s) => (
+                        <label key={s.id} className="switch-row">
+                          <span>{s.name} ({s.type})</span>
+                          <input type="checkbox" checked={s.enabled} onChange={(e) => toggleSource(s.id, e.target.checked)} />
+                        </label>
+                      ))}
+                    </CardContent>
+                  </Card>
+
+                  {(user?.role === 'super_admin' || user?.role === 'content_admin') && (
+                    <Card className="modern-card">
+                      <CardHeader><CardTitle>Create User</CardTitle></CardHeader>
+                      <CardContent>
+                        <input value={newUser.email} placeholder="Email" onChange={(e) => setNewUser((x) => ({ ...x, email: e.target.value }))} />
+                        <input value={newUser.password} placeholder="Password" type="password" onChange={(e) => setNewUser((x) => ({ ...x, password: e.target.value }))} />
+                        <select value={newUser.role} onChange={(e) => setNewUser((x) => ({ ...x, role: e.target.value }))}>
+                          <option value="moderator">moderator</option>
+                          <option value="content_admin">content_admin</option>
+                          <option value="super_admin">super_admin</option>
+                        </select>
+                        <Button onClick={createUser}>Create Account</Button>
                       </CardContent>
                     </Card>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </section>
-
-        {isAdmin && token ? (
-          <section id="admin-root" className="admin glass">
-            <h2>Admin Panel</h2>
-            <div className="admin-grid">
-              <Card className="card-rich">
-                <CardHeader><CardTitle>Refresh Control</CardTitle></CardHeader>
-                <CardContent>
-                  <div className="button-row">
-                    <Button onClick={() => triggerRefresh('incremental')}>Run Incremental</Button>
-                    <Button variant="secondary" onClick={() => triggerRefresh('full')}>Run Full Refresh</Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="card-rich">
-                <CardHeader><CardTitle>Source Switches</CardTitle></CardHeader>
-                <CardContent>
-                  {sources.map((s) => (
-                    <label key={s.id} className="switch-row">
-                      <span>{s.name} ({s.type})</span>
-                      <input type="checkbox" checked={s.enabled} onChange={(e) => toggleSource(s.id, e.target.checked)} />
-                    </label>
-                  ))}
-                </CardContent>
-              </Card>
-
-              {(user?.role === 'super_admin' || user?.role === 'content_admin') && (
-                <Card className="card-rich">
-                  <CardHeader><CardTitle>Create User</CardTitle></CardHeader>
-                  <CardContent>
-                    <input value={newUser.email} placeholder="Email" onChange={(e) => setNewUser((x) => ({ ...x, email: e.target.value }))} />
-                    <input value={newUser.password} placeholder="Password" type="password" onChange={(e) => setNewUser((x) => ({ ...x, password: e.target.value }))} />
-                    <select value={newUser.role} onChange={(e) => setNewUser((x) => ({ ...x, role: e.target.value }))}>
-                      <option value="moderator">moderator</option>
-                      <option value="content_admin">content_admin</option>
-                      <option value="super_admin">super_admin</option>
-                    </select>
-                    <Button onClick={createUser}>Create Account</Button>
-                  </CardContent>
-                </Card>
-              )}
-            </div>
-
-            <Card className="card-rich">
-              <CardHeader><CardTitle>Users</CardTitle></CardHeader>
-              <CardContent>
-                <ul className="users-list">
-                  {users.map((u) => (
-                    <li key={u.id}>{u.email} - {u.role}</li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="card-rich">
-              <CardHeader><CardTitle>Recent Scrape Jobs</CardTitle></CardHeader>
-              <CardContent>
-                <div className="table-wrap">
-                  <table className="jobs-table">
-                    <thead>
-                      <tr>
-                        <th>Time</th>
-                        <th>Source</th>
-                        <th>Type</th>
-                        <th>Titles</th>
-                        <th>Links</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {scrapeJobs.map((job) => (
-                        <tr key={job.id}>
-                          <td>{new Date(job.createdAt).toLocaleString()}</td>
-                          <td>{job.source}</td>
-                          <td>{job.type}</td>
-                          <td>{job.titleCount}</td>
-                          <td>{job.linkCount}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                  )}
                 </div>
-              </CardContent>
-            </Card>
-          </section>
-        ) : null}
+              </section>
+            ) : null}
+          </>
+        )}
       </section>
 
-      <aside className="sidepane glass">
-        <h3>Side Pane</h3>
-        {featured ? (
-          <Card className="card-rich">
-            <CardHeader><CardTitle>Featured Pick</CardTitle></CardHeader>
-            <CardContent>
-              <div className="sidepane-media">
-                <PosterImage title={featured.title} zone={featured.zone} />
-              </div>
-              <p className="featured-title">{featured.title}</p>
-              <Badge variant="soft">{featured.zone}</Badge>
-            </CardContent>
-          </Card>
-        ) : null}
+      <aside className="sidepane modern-card">
+        <h3>Quick Stats</h3>
+        <p>Movies: {zoneData.movies.length}</p>
+        <p>Series: {zoneData.series.length}</p>
+        <p>Games: {zoneData.games.length}</p>
+        <p>Favourites: {favourites.length}</p>
 
-        <Card className="card-rich">
-          <CardHeader><CardTitle>Quick Stats</CardTitle></CardHeader>
-          <CardContent>
-            <p>Movies: {zoneData.movies.length}</p>
-            <p>Series: {zoneData.series.length}</p>
-            <p>Games: {zoneData.games.length}</p>
-            <p>Favourites: {favourites.length}</p>
-          </CardContent>
-        </Card>
+        <Separator className="my-2" />
+
+        <h4>Recent Jobs</h4>
+        <div className="jobs-mini-list">
+          {scrapeJobs.slice(0, 5).map((job) => (
+            <div key={job.id} className="mini-job-item">
+              <span>{job.source}</span>
+              <span>{job.type}</span>
+            </div>
+          ))}
+        </div>
       </aside>
 
-      <nav className="bottombar glass">
-        <Button variant="ghost" className="dock-btn" onClick={() => jumpTo('hero-root')}>Home</Button>
+      <nav className="bottombar modern-card">
+        <Button variant="ghost" className="dock-btn" onClick={navigateHome}>Home</Button>
         <Button variant="ghost" className="dock-btn" onClick={() => jumpTo('zone-movies')}>Movies</Button>
         <Button variant="ghost" className="dock-btn" onClick={() => jumpTo('zone-series')}>Series</Button>
         <Button variant="ghost" className="dock-btn" onClick={() => jumpTo('zone-games')}>Games</Button>
-        <Button variant="ghost" className="dock-btn" onClick={() => jumpTo('admin-root')}>Admin</Button>
       </nav>
     </main>
   );

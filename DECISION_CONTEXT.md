@@ -201,3 +201,29 @@ This document tracks major and minor project decisions, alternatives considered,
   - Add only one navigation surface.
 - Rationale: You requested multiple navigation surfaces and a richer UI frame.
 - Impact: Better discoverability and faster movement across zones/admin while preserving existing features.
+
+## 2026-04-15 06:17 IST
+
+### D-023: Detail-First Content UX
+- Decision: Move length display to dedicated detail pages and keep listing cards clean.
+- Alternatives considered:
+  - Keep length metadata on cards.
+  - Use modal instead of route-based detail page.
+- Rationale: Cleaner browsing surface while preserving richer metadata on explicit user intent.
+- Impact: Better scanability of lists and improved information architecture.
+
+### D-024: Fullscreen Detail View
+- Decision: Add fullscreen control on detail page using browser Fullscreen API.
+- Alternatives considered:
+  - No fullscreen option.
+  - New tab only.
+- Rationale: You requested immersive full-screen card viewing.
+- Impact: Users can focus on single title details and media.
+
+### D-025: Modern Visual Refresh
+- Decision: Replace retro-looking visual treatment with cleaner modern glass/surface layout and restrained gradients.
+- Alternatives considered:
+  - Minor style tweaks only.
+  - Keep existing vivid style as-is.
+- Rationale: You requested the UI to no longer feel old/2005.
+- Impact: Contemporary look with improved readability and hierarchy.
