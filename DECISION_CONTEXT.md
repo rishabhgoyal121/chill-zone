@@ -287,3 +287,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Restore always-visible synopsis.
 - Rationale: Matches request for hover-based description while preserving minimal card layout.
 - Impact: Cleaner default card appearance with quick contextual info on hover.
+
+## 2026-04-15 08:06 IST
+
+### D-032: Curated Description Layer Over Scraped Synopsis
+- Decision: Route all UI-facing description text through a cleanup and curation layer; use cleaned synopsis when readable, otherwise show zone-aware curated blurbs.
+- Alternatives considered:
+  - Render raw scraped synopsis directly.
+  - Disable descriptions entirely in hover/hero.
+- Rationale: You flagged that raw source text felt like noisy script copy; this preserves live data value while improving readability and tone.
+- Impact: Card hover, hero carousel, and detail copy now present cleaner, friendlier descriptions with less scraper/provider noise.

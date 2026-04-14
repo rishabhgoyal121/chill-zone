@@ -79,6 +79,69 @@ function itemLength(item) {
   return `${30 + (hash % 90)} min play session`;
 }
 
+function titleHash(title = '') {
+  let hash = 0;
+  for (let i = 0; i < title.length; i += 1) hash = (hash * 31 + title.charCodeAt(i)) % 997;
+  return hash;
+}
+
+function truncateText(text, max) {
+  if (!text) return '';
+  if (text.length <= max) return text;
+  return `${text.slice(0, max - 1).trimEnd()}…`;
+}
+
+function cleanSynopsis(raw) {
+  if (!raw) return '';
+  let text = String(raw).replace(/\s+/g, ' ').trim();
+  text = text.replace(/on justwatch[^.?!]*[.?!]?/gi, '');
+  text = text.replace(/stream(ing)? now[^.?!]*[.?!]?/gi, '');
+  text = text.replace(/watch now[^.?!]*[.?!]?/gi, '');
+  text = text.replace(/available on[^.?!]*[.?!]?/gi, '');
+  text = text.replace(/\s{2,}/g, ' ').trim();
+  return text;
+}
+
+function shortBlurb(item) {
+  const cleaned = cleanSynopsis(item?.synopsis);
+  if (cleaned.length >= 40) return truncateText(cleaned, 130);
+
+  const title = item?.title || 'This title';
+  const h = titleHash(title);
+
+  const movieBlurbs = [
+    `${title} is perfect for a relaxed movie night with friends and snacks.`,
+    `${title} brings a strong mood and an easy watch flow for group chill time.`,
+    `${title} is a crowd-friendly pick when you want something fun without overthinking.`
+  ];
+
+  const seriesBlurbs = [
+    `${title} is binge-friendly with enough hooks to keep everyone locked in.`,
+    `${title} works great for long chill sessions where one episode is never enough.`,
+    `${title} is a smooth series pick when your group wants a shared watch rhythm.`
+  ];
+
+  const gameBlurbs = [
+    `${title} is a quick-hit game pick that keeps the room energy high.`,
+    `${title} is great for casual rounds while hanging out and chatting.`,
+    `${title} is easy to jump into and fun to rotate with friends.`
+  ];
+
+  if (item?.zone === 'movies') {
+    return movieBlurbs[h % movieBlurbs.length];
+  }
+  if (item?.zone === 'series') {
+    return seriesBlurbs[h % seriesBlurbs.length];
+  }
+  return gameBlurbs[h % gameBlurbs.length];
+}
+
+function longDescription(item) {
+  const cleaned = cleanSynopsis(item?.synopsis);
+  if (cleaned.length >= 40) return truncateText(cleaned, 360);
+  return shortBlurb(item);
+}
+
 function DetailPage({ item, onBack }) {
   const detailRef = useRef(null);
   const [fsError, setFsError] = useState('');
@@ -108,7 +171,7 @@ function DetailPage({ item, onBack }) {
           <div className="detail-copy">
             <Badge variant="soft">{formatZone(item.zone)}</Badge>
             <h1>{item.title}</h1>
-            <p>{item.synopsis || 'No synopsis available yet.'}</p>
+            <p>{longDescription(item)}</p>
             <div className="detail-meta">
               <div><strong>Length:</strong> {itemLength(item)}</div>
               <div><strong>Region Coverage:</strong> IN, US</div>
@@ -161,7 +224,7 @@ function HeroCarousel({ slides, activeIndex, onPrev, onNext, onGoTo, onOpen }) {
         <div className="hero-carousel-copy">
           <Badge variant="soft">{formatZone(active.zone)}</Badge>
           <h3>{active.title}</h3>
-          <p>{active.synopsis || 'Top pick from today’s chill feed.'}</p>
+          <p>{shortBlurb(active)}</p>
           <div className="hero-carousel-actions">
             <Button onClick={() => onOpen(active)}>Open Details</Button>
             <Button variant="secondary" onClick={onNext}>Next Slide</Button>
@@ -436,7 +499,7 @@ export function App() {
                                 {fav ? '♥' : '♡'}
                               </button>
                               <div className="hover-blurb">
-                                {item.synopsis || 'Open details to see more about this title.'}
+                                {shortBlurb(item)}
                               </div>
                             </div>
                             <CardTitle>{item.title}</CardTitle>
