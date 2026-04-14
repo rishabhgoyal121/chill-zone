@@ -247,3 +247,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Use a separate slider section below hero.
 - Rationale: You requested a big hero section with carousel and richer top-of-page engagement.
 - Impact: Stronger first impression and faster discovery of featured content.
+
+## 2026-04-15 07:15 IST
+
+### D-028: Remove Sidebar and Side Pane
+- Decision: Remove left sidebar and right side pane and shift to a centered single-content layout.
+- Alternatives considered:
+  - Keep both side surfaces and restyle.
+  - Keep only one side surface.
+- Rationale: You explicitly requested removing both side elements for a cleaner experience.
+- Impact: Less visual clutter and wider content focus area.

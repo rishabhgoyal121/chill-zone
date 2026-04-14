@@ -354,18 +354,6 @@ export function App() {
         </nav>
       </header>
 
-      <aside className="sidenav modern-card">
-        <h3>Sections</h3>
-        <Button variant="ghost" className="nav-btn" onClick={navigateHome}>Overview</Button>
-        {ZONES.map((z) => (
-          <Button key={z.key} variant="ghost" className="nav-btn" onClick={() => jumpTo(`zone-${z.key}`)}>
-            {z.emoji} {z.label}
-          </Button>
-        ))}
-        <Separator className="my-2" />
-        <Button variant="ghost" className="nav-btn" onClick={() => jumpTo('admin-root')}>Admin</Button>
-      </aside>
-
       <section className="content-area">
         {route.page === 'detail' && detailItem ? (
           <DetailPage item={detailItem} onBack={navigateHome} />
@@ -497,26 +485,6 @@ export function App() {
           </>
         )}
       </section>
-
-      <aside className="sidepane modern-card">
-        <h3>Quick Stats</h3>
-        <p>Movies: {zoneData.movies.length}</p>
-        <p>Series: {zoneData.series.length}</p>
-        <p>Games: {zoneData.games.length}</p>
-        <p>Favourites: {favourites.length}</p>
-
-        <Separator className="my-2" />
-
-        <h4>Recent Jobs</h4>
-        <div className="jobs-mini-list">
-          {scrapeJobs.slice(0, 5).map((job) => (
-            <div key={job.id} className="mini-job-item">
-              <span>{job.source}</span>
-              <span>{job.type}</span>
-            </div>
-          ))}
-        </div>
-      </aside>
 
       <nav className="bottombar modern-card">
         <Button variant="ghost" className="dock-btn" onClick={navigateHome}>Home</Button>

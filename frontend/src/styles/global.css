@@ -20,9 +20,9 @@ body {
 
 .modern-shell {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr) 280px;
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
-  max-width: 1500px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 84px 18px 88px;
 }
@@ -62,19 +62,6 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
-.sidenav {
-  position: sticky;
-  top: 84px;
-  padding: 12px;
-  height: fit-content;
-  display: grid;
-  gap: 8px;
-}
-
-.nav-btn {
-  justify-content: flex-start;
 }
 
 .content-area {
@@ -385,26 +372,6 @@ select {
   flex-wrap: wrap;
 }
 
-.sidepane {
-  position: sticky;
-  top: 84px;
-  padding: 12px;
-  height: fit-content;
-}
-
-.jobs-mini-list {
-  display: grid;
-  gap: 6px;
-}
-
-.mini-job-item {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.88rem;
-  padding: 6px 0;
-  border-bottom: 1px solid #e2e8f0;
-}
-
 .detail-page {
   display: grid;
   gap: 10px;
@@ -491,12 +458,6 @@ select {
 }
 
 @media (max-width: 1180px) {
-  .modern-shell {
-    grid-template-columns: 200px minmax(0, 1fr);
-  }
-  .sidepane {
-    display: none;
-  }
   .detail-grid {
     grid-template-columns: 1fr;
   }
@@ -514,10 +475,6 @@ select {
   .modern-shell {
     grid-template-columns: 1fr;
     padding: 84px 12px 92px;
-  }
-
-  .sidenav {
-    display: none;
   }
 
   .login-grid {
