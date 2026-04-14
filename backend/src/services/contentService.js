@@ -17,6 +17,7 @@ function toTitleRows(zone, items, sourceType) {
     zone,
     title: item.title,
     imdbUrl: item.imdbUrl || '',
+    posterUrl: item.posterUrl || '',
     synopsis: item.synopsis || '',
     freshness: now,
     sourceType

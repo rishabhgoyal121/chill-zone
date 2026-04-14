@@ -37,7 +37,7 @@ async function main() {
   try {
     const [titlesResult, linksResult] = await Promise.all([
       pool.query(
-        `SELECT external_id, zone, title, imdb_url, synopsis, freshness, source_type, updated_at
+        `SELECT external_id, zone, title, imdb_url, poster_url, synopsis, freshness, source_type, updated_at
          FROM titles
          ORDER BY updated_at DESC`
       ),
@@ -66,6 +66,7 @@ async function main() {
         zone: row.zone,
         title: row.title,
         imdbUrl: row.imdb_url,
+        posterUrl: row.poster_url,
         synopsis: row.synopsis,
         freshness: row.freshness,
         sourceType: row.source_type,

@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS titles (
   zone TEXT NOT NULL CHECK (zone IN ('movies', 'series', 'games')),
   title TEXT NOT NULL,
   imdb_url TEXT,
+  poster_url TEXT,
   synopsis TEXT,
   freshness TIMESTAMPTZ,
   source_type TEXT NOT NULL,
@@ -82,6 +83,7 @@ CREATE TABLE IF NOT EXISTS audit_logs (
 
 export async function initDb() {
   await query(ddl);
+  await query('ALTER TABLE titles ADD COLUMN IF NOT EXISTS poster_url TEXT');
 
   await query(
     `INSERT INTO sources (id, name, type, enabled)

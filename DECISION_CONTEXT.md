@@ -297,3 +297,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Disable descriptions entirely in hover/hero.
 - Rationale: You flagged that raw source text felt like noisy script copy; this preserves live data value while improving readability and tone.
 - Impact: Card hover, hero carousel, and detail copy now present cleaner, friendlier descriptions with less scraper/provider noise.
+
+## 2026-04-15 09:01 IST
+
+### D-033: Source-Accurate Poster Pipeline
+- Decision: Replace generic seeded card imagery with source-provided poster/thumbnail URLs (`posterUrl`) from connectors, persisted in Postgres and surfaced in both live API and fallback payload.
+- Alternatives considered:
+  - Keep random seeded image service per title.
+  - Maintain manual static poster mappings.
+- Rationale: You reported card images were not relevant to their titles; source-aligned media preserves trust and content accuracy.
+- Impact: Card/hero/detail images now map to real title artwork when available, with generated artwork only as a resilient fallback.

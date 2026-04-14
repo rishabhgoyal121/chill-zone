@@ -12,10 +12,6 @@ const ZONES = [
   { key: 'games', label: 'Games', emoji: '🎮' }
 ];
 
-function posterFor(title, zone) {
-  return `https://picsum.photos/seed/${encodeURIComponent(`${zone}-${title}`)}/720/960`;
-}
-
 function fallbackPoster(title, zone) {
   const colors =
     zone === 'movies'
@@ -35,9 +31,13 @@ function fallbackPoster(title, zone) {
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
-function PosterImage({ title, zone, className = 'poster' }) {
-  const [src, setSrc] = useState(posterFor(title, zone));
+function PosterImage({ title, zone, posterUrl, className = 'poster' }) {
   const fallback = fallbackPoster(title, zone);
+  const [src, setSrc] = useState(posterUrl || fallback);
+
+  useEffect(() => {
+    setSrc(posterUrl || fallback);
+  }, [posterUrl, fallback]);
 
   return (
     <img
@@ -165,7 +165,7 @@ function DetailPage({ item, onBack }) {
       <Card className="detail-card">
         <CardContent className="detail-grid">
           <div className="detail-poster-wrap">
-            <PosterImage title={item.title} zone={item.zone} className="detail-poster" />
+            <PosterImage title={item.title} zone={item.zone} posterUrl={item.posterUrl} className="detail-poster" />
           </div>
 
           <div className="detail-copy">
@@ -219,7 +219,7 @@ function HeroCarousel({ slides, activeIndex, onPrev, onNext, onGoTo, onOpen }) {
       <button className="hero-arrow left" onClick={onPrev} aria-label="Previous Slide">‹</button>
       <div className="hero-carousel-card modern-card">
         <div className="hero-carousel-media">
-          <PosterImage title={active.title} zone={active.zone} className="hero-poster" />
+          <PosterImage title={active.title} zone={active.zone} posterUrl={active.posterUrl} className="hero-poster" />
         </div>
         <div className="hero-carousel-copy">
           <Badge variant="soft">{formatZone(active.zone)}</Badge>
@@ -486,7 +486,7 @@ export function App() {
                         >
                           <CardContent className="card-content">
                             <div className="media-wrap">
-                              <PosterImage title={item.title} zone={item.zone} className="poster" />
+                              <PosterImage title={item.title} zone={item.zone} posterUrl={item.posterUrl} className="poster" />
                               <button
                                 className={`heart-btn ${fav ? 'active' : ''}`}
                                 onClick={(e) => {
