@@ -1,0 +1,22 @@
+{
+  "name": "chill-zone-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "lint": "node -e \"console.log('No lint configured yet')\"",
+    "export:fallback": "node scripts/exportFallbackContent.js"
+  },
+  "dependencies": {
+    "axios": "^1.9.0",
+    "bcryptjs": "^2.4.3",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "node-cron": "^3.0.3",
+    "pg": "^8.13.1"
+  }
+}

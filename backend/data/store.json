@@ -1,0 +1,422 @@
+{
+  "users": [
+    {
+      "id": "usr-1776201682589-eh98sx",
+      "email": "admin@chillzone.local",
+      "passwordHash": "$2a$10$BaS92FAPquCUndDqOjPyyOKzQo9i3nDzZ5mq3waSvB0Efj3p6vjd.",
+      "role": "super_admin",
+      "createdBy": "system",
+      "createdAt": "2026-04-14T21:21:22.589Z"
+    }
+  ],
+  "titles": [
+    {
+      "id": "ttl-1776201682591-xx3a9y",
+      "externalId": "mv-2026-001",
+      "zone": "movies",
+      "title": "Skyline Drift",
+      "imdbUrl": "https://www.imdb.com/title/tt0000001/",
+      "synopsis": "A fast-paced thriller picked by the scraper.",
+      "freshness": "2026-04-14T21:21:53.702Z",
+      "sourceType": "external",
+      "createdAt": "2026-04-14T21:21:22.591Z",
+      "updatedAt": "2026-04-14T21:21:53.702Z"
+    },
+    {
+      "id": "ttl-1776201682591-ct27k7",
+      "externalId": "tv-2026-011",
+      "zone": "series",
+      "title": "Code & Chaos",
+      "imdbUrl": "https://www.imdb.com/title/tt0000011/",
+      "synopsis": "A dramatic series about building startups overnight.",
+      "freshness": "2026-04-14T21:21:53.703Z",
+      "sourceType": "external",
+      "createdAt": "2026-04-14T21:21:22.591Z",
+      "updatedAt": "2026-04-14T21:21:53.703Z"
+    },
+    {
+      "id": "ttl-1776201682591-yppz9o",
+      "externalId": "gm-2026-301",
+      "zone": "games",
+      "title": "Neon Circuit Arena",
+      "imdbUrl": "",
+      "synopsis": "Browser game shortlist from multiple web sources.",
+      "freshness": "2026-04-14T21:21:53.704Z",
+      "sourceType": "external",
+      "createdAt": "2026-04-14T21:21:22.591Z",
+      "updatedAt": "2026-04-14T21:21:53.704Z"
+    }
+  ],
+  "links": [
+    {
+      "id": "lnk-1776201682591-ftxwuy",
+      "titleExternalId": "mv-2026-001",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/",
+      "region": "IN",
+      "linkType": "official",
+      "createdAt": "2026-04-14T21:21:22.591Z"
+    },
+    {
+      "id": "lnk-1776201682591-ruvslk",
+      "titleExternalId": "mv-2026-001",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/",
+      "region": "US",
+      "linkType": "official",
+      "createdAt": "2026-04-14T21:21:22.591Z"
+    },
+    {
+      "id": "lnk-1776201682591-lsn9z3",
+      "titleExternalId": "mv-2026-001",
+      "label": "Fan Curated Link",
+      "url": "https://example.com/watch/skyline-drift",
+      "region": "IN",
+      "linkType": "external",
+      "createdAt": "2026-04-14T21:21:22.591Z"
+    },
+    {
+      "id": "lnk-1776201682591-x93ei5",
+      "titleExternalId": "tv-2026-011",
+      "label": "Hotstar",
+      "url": "https://www.hotstar.com/",
+      "region": "IN",
+      "linkType": "official",
+      "createdAt": "2026-04-14T21:21:22.591Z"
+    },
+    {
+      "id": "lnk-1776201682591-u2sqmt",
+      "titleExternalId": "tv-2026-011",
+      "label": "Hulu",
+      "url": "https://www.hulu.com/",
+      "region": "US",
+      "linkType": "official",
+      "createdAt": "2026-04-14T21:21:22.591Z"
+    },
+    {
+      "id": "lnk-1776201682591-n8qqd0",
+      "titleExternalId": "gm-2026-301",
+      "label": "Official Game Site",
+      "url": "https://example.com/game/neon-circuit",
+      "region": "IN",
+      "linkType": "official",
+      "createdAt": "2026-04-14T21:21:22.591Z"
+    },
+    {
+      "id": "lnk-1776201682591-9w9w6z",
+      "titleExternalId": "gm-2026-301",
+      "label": "Community Pick",
+      "url": "https://example.com/community/neon-circuit",
+      "region": "US",
+      "linkType": "external",
+      "createdAt": "2026-04-14T21:21:22.591Z"
+    }
+  ],
+  "favourites": [],
+  "scrapeJobs": [
+    {
+      "id": "job-1776201682591-pln76d",
+      "type": "bootstrap",
+      "source": "IMDb",
+      "counts": {
+        "titles": 1,
+        "links": 3
+      },
+      "createdAt": "2026-04-14T21:21:22.591Z"
+    },
+    {
+      "id": "job-1776201682591-m4wr05",
+      "type": "bootstrap",
+      "source": "ProviderAggregator",
+      "counts": {
+        "titles": 1,
+        "links": 3
+      },
+      "createdAt": "2026-04-14T21:21:22.591Z"
+    },
+    {
+      "id": "job-1776201682591-tymugw",
+      "type": "bootstrap",
+      "source": "CuratedWeb",
+      "counts": {
+        "titles": 1,
+        "links": 3
+      },
+      "createdAt": "2026-04-14T21:21:22.591Z"
+    },
+    {
+      "id": "job-1776201682591-6kv1na",
+      "type": "bootstrap",
+      "source": "IMDb",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:22.591Z"
+    },
+    {
+      "id": "job-1776201682591-f6raxh",
+      "type": "bootstrap",
+      "source": "ProviderAggregator",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:22.591Z"
+    },
+    {
+      "id": "job-1776201682591-19tbml",
+      "type": "bootstrap",
+      "source": "CuratedWeb",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:22.591Z"
+    },
+    {
+      "id": "job-1776201682591-du0cge",
+      "type": "bootstrap",
+      "source": "IMDb",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:22.591Z"
+    },
+    {
+      "id": "job-1776201682592-ilcucc",
+      "type": "bootstrap",
+      "source": "ProviderAggregator",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:22.592Z"
+    },
+    {
+      "id": "job-1776201682592-xum7i6",
+      "type": "bootstrap",
+      "source": "CuratedWeb",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:22.592Z"
+    },
+    {
+      "id": "job-1776201711006-rtqpyr",
+      "type": "bootstrap",
+      "source": "IMDb",
+      "counts": {
+        "titles": 1,
+        "links": 3
+      },
+      "createdAt": "2026-04-14T21:21:51.006Z"
+    },
+    {
+      "id": "job-1776201711006-t3hq5h",
+      "type": "bootstrap",
+      "source": "ProviderAggregator",
+      "counts": {
+        "titles": 1,
+        "links": 3
+      },
+      "createdAt": "2026-04-14T21:21:51.006Z"
+    },
+    {
+      "id": "job-1776201711006-au5751",
+      "type": "bootstrap",
+      "source": "CuratedWeb",
+      "counts": {
+        "titles": 1,
+        "links": 3
+      },
+      "createdAt": "2026-04-14T21:21:51.006Z"
+    },
+    {
+      "id": "job-1776201711006-jnx7sp",
+      "type": "bootstrap",
+      "source": "IMDb",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:51.006Z"
+    },
+    {
+      "id": "job-1776201711006-e9vvos",
+      "type": "bootstrap",
+      "source": "ProviderAggregator",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:51.006Z"
+    },
+    {
+      "id": "job-1776201711007-ayt312",
+      "type": "bootstrap",
+      "source": "CuratedWeb",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:51.007Z"
+    },
+    {
+      "id": "job-1776201711007-x64m1k",
+      "type": "bootstrap",
+      "source": "IMDb",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:51.007Z"
+    },
+    {
+      "id": "job-1776201711007-c7kwqh",
+      "type": "bootstrap",
+      "source": "ProviderAggregator",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:51.007Z"
+    },
+    {
+      "id": "job-1776201711008-xaa6ml",
+      "type": "bootstrap",
+      "source": "CuratedWeb",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:51.008Z"
+    },
+    {
+      "id": "job-1776201713702-je05xl",
+      "type": "incremental",
+      "source": "IMDb",
+      "counts": {
+        "titles": 1,
+        "links": 3
+      },
+      "createdAt": "2026-04-14T21:21:53.702Z"
+    },
+    {
+      "id": "job-1776201713702-lsu67v",
+      "type": "incremental",
+      "source": "ProviderAggregator",
+      "counts": {
+        "titles": 1,
+        "links": 3
+      },
+      "createdAt": "2026-04-14T21:21:53.702Z"
+    },
+    {
+      "id": "job-1776201713702-q9yph2",
+      "type": "incremental",
+      "source": "CuratedWeb",
+      "counts": {
+        "titles": 1,
+        "links": 3
+      },
+      "createdAt": "2026-04-14T21:21:53.702Z"
+    },
+    {
+      "id": "job-1776201713702-7oz6a7",
+      "type": "incremental",
+      "source": "IMDb",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:53.702Z"
+    },
+    {
+      "id": "job-1776201713703-2mzi61",
+      "type": "incremental",
+      "source": "ProviderAggregator",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:53.703Z"
+    },
+    {
+      "id": "job-1776201713703-1ovj0k",
+      "type": "incremental",
+      "source": "CuratedWeb",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:53.703Z"
+    },
+    {
+      "id": "job-1776201713703-ujys09",
+      "type": "incremental",
+      "source": "IMDb",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:53.703Z"
+    },
+    {
+      "id": "job-1776201713704-o9ante",
+      "type": "incremental",
+      "source": "ProviderAggregator",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:53.704Z"
+    },
+    {
+      "id": "job-1776201713704-5qs04j",
+      "type": "incremental",
+      "source": "CuratedWeb",
+      "counts": {
+        "titles": 1,
+        "links": 2
+      },
+      "createdAt": "2026-04-14T21:21:53.704Z"
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-imdb",
+      "name": "IMDb",
+      "type": "official",
+      "enabled": true
+    },
+    {
+      "id": "src-watchmode",
+      "name": "ProviderAggregator",
+      "type": "official",
+      "enabled": true
+    },
+    {
+      "id": "src-web-curated",
+      "name": "CuratedWeb",
+      "type": "external",
+      "enabled": true
+    }
+  ],
+  "adminOverrides": [],
+  "auditLogs": [
+    {
+      "id": "log-1776201682590-aghyd9",
+      "action": "CREATE_USER",
+      "actorId": "system",
+      "targetId": "usr-1776201682589-eh98sx",
+      "meta": {
+        "email": "admin@chillzone.local",
+        "role": "super_admin"
+      },
+      "createdAt": "2026-04-14T21:21:22.590Z"
+    }
+  ]
+}

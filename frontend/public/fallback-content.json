@@ -1,0 +1,3313 @@
+{
+  "generatedAt": "2026-04-14T21:51:22.920Z",
+  "counts": {
+    "titles": 75,
+    "links": 300
+  },
+  "movies": [
+    {
+      "externalId": "jw-m-sapio",
+      "zone": "movies",
+      "title": "Sapio",
+      "imdbUrl": "https://www.imdb.com/find/?q=Sapio",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/sapio.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-sapio",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Sapio",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-sapio",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Sapio",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-sapio",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Sapio",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-sapio",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Sapio",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-pather-panchali",
+      "zone": "movies",
+      "title": "Pather Panchali",
+      "imdbUrl": "https://www.imdb.com/find/?q=Pather%20Panchali",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/pather-panchali.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-pather-panchali",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Pather%20Panchali",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-pather-panchali",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Pather%20Panchali",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-pather-panchali",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Pather%20Panchali",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-pather-panchali",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Pather%20Panchali",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-toy-story",
+      "zone": "movies",
+      "title": "Toy Story",
+      "imdbUrl": "https://www.imdb.com/find/?q=Toy%20Story",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/toy-story.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-toy-story",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Toy%20Story",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-toy-story",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Toy%20Story",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-toy-story",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Toy%20Story",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-toy-story",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Toy%20Story",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-finding-nemo",
+      "zone": "movies",
+      "title": "Finding Nemo",
+      "imdbUrl": "https://www.imdb.com/find/?q=Finding%20Nemo",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/finding-nemo.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-finding-nemo",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Finding%20Nemo",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-finding-nemo",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Finding%20Nemo",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-finding-nemo",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Finding%20Nemo",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-finding-nemo",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Finding%20Nemo",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-baahubali-the-beginning",
+      "zone": "movies",
+      "title": "Baahubali The Beginning",
+      "imdbUrl": "https://www.imdb.com/find/?q=Baahubali%20The%20Beginning",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/baahubali-the-beginning.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-baahubali-the-beginning",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Baahubali%20The%20Beginning",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-baahubali-the-beginning",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Baahubali%20The%20Beginning",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-baahubali-the-beginning",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Baahubali%20The%20Beginning",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-baahubali-the-beginning",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Baahubali%20The%20Beginning",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-roudram-ranam-rudhiram",
+      "zone": "movies",
+      "title": "Roudram Ranam Rudhiram",
+      "imdbUrl": "https://www.imdb.com/find/?q=Roudram%20Ranam%20Rudhiram",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/roudram-ranam-rudhiram.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-roudram-ranam-rudhiram",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Roudram%20Ranam%20Rudhiram",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-roudram-ranam-rudhiram",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Roudram%20Ranam%20Rudhiram",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-roudram-ranam-rudhiram",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Roudram%20Ranam%20Rudhiram",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-roudram-ranam-rudhiram",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Roudram%20Ranam%20Rudhiram",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-crush-2009",
+      "zone": "movies",
+      "title": "Crush",
+      "imdbUrl": "https://www.imdb.com/find/?q=Crush",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/crush-2009.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-crush-2009",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Crush",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-crush-2009",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Crush",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-crush-2009",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Crush",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-crush-2009",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Crush",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-singles-2022",
+      "zone": "movies",
+      "title": "Singles",
+      "imdbUrl": "https://www.imdb.com/find/?q=Singles",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/singles-2022.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-singles-2022",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Singles",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-singles-2022",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Singles",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-singles-2022",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Singles",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-singles-2022",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Singles",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-border-2",
+      "zone": "movies",
+      "title": "Border 2",
+      "imdbUrl": "https://www.imdb.com/find/?q=Border%202",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/border-2.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-border-2",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Border%202",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-border-2",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Border%202",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-border-2",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Border%202",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-border-2",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Border%202",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-beyond-the-kerala-story",
+      "zone": "movies",
+      "title": "Beyond The Kerala Story",
+      "imdbUrl": "https://www.imdb.com/find/?q=Beyond%20The%20Kerala%20Story",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/beyond-the-kerala-story.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-beyond-the-kerala-story",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Beyond%20The%20Kerala%20Story",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-beyond-the-kerala-story",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Beyond%20The%20Kerala%20Story",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-beyond-the-kerala-story",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Beyond%20The%20Kerala%20Story",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-beyond-the-kerala-story",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Beyond%20The%20Kerala%20Story",
+          "region": "IN",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-arjun-ustara",
+      "zone": "movies",
+      "title": "Arjun Ustara",
+      "imdbUrl": "https://www.imdb.com/find/?q=Arjun%20Ustara",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/arjun-ustara.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-arjun-ustara",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Arjun%20Ustara",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-arjun-ustara",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Arjun%20Ustara",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-arjun-ustara",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Arjun%20Ustara",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-arjun-ustara",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Arjun%20Ustara",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-homesick-2015",
+      "zone": "movies",
+      "title": "Homesick",
+      "imdbUrl": "https://www.imdb.com/find/?q=Homesick",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/homesick-2015.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-homesick-2015",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Homesick",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-homesick-2015",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Homesick",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-homesick-2015",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Homesick",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-homesick-2015",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Homesick",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-365-days",
+      "zone": "movies",
+      "title": "365 Days",
+      "imdbUrl": "https://www.imdb.com/find/?q=365%20Days",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/365-days.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-365-days",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=365%20Days",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-365-days",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=365%20Days",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-365-days",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=365%20Days",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-365-days",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=365%20Days",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-mon-potongo",
+      "zone": "movies",
+      "title": "Mon Potongo",
+      "imdbUrl": "https://www.imdb.com/find/?q=Mon%20Potongo",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/mon-potongo.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-mon-potongo",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Mon%20Potongo",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-mon-potongo",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Mon%20Potongo",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-mon-potongo",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Mon%20Potongo",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-mon-potongo",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Mon%20Potongo",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-sex-weather",
+      "zone": "movies",
+      "title": "Sex Weather",
+      "imdbUrl": "https://www.imdb.com/find/?q=Sex%20Weather",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/sex-weather.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-sex-weather",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Sex%20Weather",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-sex-weather",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Sex%20Weather",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-sex-weather",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Sex%20Weather",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-sex-weather",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Sex%20Weather",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-bugso",
+      "zone": "movies",
+      "title": "Bugso",
+      "imdbUrl": "https://www.imdb.com/find/?q=Bugso",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/bugso.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-bugso",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Bugso",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-bugso",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Bugso",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-bugso",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Bugso",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-bugso",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Bugso",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-its-a-wonderful-life",
+      "zone": "movies",
+      "title": "Its A Wonderful Life",
+      "imdbUrl": "https://www.imdb.com/find/?q=Its%20A%20Wonderful%20Life",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/its-a-wonderful-life.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-its-a-wonderful-life",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Its%20A%20Wonderful%20Life",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-its-a-wonderful-life",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Its%20A%20Wonderful%20Life",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-its-a-wonderful-life",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Its%20A%20Wonderful%20Life",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-its-a-wonderful-life",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Its%20A%20Wonderful%20Life",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-kabhi-khushi-kabhie-gham",
+      "zone": "movies",
+      "title": "Kabhi Khushi Kabhie Gham",
+      "imdbUrl": "https://www.imdb.com/find/?q=Kabhi%20Khushi%20Kabhie%20Gham",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/kabhi-khushi-kabhie-gham.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-kabhi-khushi-kabhie-gham",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Kabhi%20Khushi%20Kabhie%20Gham",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-kabhi-khushi-kabhie-gham",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Kabhi%20Khushi%20Kabhie%20Gham",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-kabhi-khushi-kabhie-gham",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Kabhi%20Khushi%20Kabhie%20Gham",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-kabhi-khushi-kabhie-gham",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Kabhi%20Khushi%20Kabhie%20Gham",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-the-housemaid-0",
+      "zone": "movies",
+      "title": "The Housemaid 0",
+      "imdbUrl": "https://www.imdb.com/find/?q=The%20Housemaid%200",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/the-housemaid-0.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-the-housemaid-0",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=The%20Housemaid%200",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-the-housemaid-0",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=The%20Housemaid%200",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-the-housemaid-0",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=The%20Housemaid%200",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-the-housemaid-0",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=The%20Housemaid%200",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-children-of-the-salt",
+      "zone": "movies",
+      "title": "Children Of The Salt",
+      "imdbUrl": "https://www.imdb.com/find/?q=Children%20Of%20The%20Salt",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/children-of-the-salt.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-children-of-the-salt",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Children%20Of%20The%20Salt",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-children-of-the-salt",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Children%20Of%20The%20Salt",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-children-of-the-salt",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Children%20Of%20The%20Salt",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-children-of-the-salt",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Children%20Of%20The%20Salt",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-taya-2021",
+      "zone": "movies",
+      "title": "Taya",
+      "imdbUrl": "https://www.imdb.com/find/?q=Taya",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/taya-2021.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-taya-2021",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Taya",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-taya-2021",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Taya",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-taya-2021",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Taya",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-taya-2021",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Taya",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-madrid-1987",
+      "zone": "movies",
+      "title": "Madrid",
+      "imdbUrl": "https://www.imdb.com/find/?q=Madrid",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/madrid-1987.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-madrid-1987",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Madrid",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-madrid-1987",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Madrid",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-madrid-1987",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Madrid",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-madrid-1987",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Madrid",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-dhurandhar-the-revenge",
+      "zone": "movies",
+      "title": "Dhurandhar The Revenge",
+      "imdbUrl": "https://www.imdb.com/find/?q=Dhurandhar%20The%20Revenge",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/dhurandhar-the-revenge.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-dhurandhar-the-revenge",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Dhurandhar%20The%20Revenge",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-dhurandhar-the-revenge",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Dhurandhar%20The%20Revenge",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-dhurandhar-the-revenge",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Dhurandhar%20The%20Revenge",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-dhurandhar-the-revenge",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Dhurandhar%20The%20Revenge",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-the-story-of-o",
+      "zone": "movies",
+      "title": "The Story Of O",
+      "imdbUrl": "https://www.imdb.com/find/?q=The%20Story%20Of%20O",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/the-story-of-o.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-the-story-of-o",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=The%20Story%20Of%20O",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-the-story-of-o",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=The%20Story%20Of%20O",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-the-story-of-o",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=The%20Story%20Of%20O",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-the-story-of-o",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=The%20Story%20Of%20O",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-m-dhurandhar-2025",
+      "zone": "movies",
+      "title": "Dhurandhar",
+      "imdbUrl": "https://www.imdb.com/find/?q=Dhurandhar",
+      "synopsis": "Trending title discovered from JustWatch path /in/movie/dhurandhar-2025.",
+      "freshness": "2026-04-14T21:46:05.830Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.832Z",
+      "links": [
+        {
+          "titleExternalId": "jw-m-dhurandhar-2025",
+          "zone": "movies",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Dhurandhar",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-dhurandhar-2025",
+          "zone": "movies",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Dhurandhar",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-m-dhurandhar-2025",
+          "zone": "movies",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Dhurandhar",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-m-dhurandhar-2025",
+          "zone": "movies",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Dhurandhar",
+          "region": "US",
+          "linkType": "external"
+        }
+      ]
+    }
+  ],
+  "series": [
+    {
+      "externalId": "jw-s-bloodhounds",
+      "zone": "series",
+      "title": "Bloodhounds",
+      "imdbUrl": "https://www.imdb.com/find/?q=Bloodhounds",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/bloodhounds.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-bloodhounds",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Bloodhounds",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-bloodhounds",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Bloodhounds",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-bloodhounds",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Bloodhounds",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-bloodhounds",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Bloodhounds",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-friends",
+      "zone": "series",
+      "title": "Friends",
+      "imdbUrl": "https://www.imdb.com/find/?q=Friends",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/friends.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-friends",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Friends",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-friends",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Friends",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-friends",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Friends",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-friends",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Friends",
+          "region": "US",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-the-office",
+      "zone": "series",
+      "title": "The Office",
+      "imdbUrl": "https://www.imdb.com/find/?q=The%20Office",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/the-office.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-the-office",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=The%20Office",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-the-office",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=The%20Office",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-the-office",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=The%20Office",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-the-office",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=The%20Office",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-mirzapur",
+      "zone": "series",
+      "title": "Mirzapur",
+      "imdbUrl": "https://www.imdb.com/find/?q=Mirzapur",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/mirzapur.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-mirzapur",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Mirzapur",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-mirzapur",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Mirzapur",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-mirzapur",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Mirzapur",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-mirzapur",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Mirzapur",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-sacred-games",
+      "zone": "series",
+      "title": "Sacred Games",
+      "imdbUrl": "https://www.imdb.com/find/?q=Sacred%20Games",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/sacred-games.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-sacred-games",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Sacred%20Games",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-sacred-games",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Sacred%20Games",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-sacred-games",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Sacred%20Games",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-sacred-games",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Sacred%20Games",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-asur",
+      "zone": "series",
+      "title": "Asur",
+      "imdbUrl": "https://www.imdb.com/find/?q=Asur",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/asur.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-asur",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Asur",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-asur",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Asur",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-asur",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Asur",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-asur",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Asur",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-farzi",
+      "zone": "series",
+      "title": "Farzi",
+      "imdbUrl": "https://www.imdb.com/find/?q=Farzi",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/farzi.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-farzi",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Farzi",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-farzi",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Farzi",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-farzi",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Farzi",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-farzi",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Farzi",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-anupamaa",
+      "zone": "series",
+      "title": "Anupamaa",
+      "imdbUrl": "https://www.imdb.com/find/?q=Anupamaa",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/anupamaa.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-anupamaa",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Anupamaa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-anupamaa",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Anupamaa",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-anupamaa",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Anupamaa",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-anupamaa",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Anupamaa",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-sarabhai-vs-sarabhai",
+      "zone": "series",
+      "title": "Sarabhai Vs Sarabhai",
+      "imdbUrl": "https://www.imdb.com/find/?q=Sarabhai%20Vs%20Sarabhai",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/sarabhai-vs-sarabhai.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-sarabhai-vs-sarabhai",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Sarabhai%20Vs%20Sarabhai",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-sarabhai-vs-sarabhai",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Sarabhai%20Vs%20Sarabhai",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-sarabhai-vs-sarabhai",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Sarabhai%20Vs%20Sarabhai",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-sarabhai-vs-sarabhai",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Sarabhai%20Vs%20Sarabhai",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-bigg-boss",
+      "zone": "series",
+      "title": "Bigg Boss",
+      "imdbUrl": "https://www.imdb.com/find/?q=Bigg%20Boss",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/bigg-boss.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-bigg-boss",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Bigg%20Boss",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-bigg-boss",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Bigg%20Boss",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-bigg-boss",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Bigg%20Boss",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-bigg-boss",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Bigg%20Boss",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-bambai-meri-jaan",
+      "zone": "series",
+      "title": "Bambai Meri Jaan",
+      "imdbUrl": "https://www.imdb.com/find/?q=Bambai%20Meri%20Jaan",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/bambai-meri-jaan.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-bambai-meri-jaan",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Bambai%20Meri%20Jaan",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-bambai-meri-jaan",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Bambai%20Meri%20Jaan",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-bambai-meri-jaan",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Bambai%20Meri%20Jaan",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-bambai-meri-jaan",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Bambai%20Meri%20Jaan",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-mismatched",
+      "zone": "series",
+      "title": "Mismatched",
+      "imdbUrl": "https://www.imdb.com/find/?q=Mismatched",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/mismatched.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-mismatched",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Mismatched",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-mismatched",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Mismatched",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-mismatched",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Mismatched",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-mismatched",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Mismatched",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-erotic-stories",
+      "zone": "series",
+      "title": "Erotic Stories",
+      "imdbUrl": "https://www.imdb.com/find/?q=Erotic%20Stories",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/erotic-stories.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-erotic-stories",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Erotic%20Stories",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-erotic-stories",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Erotic%20Stories",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-erotic-stories",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Erotic%20Stories",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-erotic-stories",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Erotic%20Stories",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-chiraiya",
+      "zone": "series",
+      "title": "Chiraiya",
+      "imdbUrl": "https://www.imdb.com/find/?q=Chiraiya",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/chiraiya.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-chiraiya",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Chiraiya",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-chiraiya",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Chiraiya",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-chiraiya",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Chiraiya",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-chiraiya",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Chiraiya",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-from",
+      "zone": "series",
+      "title": "From",
+      "imdbUrl": "https://www.imdb.com/find/?q=From",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/from.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-from",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=From",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-from",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=From",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-from",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=From",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-from",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=From",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-jujutsu-kaisen",
+      "zone": "series",
+      "title": "Jujutsu Kaisen",
+      "imdbUrl": "https://www.imdb.com/find/?q=Jujutsu%20Kaisen",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/jujutsu-kaisen.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-jujutsu-kaisen",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Jujutsu%20Kaisen",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-jujutsu-kaisen",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Jujutsu%20Kaisen",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-jujutsu-kaisen",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Jujutsu%20Kaisen",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-jujutsu-kaisen",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Jujutsu%20Kaisen",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-one-piece",
+      "zone": "series",
+      "title": "One Piece",
+      "imdbUrl": "https://www.imdb.com/find/?q=One%20Piece",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/one-piece.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-one-piece",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=One%20Piece",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-one-piece",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=One%20Piece",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-one-piece",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=One%20Piece",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-one-piece",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=One%20Piece",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-the-boys",
+      "zone": "series",
+      "title": "The Boys",
+      "imdbUrl": "https://www.imdb.com/find/?q=The%20Boys",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/the-boys.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-the-boys",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=The%20Boys",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-the-boys",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=The%20Boys",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-the-boys",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=The%20Boys",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-the-boys",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=The%20Boys",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-stranger-things",
+      "zone": "series",
+      "title": "Stranger Things",
+      "imdbUrl": "https://www.imdb.com/find/?q=Stranger%20Things",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/stranger-things.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-stranger-things",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Stranger%20Things",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-stranger-things",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Stranger%20Things",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-stranger-things",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Stranger%20Things",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-stranger-things",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Stranger%20Things",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-one-piece-2023",
+      "zone": "series",
+      "title": "One Piece",
+      "imdbUrl": "https://www.imdb.com/find/?q=One%20Piece",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/one-piece-2023.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-one-piece-2023",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=One%20Piece",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-one-piece-2023",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=One%20Piece",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-one-piece-2023",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=One%20Piece",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-one-piece-2023",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=One%20Piece",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-aspirants",
+      "zone": "series",
+      "title": "Aspirants",
+      "imdbUrl": "https://www.imdb.com/find/?q=Aspirants",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/aspirants.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-aspirants",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Aspirants",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-aspirants",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Aspirants",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-aspirants",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Aspirants",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-aspirants",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Aspirants",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-mtv-splitsvilla",
+      "zone": "series",
+      "title": "Mtv Splitsvilla",
+      "imdbUrl": "https://www.imdb.com/find/?q=Mtv%20Splitsvilla",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/mtv-splitsvilla.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-mtv-splitsvilla",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Mtv%20Splitsvilla",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-mtv-splitsvilla",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Mtv%20Splitsvilla",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-mtv-splitsvilla",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Mtv%20Splitsvilla",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-mtv-splitsvilla",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Mtv%20Splitsvilla",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-only-murders-in-the-building",
+      "zone": "series",
+      "title": "Only Murders In The Building",
+      "imdbUrl": "https://www.imdb.com/find/?q=Only%20Murders%20In%20The%20Building",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/only-murders-in-the-building.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-only-murders-in-the-building",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Only%20Murders%20In%20The%20Building",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-only-murders-in-the-building",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Only%20Murders%20In%20The%20Building",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-only-murders-in-the-building",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Only%20Murders%20In%20The%20Building",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-only-murders-in-the-building",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Only%20Murders%20In%20The%20Building",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-game-of-thrones",
+      "zone": "series",
+      "title": "Game Of Thrones",
+      "imdbUrl": "https://www.imdb.com/find/?q=Game%20Of%20Thrones",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/game-of-thrones.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-game-of-thrones",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Game%20Of%20Thrones",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-game-of-thrones",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Game%20Of%20Thrones",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-game-of-thrones",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Game%20Of%20Thrones",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-game-of-thrones",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Game%20Of%20Thrones",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "jw-s-monarch-legacy-of-monsters",
+      "zone": "series",
+      "title": "Monarch Legacy Of Monsters",
+      "imdbUrl": "https://www.imdb.com/find/?q=Monarch%20Legacy%20Of%20Monsters",
+      "synopsis": "Trending title discovered from JustWatch path /in/tv-show/monarch-legacy-of-monsters.",
+      "freshness": "2026-04-14T21:46:05.831Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:05.870Z",
+      "links": [
+        {
+          "titleExternalId": "jw-s-monarch-legacy-of-monsters",
+          "zone": "series",
+          "label": "JustWatch Search (US)",
+          "url": "https://www.justwatch.com/us/search?q=Monarch%20Legacy%20Of%20Monsters",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-monarch-legacy-of-monsters",
+          "zone": "series",
+          "label": "JustWatch Search (IN)",
+          "url": "https://www.justwatch.com/in/search?q=Monarch%20Legacy%20Of%20Monsters",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "jw-s-monarch-legacy-of-monsters",
+          "zone": "series",
+          "label": "Prime Video Search",
+          "url": "https://www.primevideo.com/search/ref=atv_nb_sr?phrase=Monarch%20Legacy%20Of%20Monsters",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "jw-s-monarch-legacy-of-monsters",
+          "zone": "series",
+          "label": "Netflix Search",
+          "url": "https://www.netflix.com/search?q=Monarch%20Legacy%20Of%20Monsters",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "externalId": "cg-only-up-parkour-adl",
+      "zone": "games",
+      "title": "Only Up: Parkour",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-only-up-parkour-adl",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=Only%20Up%3A%20Parkour+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-only-up-parkour-adl",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=Only%20Up%3A%20Parkour+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-only-up-parkour-adl",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/only-up-parkour-adl",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-only-up-parkour-adl",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/only-up-parkour-adl",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-the-hustler",
+      "zone": "games",
+      "title": "The Hustler",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-the-hustler",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=The%20Hustler+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-the-hustler",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=The%20Hustler+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-the-hustler",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/the-hustler",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-the-hustler",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/the-hustler",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-lost-dungeon",
+      "zone": "games",
+      "title": "Lost Dungeon",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-lost-dungeon",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=Lost%20Dungeon+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-lost-dungeon",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=Lost%20Dungeon+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-lost-dungeon",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/lost-dungeon",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-lost-dungeon",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/lost-dungeon",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-hidden-object-street-of-secrets",
+      "zone": "games",
+      "title": "Hidden Object: Street Of Secrets",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-hidden-object-street-of-secrets",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=Hidden%20Object%3A%20Street%20Of%20Secrets+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-hidden-object-street-of-secrets",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=Hidden%20Object%3A%20Street%20Of%20Secrets+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-hidden-object-street-of-secrets",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/hidden-object-street-of-secrets",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-hidden-object-street-of-secrets",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/hidden-object-street-of-secrets",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-traffic-architect-tic",
+      "zone": "games",
+      "title": "Traffic Architect",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-traffic-architect-tic",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=Traffic%20Architect+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-traffic-architect-tic",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=Traffic%20Architect+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-traffic-architect-tic",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/traffic-architect-tic",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-traffic-architect-tic",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/traffic-architect-tic",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-bladeblast-io",
+      "zone": "games",
+      "title": "UpdatedBladeBlast.io",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-bladeblast-io",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=UpdatedBladeBlast.io+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-bladeblast-io",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=UpdatedBladeBlast.io+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-bladeblast-io",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/bladeblast-io",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-bladeblast-io",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/bladeblast-io",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-the-museum-of-dots",
+      "zone": "games",
+      "title": "HotThe Museum of Dots",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-the-museum-of-dots",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=HotThe%20Museum%20of%20Dots+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-the-museum-of-dots",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=HotThe%20Museum%20of%20Dots+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-the-museum-of-dots",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/the-museum-of-dots",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-the-museum-of-dots",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/the-museum-of-dots",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-free-kicks-world-cup-2026",
+      "zone": "games",
+      "title": "UpdatedFree Kicks World Cup 2026",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-free-kicks-world-cup-2026",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=UpdatedFree%20Kicks%20World%20Cup%202026+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-free-kicks-world-cup-2026",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=UpdatedFree%20Kicks%20World%20Cup%202026+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-free-kicks-world-cup-2026",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/free-kicks-world-cup-2026",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-free-kicks-world-cup-2026",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/free-kicks-world-cup-2026",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-idle-hotel-empire-tycoon",
+      "zone": "games",
+      "title": "Idle Hotel Empire Tycoon",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-idle-hotel-empire-tycoon",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=Idle%20Hotel%20Empire%20Tycoon+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-idle-hotel-empire-tycoon",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=Idle%20Hotel%20Empire%20Tycoon+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-idle-hotel-empire-tycoon",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/idle-hotel-empire-tycoon",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-idle-hotel-empire-tycoon",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/idle-hotel-empire-tycoon",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-raid-rush",
+      "zone": "games",
+      "title": "HotRaid & Rush",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-raid-rush",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=HotRaid%20%26%20Rush+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-raid-rush",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=HotRaid%20%26%20Rush+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-raid-rush",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/raid-rush",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-raid-rush",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/raid-rush",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-stellar-swarm",
+      "zone": "games",
+      "title": "OriginalsStellar Swarm",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-stellar-swarm",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=OriginalsStellar%20Swarm+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-stellar-swarm",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=OriginalsStellar%20Swarm+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-stellar-swarm",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/stellar-swarm",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-stellar-swarm",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/stellar-swarm",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-hexalinea",
+      "zone": "games",
+      "title": "Hexalinea",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-hexalinea",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=Hexalinea+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-hexalinea",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=Hexalinea+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-hexalinea",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/hexalinea",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-hexalinea",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/hexalinea",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-music-band",
+      "zone": "games",
+      "title": "Music Band",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-music-band",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=Music%20Band+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-music-band",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=Music%20Band+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-music-band",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/music-band",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-music-band",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/music-band",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-gold-rush-gold-simulator-3d",
+      "zone": "games",
+      "title": "Gold Rush: Gold Simulator 3D",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-gold-rush-gold-simulator-3d",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=Gold%20Rush%3A%20Gold%20Simulator%203D+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-gold-rush-gold-simulator-3d",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=Gold%20Rush%3A%20Gold%20Simulator%203D+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-gold-rush-gold-simulator-3d",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/gold-rush-gold-simulator-3d",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-gold-rush-gold-simulator-3d",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/gold-rush-gold-simulator-3d",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-sudoku-block-puzzle",
+      "zone": "games",
+      "title": "Sudoku Block Puzzle",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-sudoku-block-puzzle",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=Sudoku%20Block%20Puzzle+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-sudoku-block-puzzle",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=Sudoku%20Block%20Puzzle+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-sudoku-block-puzzle",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/sudoku-block-puzzle",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-sudoku-block-puzzle",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/sudoku-block-puzzle",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-runic-rampage",
+      "zone": "games",
+      "title": "Runic Rampage",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-runic-rampage",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=Runic%20Rampage+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-runic-rampage",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=Runic%20Rampage+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-runic-rampage",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/runic-rampage",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-runic-rampage",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/runic-rampage",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-my-castle-merge-story",
+      "zone": "games",
+      "title": "My Castle: Merge & Story",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-my-castle-merge-story",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=My%20Castle%3A%20Merge%20%26%20Story+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-my-castle-merge-story",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=My%20Castle%3A%20Merge%20%26%20Story+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-my-castle-merge-story",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/my-castle-merge-story",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-my-castle-merge-story",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/my-castle-merge-story",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-rare-pets-fki",
+      "zone": "games",
+      "title": "Rare Pets",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-rare-pets-fki",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=Rare%20Pets+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-rare-pets-fki",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=Rare%20Pets+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-rare-pets-fki",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/rare-pets-fki",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-rare-pets-fki",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/rare-pets-fki",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-tower-battle-ypr",
+      "zone": "games",
+      "title": "Tower Battle",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-tower-battle-ypr",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/tower-battle-ypr",
+          "region": "IN",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-tower-battle-ypr",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=Tower%20Battle+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-tower-battle-ypr",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=Tower%20Battle+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-tower-battle-ypr",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/tower-battle-ypr",
+          "region": "US",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-escape-from-mr-meawing-s-prison",
+      "zone": "games",
+      "title": "Escape From Mr.Meawing's Prison!",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-escape-from-mr-meawing-s-prison",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=Escape%20From%20Mr.Meawing's%20Prison!+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-escape-from-mr-meawing-s-prison",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=Escape%20From%20Mr.Meawing's%20Prison!+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-escape-from-mr-meawing-s-prison",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/escape-from-mr-meawing-s-prison",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-escape-from-mr-meawing-s-prison",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/escape-from-mr-meawing-s-prison",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-playing-soccer-vaa",
+      "zone": "games",
+      "title": "Playing Soccer",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-playing-soccer-vaa",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=Playing%20Soccer+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-playing-soccer-vaa",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=Playing%20Soccer+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-playing-soccer-vaa",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/playing-soccer-vaa",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-playing-soccer-vaa",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/playing-soccer-vaa",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-pixel-blast",
+      "zone": "games",
+      "title": "Pixel Blast",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-pixel-blast",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=Pixel%20Blast+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-pixel-blast",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=Pixel%20Blast+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-pixel-blast",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/pixel-blast",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-pixel-blast",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/pixel-blast",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-fish-it-now",
+      "zone": "games",
+      "title": "HotFish It Now",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-fish-it-now",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=HotFish%20It%20Now+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-fish-it-now",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=HotFish%20It%20Now+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-fish-it-now",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/fish-it-now",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-fish-it-now",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/fish-it-now",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-core-defender-iam",
+      "zone": "games",
+      "title": "HotCore Defender",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-core-defender-iam",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=HotCore%20Defender+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-core-defender-iam",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=HotCore%20Defender+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-core-defender-iam",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/core-defender-iam",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-core-defender-iam",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/core-defender-iam",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    },
+    {
+      "externalId": "cg-age-of-heroes",
+      "zone": "games",
+      "title": "HotAge of Heroes",
+      "imdbUrl": null,
+      "synopsis": "Trending game discovered from CrazyGames.",
+      "freshness": "2026-04-14T21:46:06.333Z",
+      "sourceType": "official",
+      "updatedAt": "2026-04-14T21:46:06.333Z",
+      "links": [
+        {
+          "titleExternalId": "cg-age-of-heroes",
+          "zone": "games",
+          "label": "Scripted Search (US)",
+          "url": "https://duckduckgo.com/?q=HotAge%20of%20Heroes+play+online+usa",
+          "region": "US",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-age-of-heroes",
+          "zone": "games",
+          "label": "Scripted Search (IN)",
+          "url": "https://duckduckgo.com/?q=HotAge%20of%20Heroes+play+online+india",
+          "region": "IN",
+          "linkType": "external"
+        },
+        {
+          "titleExternalId": "cg-age-of-heroes",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/age-of-heroes",
+          "region": "US",
+          "linkType": "official"
+        },
+        {
+          "titleExternalId": "cg-age-of-heroes",
+          "zone": "games",
+          "label": "Official Game Page",
+          "url": "https://www.crazygames.com/game/age-of-heroes",
+          "region": "IN",
+          "linkType": "official"
+        }
+      ]
+    }
+  ]
+}

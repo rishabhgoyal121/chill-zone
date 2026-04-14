@@ -1,0 +1,6 @@
+# Replace <PUBLIC_IP> with your current public IP
+# Example hostname: api.<PUBLIC_IP>.sslip.io
+
+api.<PUBLIC_IP>.sslip.io {
+  reverse_proxy 127.0.0.1:4000
+}
