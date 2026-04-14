@@ -191,3 +191,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Manual static image asset library.
 - Rationale: Ensures visibly rich cards across deployed browsers where data-URI rendering can be inconsistent.
 - Impact: Stronger visual reliability and consistent image presence in UI cards.
+
+## 2026-04-15 05:52 IST
+
+### D-022: App Shell Navigation Upgrade
+- Decision: Introduce top bar, bottom dock, left side navigation, and right contextual side pane using shadcn-style UI primitives.
+- Alternatives considered:
+  - Keep single-column content-only layout.
+  - Add only one navigation surface.
+- Rationale: You requested multiple navigation surfaces and a richer UI frame.
+- Impact: Better discoverability and faster movement across zones/admin while preserving existing features.
