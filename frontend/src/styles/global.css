@@ -277,6 +277,7 @@ select {
 
 .card-rich {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 0;
 }
 
 .card-rich:hover {
@@ -292,18 +293,11 @@ select {
   align-content: start;
 }
 
-.card-media-button {
-  border: 0;
-  padding: 0;
-  background: transparent;
-  cursor: pointer;
-}
-
 .media-wrap {
+  position: relative;
   border-radius: 10px;
   overflow: hidden;
   aspect-ratio: 3 / 4;
-  border: 1px solid #e2e8f0;
 }
 
 .poster {
@@ -346,6 +340,38 @@ select {
 
 .card-actions > button {
   flex: 1;
+}
+
+.clickable-card {
+  cursor: pointer;
+}
+
+.heart-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #0f172a;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.18);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.heart-btn:hover {
+  transform: scale(1.05);
+  background: #fff;
+}
+
+.heart-btn.active {
+  color: #e11d48;
 }
 
 .admin {

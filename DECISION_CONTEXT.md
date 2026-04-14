@@ -257,3 +257,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Keep only one side surface.
 - Rationale: You explicitly requested removing both side elements for a cleaner experience.
 - Impact: Less visual clutter and wider content focus area.
+
+## 2026-04-15 07:28 IST
+
+### D-029: Minimal Click-First Cards
+- Decision: Remove card border emphasis and remove in-card action buttons; make entire card open details on click, with a top-right heart icon for favourites.
+- Alternatives considered:
+  - Keep explicit action buttons.
+  - Keep bordered card style.
+- Rationale: You requested cleaner cards with direct interaction and lightweight favourite control.
+- Impact: Simpler visual hierarchy and faster browsing interactions.

@@ -416,19 +416,28 @@ export function App() {
                     {zoneData[zone.key].map((item) => {
                       const fav = favourites.some((f) => f.titleExternalId === item.externalId);
                       return (
-                        <Card key={item.externalId} className="card-rich modern-card">
+                        <Card
+                          key={item.externalId}
+                          className="card-rich modern-card clickable-card"
+                          onClick={() => navigateDetail(item)}
+                        >
                           <CardContent className="card-content">
-                            <button className="card-media-button" onClick={() => navigateDetail(item)}>
-                              <div className="media-wrap">
-                                <PosterImage title={item.title} zone={item.zone} className="poster" />
-                              </div>
-                            </button>
+                            <div className="media-wrap">
+                              <PosterImage title={item.title} zone={item.zone} className="poster" />
+                              <button
+                                className={`heart-btn ${fav ? 'active' : ''}`}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  toggleFavourite(item.externalId);
+                                }}
+                                aria-label={fav ? 'Remove favourite' : 'Add favourite'}
+                                title={fav ? 'Remove favourite' : 'Add favourite'}
+                              >
+                                {fav ? '♥' : '♡'}
+                              </button>
+                            </div>
                             <CardTitle>{item.title}</CardTitle>
                             <p className="card-synopsis">{item.synopsis}</p>
-                            <div className="card-actions">
-                              <Button variant="secondary" onClick={() => navigateDetail(item)}>View Details</Button>
-                              <Button onClick={() => toggleFavourite(item.externalId)}>{fav ? 'Unfavourite' : 'Favourite'}</Button>
-                            </div>
                           </CardContent>
                         </Card>
                       );
