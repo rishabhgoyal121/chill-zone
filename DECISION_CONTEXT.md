@@ -161,3 +161,23 @@ This document tracks major and minor project decisions, alternatives considered,
   - Tunneling tools only.
 - Rationale: Matches your requested stack and keeps deployment responsibilities separated.
 - Impact: Requires router port forwarding and SSL termination on laptop.
+
+## 2026-04-15 05:14 IST
+
+### D-019: Production API Default Safety
+- Decision: In production builds, remove localhost API default and use same-origin (`''`) unless `VITE_API_URL` is explicitly set.
+- Alternatives considered:
+  - Keep localhost default in all environments.
+  - Hard fail when `VITE_API_URL` is missing.
+- Rationale: Prevents browser local-network permission prompts and accidental localhost calls from hosted frontend.
+- Impact: Safer production behavior with graceful fallback support unchanged.
+
+## 2026-04-15 05:26 IST
+
+### D-020: Image-Forward Colorful Frontend Refresh
+- Decision: Shift UI to a vivid, animation-heavy design with generated poster imagery per title, colorful gradients, and pronounced hover interactions.
+- Alternatives considered:
+  - Keep minimal card-only presentation.
+  - Add static image placeholders without motion.
+- Rationale: You requested a highly colorful visual style with lots of images and animations.
+- Impact: Stronger visual identity, improved engagement, and consistent image coverage even when scraped sources lack posters.
