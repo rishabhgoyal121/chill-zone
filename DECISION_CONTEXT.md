@@ -307,3 +307,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Maintain manual static poster mappings.
 - Rationale: You reported card images were not relevant to their titles; source-aligned media preserves trust and content accuracy.
 - Impact: Card/hero/detail images now map to real title artwork when available, with generated artwork only as a resilient fallback.
+
+## 2026-04-15 09:31 IST
+
+### D-034: Global Metadata and Favicon Baseline
+- Decision: Define browser metadata and social preview tags in `frontend/index.html` and serve a shared app favicon (`/favicon.svg`) from `frontend/public`.
+- Alternatives considered:
+  - Keep only title and viewport defaults.
+  - Add per-route metadata only later.
+- Rationale: You requested page metadata and favicon coverage for all pages; in this SPA, the index head provides consistent defaults across routes.
+- Impact: Better browser tab identity, improved SEO/share previews, and consistent icon branding across the app.
