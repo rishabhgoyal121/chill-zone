@@ -317,3 +317,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Add per-route metadata only later.
 - Rationale: You requested page metadata and favicon coverage for all pages; in this SPA, the index head provides consistent defaults across routes.
 - Impact: Better browser tab identity, improved SEO/share previews, and consistent icon branding across the app.
+
+## 2026-04-15 09:46 IST
+
+### D-035: Shadcn-Style Button Standardization
+- Decision: Standardize all primary UI controls on the shared shadcn-style `ui/button` component with explicit `variant` and `size` APIs, including carousel nav controls and favourite heart control.
+- Alternatives considered:
+  - Keep mixed custom button styles and only tweak colors.
+  - Replace only primary buttons and leave icon controls as raw HTML buttons.
+- Rationale: You requested modern shadcn buttons and the previous mixed approach created inconsistent visuals and interactions.
+- Impact: Unified button look/feel, consistent hover/focus behavior, and easier future UI maintenance.

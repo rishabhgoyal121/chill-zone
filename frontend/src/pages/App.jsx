@@ -216,7 +216,9 @@ function HeroCarousel({ slides, activeIndex, onPrev, onNext, onGoTo, onOpen }) {
 
   return (
     <div className="hero-carousel">
-      <button className="hero-arrow left" onClick={onPrev} aria-label="Previous Slide">‹</button>
+      <Button variant="outline" size="icon" className="hero-arrow left" onClick={onPrev} aria-label="Previous Slide">
+        ‹
+      </Button>
       <div className="hero-carousel-card modern-card">
         <div className="hero-carousel-media">
           <PosterImage title={active.title} zone={active.zone} posterUrl={active.posterUrl} className="hero-poster" />
@@ -231,12 +233,16 @@ function HeroCarousel({ slides, activeIndex, onPrev, onNext, onGoTo, onOpen }) {
           </div>
         </div>
       </div>
-      <button className="hero-arrow right" onClick={onNext} aria-label="Next Slide">›</button>
+      <Button variant="outline" size="icon" className="hero-arrow right" onClick={onNext} aria-label="Next Slide">
+        ›
+      </Button>
 
       <div className="hero-dots">
         {slides.map((s, i) => (
-          <button
+          <Button
             key={`${s.externalId}-${i}`}
+            variant="ghost"
+            size="icon"
             className={`hero-dot ${i === activeIndex ? 'active' : ''}`}
             onClick={() => onGoTo(i)}
             aria-label={`Go to slide ${i + 1}`}
@@ -487,7 +493,9 @@ export function App() {
                           <CardContent className="card-content">
                             <div className="media-wrap">
                               <PosterImage title={item.title} zone={item.zone} posterUrl={item.posterUrl} className="poster" />
-                              <button
+                              <Button
+                                variant="secondary"
+                                size="icon"
                                 className={`heart-btn ${fav ? 'active' : ''}`}
                                 onClick={(e) => {
                                   e.stopPropagation();
@@ -497,7 +505,7 @@ export function App() {
                                 title={fav ? 'Remove favourite' : 'Add favourite'}
                               >
                                 {fav ? '♥' : '♡'}
-                              </button>
+                              </Button>
                               <div className="hover-blurb">
                                 {shortBlurb(item)}
                               </div>
