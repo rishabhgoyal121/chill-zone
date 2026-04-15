@@ -327,3 +327,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Replace only primary buttons and leave icon controls as raw HTML buttons.
 - Rationale: You requested modern shadcn buttons and the previous mixed approach created inconsistent visuals and interactions.
 - Impact: Unified button look/feel, consistent hover/focus behavior, and easier future UI maintenance.
+
+## 2026-04-15 10:08 IST
+
+### D-036: Media-Rich Detail Pages (Trailers + Photo Backdrops)
+- Decision: Enrich title responses with a computed `media` object (YouTube embed queries + backdrop image URLs) in the service layer and render cinematic detail pages with trailer embeds, photo wall, and fullscreen photo preview.
+- Alternatives considered:
+  - Frontend-only generation without backend enrichment.
+  - External paid media API integration in MVP.
+- Rationale: You requested YouTube trailers/clips and internet photos with strong visual impact while keeping current architecture flow intact.
+- Impact: Detail pages now feel immersive with dynamic video and image media, while still working in fallback mode through frontend media defaults.

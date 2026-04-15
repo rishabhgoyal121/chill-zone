@@ -10,6 +10,42 @@ import { fetchTrendingMovies, fetchTrendingSeries } from './connectors/justwatch
 import { fetchTrendingGames } from './connectors/gamesConnector.js';
 import { buildGameLinks, buildMovieOrSeriesLinks } from './connectors/linkBuilder.js';
 
+function cleanQueryText(value = '') {
+  return String(value).replace(/[^\w\s-]/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function uniqueNonEmpty(values = []) {
+  return [...new Set(values.filter(Boolean))];
+}
+
+function posterToBackdrop(posterUrl = '') {
+  if (!posterUrl) return '';
+  return posterUrl.replace(/\/s\d+\//i, '/s1920/');
+}
+
+function buildMedia(zone, title, posterUrl) {
+  const safeTitle = cleanQueryText(title || 'chill zone');
+  const zoneHint = zone === 'games' ? 'gameplay' : zone === 'series' ? 'tv series' : 'movie';
+  const trailerQuery = `${safeTitle} ${zoneHint} official trailer`;
+  const clipsQuery = `${safeTitle} ${zoneHint} clips`;
+
+  const youtubeEmbeds = uniqueNonEmpty([
+    `https://www.youtube.com/embed?listType=search&list=${encodeURIComponent(trailerQuery)}`,
+    `https://www.youtube.com/embed?listType=search&list=${encodeURIComponent(clipsQuery)}`
+  ]);
+
+  const backdropImages = uniqueNonEmpty([
+    posterToBackdrop(posterUrl),
+    `https://source.unsplash.com/1600x900/?${encodeURIComponent(`${safeTitle} ${zoneHint}`)}&sig=1`,
+    `https://source.unsplash.com/1600x900/?${encodeURIComponent(`${safeTitle} cinematic`)}&sig=2`
+  ]);
+
+  return {
+    youtubeEmbeds,
+    backdropImages
+  };
+}
+
 function toTitleRows(zone, items, sourceType) {
   const now = new Date().toISOString();
   return items.map((item) => ({
@@ -25,7 +61,11 @@ function toTitleRows(zone, items, sourceType) {
 }
 
 export async function listZone(zone) {
-  return listZoneTitles(zone);
+  const rows = await listZoneTitles(zone);
+  return rows.map((row) => ({
+    ...row,
+    media: buildMedia(row.zone, row.title, row.posterUrl)
+  }));
 }
 
 export async function scrapeAndStore({ jobType = 'incremental' }) {

@@ -102,6 +102,36 @@ function cleanSynopsis(raw) {
   return text;
 }
 
+function mediaFallback(item) {
+  const safeTitle = (item?.title || 'Chill Zone').replace(/[^\w\s-]/g, ' ').replace(/\s+/g, ' ').trim();
+  const zoneHint = item?.zone === 'games' ? 'gameplay' : item?.zone === 'series' ? 'tv series' : 'movie';
+  const basePoster = item?.posterUrl ? item.posterUrl.replace(/\/s\d+\//i, '/s1920/') : '';
+
+  const youtubeEmbeds = [
+    `https://www.youtube.com/embed?listType=search&list=${encodeURIComponent(`${safeTitle} ${zoneHint} official trailer`)}`,
+    `https://www.youtube.com/embed?listType=search&list=${encodeURIComponent(`${safeTitle} ${zoneHint} clips`)}`
+  ];
+
+  const backdropImages = [
+    basePoster,
+    `https://source.unsplash.com/1600x900/?${encodeURIComponent(`${safeTitle} ${zoneHint}`)}&sig=1`,
+    `https://source.unsplash.com/1600x900/?${encodeURIComponent(`${safeTitle} cinematic wallpaper`)}&sig=2`,
+    `https://picsum.photos/seed/${encodeURIComponent(`${item?.zone || 'zone'}-${safeTitle}-bg`)}/1600/900`
+  ].filter(Boolean);
+
+  return {
+    youtubeEmbeds: [...new Set(youtubeEmbeds)],
+    backdropImages: [...new Set(backdropImages)]
+  };
+}
+
+function mediaForItem(item) {
+  if (item?.media?.youtubeEmbeds?.length && item?.media?.backdropImages?.length) {
+    return item.media;
+  }
+  return mediaFallback(item);
+}
+
 function shortBlurb(item) {
   const cleaned = cleanSynopsis(item?.synopsis);
   if (cleaned.length >= 40) return truncateText(cleaned, 130);
@@ -145,6 +175,10 @@ function longDescription(item) {
 function DetailPage({ item, onBack }) {
   const detailRef = useRef(null);
   const [fsError, setFsError] = useState('');
+  const [photoOpen, setPhotoOpen] = useState(false);
+  const [activePhoto, setActivePhoto] = useState('');
+  const media = useMemo(() => mediaForItem(item), [item]);
+  const bgPhoto = media.backdropImages?.[0] || item?.posterUrl || '';
 
   async function openFullscreen() {
     try {
@@ -156,7 +190,14 @@ function DetailPage({ item, onBack }) {
   }
 
   return (
-    <section className="detail-page" ref={detailRef}>
+    <section className="detail-page cinematic-detail" ref={detailRef}>
+      {bgPhoto ? (
+        <div className="detail-bg-wrap" aria-hidden="true">
+          <img src={bgPhoto} alt="" className="detail-bg-image" loading="lazy" />
+          <div className="detail-bg-overlay" />
+        </div>
+      ) : null}
+
       <div className="detail-top-actions">
         <Button variant="secondary" onClick={onBack}>Back</Button>
         <Button onClick={openFullscreen}>View Full Screen</Button>
@@ -195,10 +236,55 @@ function DetailPage({ item, onBack }) {
               ))}
             </div>
 
+            <Separator className="my-3" />
+
+            <h3>Trailer / Clips</h3>
+            <div className="video-grid">
+              {media.youtubeEmbeds?.slice(0, 2).map((url) => (
+                <div key={url} className="video-tile">
+                  <iframe
+                    src={url}
+                    title={`${item.title} media`}
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+              ))}
+            </div>
+
+            <h3>Photo Wall</h3>
+            <div className="photo-grid">
+              {media.backdropImages?.slice(0, 4).map((url) => (
+                <button
+                  type="button"
+                  key={url}
+                  className="photo-tile"
+                  onClick={() => {
+                    setActivePhoto(url);
+                    setPhotoOpen(true);
+                  }}
+                  aria-label="Open photo full screen"
+                >
+                  <img src={url} alt={`${item.title} visual`} loading="lazy" />
+                </button>
+              ))}
+            </div>
+
             {fsError ? <p className="notice">{fsError}</p> : null}
           </div>
         </CardContent>
       </Card>
+
+      {photoOpen ? (
+        <div className="photo-modal" role="dialog" aria-modal="true">
+          <button type="button" className="photo-modal-close" onClick={() => setPhotoOpen(false)} aria-label="Close photo">
+            ✕
+          </button>
+          <img src={activePhoto} alt={`${item.title} full screen`} className="photo-modal-image" />
+        </div>
+      ) : null}
     </section>
   );
 }
