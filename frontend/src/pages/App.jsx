@@ -176,13 +176,32 @@ function DetailPage({ item, onBack }) {
   const [photoOpen, setPhotoOpen] = useState(false);
   const [activePhoto, setActivePhoto] = useState('');
   const media = useMemo(() => mediaForItem(item), [item]);
-  const bgPhoto = media.backdropImages?.[0] || item?.posterUrl || '';
+  const bgCandidates = useMemo(() => {
+    const generated = fallbackPoster(item?.title, item?.zone);
+    const candidates = [item?.posterUrl, ...(media.backdropImages || []), generated].filter(Boolean);
+    return [...new Set(candidates)];
+  }, [item?.posterUrl, item?.title, item?.zone, media.backdropImages]);
+  const [bgIndex, setBgIndex] = useState(0);
+
+  useEffect(() => {
+    setBgIndex(0);
+  }, [item?.externalId, bgCandidates.length]);
+
+  const bgPhoto = bgCandidates[bgIndex] || '';
 
   return (
     <section className="detail-page cinematic-detail">
       {bgPhoto ? (
         <div className="detail-bg-wrap" aria-hidden="true">
-          <img src={bgPhoto} alt="" className="detail-bg-image" loading="lazy" />
+          <img
+            src={bgPhoto}
+            alt=""
+            className="detail-bg-image"
+            loading="lazy"
+            onError={() => {
+              setBgIndex((prev) => (prev < bgCandidates.length - 1 ? prev + 1 : prev));
+            }}
+          />
           <div className="detail-bg-overlay" />
         </div>
       ) : null}

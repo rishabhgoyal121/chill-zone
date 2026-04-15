@@ -367,3 +367,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Disable fallback mode entirely.
 - Rationale: You requested cleaner UI without this status line while retaining resilience.
 - Impact: App continues to serve fallback data when API is unavailable, but without showing that specific banner text.
+
+## 2026-04-15 10:47 IST
+
+### D-040: Reliable Detail Background Image Fallback Chain
+- Decision: Implement ordered background candidate loading on detail pages with automatic image-failure fallback (`posterUrl -> media backdrops -> generated fallback`) using `onError` rollover.
+- Alternatives considered:
+  - Keep single background URL and accept blank states on load failures.
+  - Resolve only server-side and remove frontend fallback behavior.
+- Rationale: You reported missing album-art backgrounds; URL availability varies by source, so resilient client-side fallback ensures consistent visual output.
+- Impact: Detail pages now reliably show background artwork even when a primary backdrop URL is broken or blocked.
