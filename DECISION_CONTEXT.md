@@ -377,3 +377,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Resolve only server-side and remove frontend fallback behavior.
 - Rationale: You reported missing album-art backgrounds; URL availability varies by source, so resilient client-side fallback ensures consistent visual output.
 - Impact: Detail pages now reliably show background artwork even when a primary backdrop URL is broken or blocked.
+
+## 2026-04-15 11:02 IST
+
+### D-041: Remove Raw Connector Path Text from User-Facing Descriptions
+- Decision: Replace JustWatch connector synopsis text with user-friendly copy and add frontend cleanup for legacy strings matching `Trending title discovered from JustWatch path ...`.
+- Alternatives considered:
+  - Keep raw ingestion text and rely on future re-scrapes only.
+  - Remove synopsis entirely from detail pages.
+- Rationale: You reported poor-quality description text leaking source-path internals into UI.
+- Impact: Existing rows render cleaner descriptions immediately, and new ingested rows use human-readable synopsis text by default.

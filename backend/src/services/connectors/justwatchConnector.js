@@ -53,7 +53,7 @@ function parseCards(html, entryType, zonePrefix) {
       externalId,
       title,
       imdbUrl: `https://www.imdb.com/find/?q=${encodeURIComponent(title)}`,
-      synopsis: `Trending title discovered from JustWatch path ${path}.`,
+      synopsis: 'A trending pick currently popular on JustWatch.',
       posterUrl
     });
   });

@@ -94,6 +94,7 @@ function truncateText(text, max) {
 function cleanSynopsis(raw) {
   if (!raw) return '';
   let text = String(raw).replace(/\s+/g, ' ').trim();
+  text = text.replace(/trending title discovered from justwatch path[^.?!]*[.?!]?/gi, '');
   text = text.replace(/on justwatch[^.?!]*[.?!]?/gi, '');
   text = text.replace(/stream(ing)? now[^.?!]*[.?!]?/gi, '');
   text = text.replace(/watch now[^.?!]*[.?!]?/gi, '');
