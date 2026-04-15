@@ -550,21 +550,27 @@ select {
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .detail-bg-image {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 112vw;
+  height: 112vh;
   object-fit: cover;
-  filter: saturate(1.1) contrast(1.05);
+  transform: translate(-50%, -50%) scale(1.1);
+  filter: saturate(1.08) contrast(1.04) blur(9px) brightness(0.56);
 }
 
 .detail-bg-overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(15, 23, 42, 0.62), rgba(15, 23, 42, 0.72)),
-    radial-gradient(circle at 10% 0%, rgba(14, 165, 233, 0.2), transparent 42%);
+    linear-gradient(180deg, rgba(2, 6, 23, 0.72), rgba(2, 6, 23, 0.88)),
+    radial-gradient(circle at 50% 16%, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.46) 68%, rgba(0, 0, 0, 0.68) 100%);
+  backdrop-filter: blur(1.5px);
 }
 
 .detail-top-actions {

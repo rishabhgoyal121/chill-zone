@@ -337,3 +337,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - External paid media API integration in MVP.
 - Rationale: You requested YouTube trailers/clips and internet photos with strong visual impact while keeping current architecture flow intact.
 - Impact: Detail pages now feel immersive with dynamic video and image media, while still working in fallback mode through frontend media defaults.
+
+## 2026-04-15 10:21 IST
+
+### D-037: Immersive Full-Screen Detail Backdrop Treatment
+- Decision: Render detail-page background as an oversized fixed image layer with stronger black gradient + vignette overlay and blur to create an immersive full-screen look beyond visible viewport edges.
+- Alternatives considered:
+  - Keep standard full-viewport image without overscale.
+  - Use a lighter transparent overlay with minimal blur.
+- Rationale: You requested a background that extends beyond browser bounds and feels blacked-out/blurred while keeping detail content readable.
+- Impact: Detail pages now have deeper cinematic focus and better text contrast on dynamic artwork backgrounds.
