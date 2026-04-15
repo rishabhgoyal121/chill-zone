@@ -347,3 +347,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Use a lighter transparent overlay with minimal blur.
 - Rationale: You requested a background that extends beyond browser bounds and feels blacked-out/blurred while keeping detail content readable.
 - Impact: Detail pages now have deeper cinematic focus and better text contrast on dynamic artwork backgrounds.
+
+## 2026-04-15 10:34 IST
+
+### D-038: Remove Detail Fullscreen Control, Keep Full-Screen Art Background
+- Decision: Remove the explicit `View Full Screen` control from detail pages while retaining the immersive full-screen album-art backdrop treatment.
+- Alternatives considered:
+  - Keep fullscreen button alongside cinematic backdrop.
+  - Remove cinematic backdrop and keep fullscreen-only behavior.
+- Rationale: You clarified that fullscreen should refer to artwork filling the background, not a user-triggered fullscreen mode.
+- Impact: Cleaner detail-page controls with the intended immersive background preserved by default.

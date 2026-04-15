@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { api } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/button';
@@ -173,24 +173,13 @@ function longDescription(item) {
 }
 
 function DetailPage({ item, onBack }) {
-  const detailRef = useRef(null);
-  const [fsError, setFsError] = useState('');
   const [photoOpen, setPhotoOpen] = useState(false);
   const [activePhoto, setActivePhoto] = useState('');
   const media = useMemo(() => mediaForItem(item), [item]);
   const bgPhoto = media.backdropImages?.[0] || item?.posterUrl || '';
 
-  async function openFullscreen() {
-    try {
-      setFsError('');
-      if (detailRef.current?.requestFullscreen) await detailRef.current.requestFullscreen();
-    } catch {
-      setFsError('Fullscreen is blocked by the browser on this page.');
-    }
-  }
-
   return (
-    <section className="detail-page cinematic-detail" ref={detailRef}>
+    <section className="detail-page cinematic-detail">
       {bgPhoto ? (
         <div className="detail-bg-wrap" aria-hidden="true">
           <img src={bgPhoto} alt="" className="detail-bg-image" loading="lazy" />
@@ -200,7 +189,6 @@ function DetailPage({ item, onBack }) {
 
       <div className="detail-top-actions">
         <Button variant="secondary" onClick={onBack}>Back</Button>
-        <Button onClick={openFullscreen}>View Full Screen</Button>
       </div>
 
       <Card className="detail-card">
@@ -271,8 +259,6 @@ function DetailPage({ item, onBack }) {
                 </button>
               ))}
             </div>
-
-            {fsError ? <p className="notice">{fsError}</p> : null}
           </div>
         </CardContent>
       </Card>
