@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   addOverride,
   listRecentScrapeJobs,
@@ -9,6 +10,10 @@ import {
 import { fetchTrendingMovies, fetchTrendingSeries } from './connectors/justwatchConnector.js';
 import { fetchTrendingGames } from './connectors/gamesConnector.js';
 import { buildGameLinks, buildMovieOrSeriesLinks } from './connectors/linkBuilder.js';
+
+const MEDIA_VALIDATION_TTL_MS = 20 * 60 * 1000;
+const MEDIA_VALIDATION_CONCURRENCY = 8;
+const mediaValidationCache = new Map();
 
 function cleanQueryText(value = '') {
   return String(value).replace(/[^\w\s-]/g, ' ').replace(/\s+/g, ' ').trim();
@@ -46,6 +51,101 @@ function buildMedia(zone, title, posterUrl) {
   };
 }
 
+function buildFallbackMedia(zone, title, posterUrl) {
+  const safeTitle = cleanQueryText(title || 'chill zone');
+  const zoneHint = zone === 'games' ? 'gameplay' : zone === 'series' ? 'tv series' : 'movie';
+  const youtubeEmbeds = uniqueNonEmpty([
+    `https://www.youtube.com/embed?listType=search&list=${encodeURIComponent(`${safeTitle} ${zoneHint}`)}`,
+    'https://www.youtube.com/embed?listType=search&list=latest+trailers'
+  ]);
+  const backdropImages = uniqueNonEmpty([
+    posterToBackdrop(posterUrl),
+    `https://picsum.photos/seed/${encodeURIComponent(`${zone}-${safeTitle}-bg-1`)}/1600/900`,
+    `https://picsum.photos/seed/${encodeURIComponent(`${zone}-${safeTitle}-bg-2`)}/1600/900`
+  ]);
+  return { youtubeEmbeds, backdropImages };
+}
+
+function getCachedValidation(url) {
+  const cached = mediaValidationCache.get(url);
+  if (!cached) return null;
+  if (Date.now() - cached.checkedAt > MEDIA_VALIDATION_TTL_MS) {
+    mediaValidationCache.delete(url);
+    return null;
+  }
+  return cached.ok;
+}
+
+async function checkUrlReachable(url) {
+  try {
+    const head = await axios.head(url, {
+      timeout: 4000,
+      maxRedirects: 5,
+      validateStatus: () => true
+    });
+    if (head.status >= 200 && head.status < 400) return true;
+  } catch {
+    // some providers block HEAD; GET fallback below
+  }
+
+  try {
+    const get = await axios.get(url, {
+      timeout: 5000,
+      maxRedirects: 5,
+      responseType: 'stream',
+      validateStatus: () => true
+    });
+    if (get.data?.destroy) get.data.destroy();
+    return get.status >= 200 && get.status < 400;
+  } catch {
+    return false;
+  }
+}
+
+async function runWithConcurrency(values, worker, limit = 8) {
+  const results = new Array(values.length);
+  let cursor = 0;
+
+  async function runner() {
+    while (cursor < values.length) {
+      const i = cursor;
+      cursor += 1;
+      results[i] = await worker(values[i], i);
+    }
+  }
+
+  const workers = Array.from({ length: Math.min(limit, values.length) }, () => runner());
+  await Promise.all(workers);
+  return results;
+}
+
+async function validateUrls(urls) {
+  const unique = uniqueNonEmpty(urls);
+  const result = new Map();
+  const uncached = [];
+
+  for (const url of unique) {
+    const cached = getCachedValidation(url);
+    if (cached === null) uncached.push(url);
+    else result.set(url, cached);
+  }
+
+  if (uncached.length) {
+    const checks = await runWithConcurrency(
+      uncached,
+      async (url) => {
+        const ok = await checkUrlReachable(url);
+        mediaValidationCache.set(url, { ok, checkedAt: Date.now() });
+        return { url, ok };
+      },
+      MEDIA_VALIDATION_CONCURRENCY
+    );
+    for (const row of checks) result.set(row.url, row.ok);
+  }
+
+  return result;
+}
+
 function toTitleRows(zone, items, sourceType) {
   const now = new Date().toISOString();
   return items.map((item) => ({
@@ -62,10 +162,38 @@ function toTitleRows(zone, items, sourceType) {
 
 export async function listZone(zone) {
   const rows = await listZoneTitles(zone);
-  return rows.map((row) => ({
+  const enriched = rows.map((row) => ({
     ...row,
-    media: buildMedia(row.zone, row.title, row.posterUrl)
+    media: buildMedia(row.zone, row.title, row.posterUrl),
+    fallbackMedia: buildFallbackMedia(row.zone, row.title, row.posterUrl)
   }));
+
+  const allMediaUrls = enriched.flatMap((row) => [
+    ...(row.media?.youtubeEmbeds || []),
+    ...(row.media?.backdropImages || []),
+    ...(row.fallbackMedia?.youtubeEmbeds || []),
+    ...(row.fallbackMedia?.backdropImages || [])
+  ]);
+  const validByUrl = await validateUrls(allMediaUrls);
+
+  return enriched.map((row) => {
+    const primaryVideos = (row.media.youtubeEmbeds || []).filter((u) => validByUrl.get(u));
+    const primaryImages = (row.media.backdropImages || []).filter((u) => validByUrl.get(u));
+    const fallbackVideos = (row.fallbackMedia.youtubeEmbeds || []).filter((u) => validByUrl.get(u));
+    const fallbackImages = (row.fallbackMedia.backdropImages || []).filter((u) => validByUrl.get(u));
+
+    const youtubeEmbeds = primaryVideos.length ? primaryVideos : fallbackVideos;
+    const backdropImages = primaryImages.length ? primaryImages : fallbackImages;
+    const { fallbackMedia, ...safeRow } = row;
+
+    return {
+      ...safeRow,
+      media: {
+        youtubeEmbeds: youtubeEmbeds.length ? youtubeEmbeds : (row.fallbackMedia.youtubeEmbeds || []).slice(0, 1),
+        backdropImages: backdropImages.length ? backdropImages : (row.fallbackMedia.backdropImages || []).slice(0, 1)
+      }
+    };
+  });
 }
 
 export async function scrapeAndStore({ jobType = 'incremental' }) {

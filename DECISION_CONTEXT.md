@@ -387,3 +387,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Remove synopsis entirely from detail pages.
 - Rationale: You reported poor-quality description text leaking source-path internals into UI.
 - Impact: Existing rows render cleaner descriptions immediately, and new ingested rows use human-readable synopsis text by default.
+
+## 2026-04-15 11:16 IST
+
+### D-042: Validate Media Link Readiness Before Display
+- Decision: Add service-layer media URL validation (HEAD with GET fallback), short timeout, in-memory TTL cache, and concurrency limits; return only validated trailer/image links to the frontend.
+- Alternatives considered:
+  - Display all generated links without readiness checks.
+  - Validate only in frontend on render.
+- Rationale: You requested showing media only when links are actually available.
+- Impact: Fewer broken media embeds/images in detail pages, with fallback media preserved for resilience.

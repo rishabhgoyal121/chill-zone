@@ -177,6 +177,8 @@ function DetailPage({ item, onBack }) {
   const [photoOpen, setPhotoOpen] = useState(false);
   const [activePhoto, setActivePhoto] = useState('');
   const media = useMemo(() => mediaForItem(item), [item]);
+  const trailerEmbeds = (media.youtubeEmbeds || []).slice(0, 2);
+  const photoWall = (media.backdropImages || []).slice(0, 4);
   const bgCandidates = useMemo(() => {
     const generated = fallbackPoster(item?.title, item?.zone);
     const candidates = [item?.posterUrl, ...(media.backdropImages || []), generated].filter(Boolean);
@@ -246,39 +248,47 @@ function DetailPage({ item, onBack }) {
 
             <Separator className="my-3" />
 
-            <h3>Trailer / Clips</h3>
-            <div className="video-grid">
-              {media.youtubeEmbeds?.slice(0, 2).map((url) => (
-                <div key={url} className="video-tile">
-                  <iframe
-                    src={url}
-                    title={`${item.title} media`}
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
+            {trailerEmbeds.length ? (
+              <>
+                <h3>Trailer / Clips</h3>
+                <div className="video-grid">
+                  {trailerEmbeds.map((url) => (
+                    <div key={url} className="video-tile">
+                      <iframe
+                        src={url}
+                        title={`${item.title} media`}
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </>
+            ) : null}
 
-            <h3>Photo Wall</h3>
-            <div className="photo-grid">
-              {media.backdropImages?.slice(0, 4).map((url) => (
-                <button
-                  type="button"
-                  key={url}
-                  className="photo-tile"
-                  onClick={() => {
-                    setActivePhoto(url);
-                    setPhotoOpen(true);
-                  }}
-                  aria-label="Open photo full screen"
-                >
-                  <img src={url} alt={`${item.title} visual`} loading="lazy" />
-                </button>
-              ))}
-            </div>
+            {photoWall.length ? (
+              <>
+                <h3>Photo Wall</h3>
+                <div className="photo-grid">
+                  {photoWall.map((url) => (
+                    <button
+                      type="button"
+                      key={url}
+                      className="photo-tile"
+                      onClick={() => {
+                        setActivePhoto(url);
+                        setPhotoOpen(true);
+                      }}
+                      aria-label="Open photo full screen"
+                    >
+                      <img src={url} alt={`${item.title} visual`} loading="lazy" />
+                    </button>
+                  ))}
+                </div>
+              </>
+            ) : null}
           </div>
         </CardContent>
       </Card>
