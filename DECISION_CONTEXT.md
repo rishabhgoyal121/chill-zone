@@ -407,3 +407,23 @@ This document tracks major and minor project decisions, alternatives considered,
   - Render all photo URLs without browser-side load verification.
 - Rationale: Some reachable YouTube/image URLs still fail to embed/render in-browser; this approach avoids broken media blocks.
 - Impact: Trailer section now shows reliable watch actions, and photo wall displays only successfully loaded images.
+
+## 2026-04-16 00:26 IST
+
+### D-044: Top-Left Logo as Home Navigation Control
+- Decision: Make the `CHILL ZONE` topbar logo act as a home navigation trigger with mouse and keyboard accessibility.
+- Alternatives considered:
+  - Keep logo as static branding text only.
+  - Add a separate extra home icon near the logo.
+- Rationale: You requested that clicking the logo should take users to the home page.
+- Impact: Faster navigation to home and improved topbar usability without adding extra UI clutter.
+
+## 2026-04-16 00:34 IST
+
+### D-045: Relevance-First Photo Wall (No Generic Fallback Images)
+- Decision: Restrict detail-page Photo Wall to title-linked media URLs only (poster/backdrop source art) and remove generic random-image fallbacks.
+- Alternatives considered:
+  - Keep random fallback images to always fill gallery slots.
+  - Show mixed source images even if weakly related.
+- Rationale: You reported irrelevant photos in Photo Wall; relevance is more important than always-filled tiles.
+- Impact: Photo Wall now hides when no relevant images are available instead of displaying unrelated visuals.

@@ -133,6 +133,22 @@ function mediaForItem(item) {
   return mediaFallback(item);
 }
 
+function isRelevantPhotoUrl(url, item) {
+  if (!url) return false;
+  const lower = String(url).toLowerCase();
+  const titleSlug = String(item?.title || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  const posterLike = lower.includes('/poster/') || lower.includes('/backdrop/') || lower.includes('tmdb');
+  const knownDomain =
+    lower.includes('images.justwatch.com') ||
+    lower.includes('image.tmdb.org') ||
+    lower.includes('imgs.crazygames.com');
+  const titleMatch = titleSlug && lower.includes(titleSlug);
+  return (knownDomain && (posterLike || titleMatch)) || titleMatch;
+}
+
 function toYoutubeWatchUrl(url) {
   if (!url) return '';
   try {
@@ -227,13 +243,10 @@ function DetailPage({ item, onBack }) {
   const media = useMemo(() => mediaForItem(item), [item]);
   const trailerLinks = useMemo(() => trailerLinksForItem(item, media), [item, media]);
   const photoWallCandidates = useMemo(() => {
-    const fallback = [
-      `https://picsum.photos/seed/${encodeURIComponent(`${item?.zone || 'zone'}-${item?.title || 'title'}-photo1`)}/1200/760`,
-      `https://picsum.photos/seed/${encodeURIComponent(`${item?.zone || 'zone'}-${item?.title || 'title'}-photo2`)}/1200/760`,
-      `https://picsum.photos/seed/${encodeURIComponent(`${item?.zone || 'zone'}-${item?.title || 'title'}-photo3`)}/1200/760`
-    ];
-    return [...new Set([...(media.backdropImages || []), ...fallback])].slice(0, 6);
-  }, [item?.title, item?.zone, media.backdropImages]);
+    const candidates = [item?.posterUrl, ...(media.backdropImages || [])].filter(Boolean);
+    const unique = [...new Set(candidates)];
+    return unique.filter((url) => isRelevantPhotoUrl(url, item)).slice(0, 6);
+  }, [item?.posterUrl, item?.title, media.backdropImages]);
   const [readyPhotos, setReadyPhotos] = useState([]);
 
   useEffect(() => {
@@ -582,7 +595,21 @@ export function App() {
   return (
     <main className="app-shell modern-shell">
       <header className="topbar modern-topbar">
-        <div className="brand">CHILL ZONE</div>
+        <div
+          className="brand brand-clickable"
+          role="button"
+          tabIndex={0}
+          onClick={navigateHome}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              navigateHome();
+            }
+          }}
+          aria-label="Go to home page"
+        >
+          CHILL ZONE
+        </div>
         <nav className="top-actions">
           <Badge variant={dataMode === 'live' ? 'success' : 'warning'}>
             {dataMode === 'live' ? 'Live' : 'Fallback'}
