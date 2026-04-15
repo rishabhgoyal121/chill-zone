@@ -412,7 +412,6 @@ export function App() {
         games: fallback.games || []
       });
       setDataMode('fallback');
-      setMessage('Live API unavailable. Showing fallback snapshot data.');
     }
   }
 

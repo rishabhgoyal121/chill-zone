@@ -357,3 +357,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Remove cinematic backdrop and keep fullscreen-only behavior.
 - Rationale: You clarified that fullscreen should refer to artwork filling the background, not a user-triggered fullscreen mode.
 - Impact: Cleaner detail-page controls with the intended immersive background preserved by default.
+
+## 2026-04-15 10:41 IST
+
+### D-039: Silent Fallback Mode Messaging
+- Decision: Remove the explicit UI notice `Live API unavailable. Showing fallback snapshot data.` while preserving automatic fallback content loading.
+- Alternatives considered:
+  - Keep fallback notice visible to all users.
+  - Disable fallback mode entirely.
+- Rationale: You requested cleaner UI without this status line while retaining resilience.
+- Impact: App continues to serve fallback data when API is unavailable, but without showing that specific banner text.
