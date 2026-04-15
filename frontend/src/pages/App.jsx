@@ -133,6 +133,54 @@ function mediaForItem(item) {
   return mediaFallback(item);
 }
 
+function toYoutubeWatchUrl(url) {
+  if (!url) return '';
+  try {
+    const u = new URL(url);
+    if (u.hostname.includes('youtube.com') && u.pathname.startsWith('/embed')) {
+      const videoId = u.pathname.split('/').filter(Boolean)[1];
+      if (videoId) return `https://www.youtube.com/watch?v=${videoId}`;
+      const list = u.searchParams.get('list');
+      if (list) return `https://www.youtube.com/results?search_query=${encodeURIComponent(list)}`;
+    }
+    if (u.hostname.includes('youtube.com') && u.pathname === '/watch') return u.toString();
+    return u.toString();
+  } catch {
+    return '';
+  }
+}
+
+function trailerLinksForItem(item, media) {
+  const links = (media?.youtubeEmbeds || []).map((url, idx) => ({
+    label: idx === 0 ? 'Watch Trailer on YouTube' : 'Watch Clips on YouTube',
+    url: toYoutubeWatchUrl(url)
+  })).filter((x) => x.url);
+
+  if (links.length) return links;
+
+  const safeTitle = (item?.title || 'Chill Zone').replace(/[^\w\s-]/g, ' ').replace(/\s+/g, ' ').trim();
+  const zoneHint = item?.zone === 'games' ? 'gameplay' : item?.zone === 'series' ? 'tv series' : 'movie';
+  return [
+    {
+      label: 'Watch Trailer on YouTube',
+      url: `https://www.youtube.com/results?search_query=${encodeURIComponent(`${safeTitle} ${zoneHint} official trailer`)}`
+    },
+    {
+      label: 'Watch Clips on YouTube',
+      url: `https://www.youtube.com/results?search_query=${encodeURIComponent(`${safeTitle} ${zoneHint} clips`)}`
+    }
+  ];
+}
+
+function preloadImage(url) {
+  return new Promise((resolve) => {
+    const img = new window.Image();
+    img.onload = () => resolve(url);
+    img.onerror = () => resolve('');
+    img.src = url;
+  });
+}
+
 function shortBlurb(item) {
   const cleaned = cleanSynopsis(item?.synopsis);
   if (cleaned.length >= 40) return truncateText(cleaned, 130);
@@ -177,8 +225,29 @@ function DetailPage({ item, onBack }) {
   const [photoOpen, setPhotoOpen] = useState(false);
   const [activePhoto, setActivePhoto] = useState('');
   const media = useMemo(() => mediaForItem(item), [item]);
-  const trailerEmbeds = (media.youtubeEmbeds || []).slice(0, 2);
-  const photoWall = (media.backdropImages || []).slice(0, 4);
+  const trailerLinks = useMemo(() => trailerLinksForItem(item, media), [item, media]);
+  const photoWallCandidates = useMemo(() => {
+    const fallback = [
+      `https://picsum.photos/seed/${encodeURIComponent(`${item?.zone || 'zone'}-${item?.title || 'title'}-photo1`)}/1200/760`,
+      `https://picsum.photos/seed/${encodeURIComponent(`${item?.zone || 'zone'}-${item?.title || 'title'}-photo2`)}/1200/760`,
+      `https://picsum.photos/seed/${encodeURIComponent(`${item?.zone || 'zone'}-${item?.title || 'title'}-photo3`)}/1200/760`
+    ];
+    return [...new Set([...(media.backdropImages || []), ...fallback])].slice(0, 6);
+  }, [item?.title, item?.zone, media.backdropImages]);
+  const [readyPhotos, setReadyPhotos] = useState([]);
+
+  useEffect(() => {
+    let active = true;
+    Promise.all(photoWallCandidates.map(preloadImage)).then((urls) => {
+      if (!active) return;
+      const ok = urls.filter(Boolean).slice(0, 4);
+      setReadyPhotos(ok);
+    });
+    return () => {
+      active = false;
+    };
+  }, [photoWallCandidates]);
+
   const bgCandidates = useMemo(() => {
     const generated = fallbackPoster(item?.title, item?.zone);
     const candidates = [item?.posterUrl, ...(media.backdropImages || []), generated].filter(Boolean);
@@ -248,31 +317,30 @@ function DetailPage({ item, onBack }) {
 
             <Separator className="my-3" />
 
-            {trailerEmbeds.length ? (
+            {trailerLinks.length ? (
               <>
                 <h3>Trailer / Clips</h3>
-                <div className="video-grid">
-                  {trailerEmbeds.map((url) => (
-                    <div key={url} className="video-tile">
-                      <iframe
-                        src={url}
-                        title={`${item.title} media`}
-                        loading="lazy"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerPolicy="strict-origin-when-cross-origin"
-                        allowFullScreen
-                      />
-                    </div>
+                <div className="trailer-links-grid">
+                  {trailerLinks.map((link) => (
+                    <a
+                      key={link.url}
+                      className="trailer-link-card"
+                      href={link.url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {link.label}
+                    </a>
                   ))}
                 </div>
               </>
             ) : null}
 
-            {photoWall.length ? (
+            {readyPhotos.length ? (
               <>
                 <h3>Photo Wall</h3>
                 <div className="photo-grid">
-                  {photoWall.map((url) => (
+                  {readyPhotos.map((url) => (
                     <button
                       type="button"
                       key={url}

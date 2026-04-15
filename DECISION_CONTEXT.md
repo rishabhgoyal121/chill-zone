@@ -397,3 +397,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Validate only in frontend on render.
 - Rationale: You requested showing media only when links are actually available.
 - Impact: Fewer broken media embeds/images in detail pages, with fallback media preserved for resilience.
+
+## 2026-04-16 00:14 IST
+
+### D-043: Replace Unreliable Embedded Video Tiles with Verified Watch Links + Client Photo Preload
+- Decision: Replace detail-page YouTube iframe tiles with open-in-new-tab watch links and pre-validate photo-wall images in the browser before rendering.
+- Alternatives considered:
+  - Keep iframe embeds and rely only on URL reachability checks.
+  - Render all photo URLs without browser-side load verification.
+- Rationale: Some reachable YouTube/image URLs still fail to embed/render in-browser; this approach avoids broken media blocks.
+- Impact: Trailer section now shows reliable watch actions, and photo wall displays only successfully loaded images.
