@@ -633,6 +633,15 @@ export function App() {
     setMessage(`Admin refresh triggered: ${jobType}`);
   }
 
+  async function runImdbBackfill() {
+    const result = await api('/api/admin/backfill-imdb-ratings', {
+      method: 'POST',
+      body: JSON.stringify({ limit: 250 })
+    });
+    await loadZones();
+    setMessage(`IMDb ratings backfill complete: ${result.withRating}/${result.scanned} titles now have ratings`);
+  }
+
   async function createUser() {
     await api('/api/admin/users', { method: 'POST', body: JSON.stringify(newUser) });
     setNewUser({ email: '', password: '', role: 'moderator' });
@@ -792,6 +801,7 @@ export function App() {
                       <div className="button-row">
                         <Button onClick={() => triggerRefresh('incremental')}>Run Incremental</Button>
                         <Button variant="secondary" onClick={() => triggerRefresh('full')}>Run Full Refresh</Button>
+                        <Button variant="secondary" onClick={runImdbBackfill}>Backfill IMDb Ratings</Button>
                       </div>
                     </CardContent>
                   </Card>

@@ -1,5 +1,6 @@
 import {
   addOverrideCore,
+  backfillImdbRatingsCore,
   listRecentScrapeJobsCore,
   listSourcesCore,
   listZoneCore,
@@ -53,4 +54,10 @@ export async function addOverrideApi(req, res) {
   } catch (err) {
     return res.status(400).json({ error: err.message });
   }
+}
+
+export async function backfillImdbRatingsApi(req, res) {
+  const rawLimit = Number(req.body?.limit ?? req.query?.limit ?? 120);
+  const limit = Number.isFinite(rawLimit) ? Math.max(1, Math.min(rawLimit, 500)) : 120;
+  return res.json(await backfillImdbRatingsCore(limit));
 }

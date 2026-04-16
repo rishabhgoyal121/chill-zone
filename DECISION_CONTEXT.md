@@ -447,3 +447,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Hide rating element when missing.
 - Rationale: You requested IMDb rating visibility across home, other listing surfaces, and detail pages; persisting at the backend keeps responses consistent and avoids repeat parsing on every render.
 - Impact: Unified rating display across UI surfaces, backward-compatible null handling for missing ratings, and easier future connector upgrades for higher rating accuracy.
+
+## 2026-04-17 00:12 IST
+
+### D-048: Dedicated IMDb Enrichment and Admin Backfill Path
+- Decision: Add a dedicated IMDb connector (suggestion lookup + GraphQL ratings fetch, with HTML fallback), enrich movies/series during scrape, and expose an admin-only `backfill-imdb-ratings` endpoint/UI action for existing rows.
+- Alternatives considered:
+  - Keep heuristic in-page parsing from source connectors only.
+  - Manual SQL updates for ratings without API workflow support.
+- Rationale: You reported persistent `IMDb: N/A`; this required a real secondary metadata enrichment pass rather than relying on sparse source snippets.
+- Impact: New and existing catalog entries can now be populated with real IMDb ratings through a repeatable admin workflow, while preserving architecture layering and safe fallback behavior.

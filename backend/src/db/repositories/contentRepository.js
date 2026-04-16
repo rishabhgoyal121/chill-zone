@@ -105,6 +105,48 @@ export async function listZoneTitles(zone) {
   }));
 }
 
+export async function listTitlesForImdbBackfill(limit = 120) {
+  const safeLimit = Math.max(1, Math.min(Number(limit) || 120, 500));
+  const result = await query(
+    `SELECT external_id, zone, title, imdb_url, imdb_rating
+     FROM titles
+     WHERE zone IN ('movies', 'series')
+     ORDER BY updated_at DESC
+     LIMIT $1`,
+    [safeLimit]
+  );
+
+  return result.rows.map((row) => ({
+    externalId: row.external_id,
+    zone: row.zone,
+    title: row.title,
+    imdbUrl: row.imdb_url,
+    imdbRating: row.imdb_rating !== null ? Number(row.imdb_rating) : null
+  }));
+}
+
+export async function updateTitleImdbMetadata({ externalId, zone, imdbUrl, imdbRating }) {
+  const result = await query(
+    `UPDATE titles
+     SET
+       imdb_url = COALESCE($3, imdb_url),
+       imdb_rating = COALESCE($4, imdb_rating),
+       updated_at = NOW()
+     WHERE external_id = $1 AND zone = $2
+     RETURNING external_id, zone, imdb_url, imdb_rating`,
+    [externalId, zone, imdbUrl || null, typeof imdbRating === 'number' ? imdbRating : null]
+  );
+
+  if (!result.rowCount) return null;
+  const row = result.rows[0];
+  return {
+    externalId: row.external_id,
+    zone: row.zone,
+    imdbUrl: row.imdb_url,
+    imdbRating: row.imdb_rating !== null ? Number(row.imdb_rating) : null
+  };
+}
+
 export async function listSources() {
   const result = await query('SELECT id, name, type, enabled FROM sources ORDER BY name ASC');
   return result.rows;

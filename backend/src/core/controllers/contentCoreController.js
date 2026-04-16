@@ -1,5 +1,6 @@
 import {
   adminAddOverride,
+  backfillImdbRatings,
   adminListRecentScrapeJobs,
   adminListSources,
   adminSetSourceEnabled,
@@ -29,4 +30,8 @@ export async function addOverrideCore(input) {
 
 export async function listRecentScrapeJobsCore(limit) {
   return adminListRecentScrapeJobs(limit);
+}
+
+export async function backfillImdbRatingsCore(limit) {
+  return backfillImdbRatings({ limit });
 }

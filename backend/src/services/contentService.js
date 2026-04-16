@@ -3,17 +3,22 @@ import {
   addOverride,
   listRecentScrapeJobs,
   listSources,
+  listTitlesForImdbBackfill,
   listZoneTitles,
   setSourceEnabled,
+  updateTitleImdbMetadata,
   upsertTitlesAndLinks
 } from '../db/repositories/contentRepository.js';
 import { fetchTrendingMovies, fetchTrendingSeries } from './connectors/justwatchConnector.js';
 import { fetchTrendingGames } from './connectors/gamesConnector.js';
 import { buildGameLinks, buildMovieOrSeriesLinks } from './connectors/linkBuilder.js';
+import { fetchImdbMetadataForTitle } from './connectors/imdbConnector.js';
 
 const MEDIA_VALIDATION_TTL_MS = 20 * 60 * 1000;
 const MEDIA_VALIDATION_CONCURRENCY = 8;
 const mediaValidationCache = new Map();
+const IMDB_ENRICH_CONCURRENCY = 4;
+const imdbLookupCache = new Map();
 const NSFW_MARKERS = [
   'kamasutra',
   'erotic',
@@ -146,6 +151,33 @@ async function runWithConcurrency(values, worker, limit = 8) {
   return results;
 }
 
+async function resolveImdbMetadataCached(title) {
+  const key = String(title || '').toLowerCase().trim();
+  if (!key) return { imdbUrl: '', imdbRating: null };
+  if (imdbLookupCache.has(key)) return imdbLookupCache.get(key);
+  const data = await fetchImdbMetadataForTitle(title);
+  imdbLookupCache.set(key, data);
+  return data;
+}
+
+async function enrichItemsWithImdb(items = []) {
+  const rows = await runWithConcurrency(
+    items,
+    async (item) => {
+      const hasExistingRating = typeof item?.imdbRating === 'number' && Number.isFinite(item.imdbRating);
+      if (hasExistingRating) return item;
+      const imdbMeta = await resolveImdbMetadataCached(item?.title || '');
+      return {
+        ...item,
+        imdbUrl: imdbMeta.imdbUrl || item.imdbUrl || '',
+        imdbRating: typeof imdbMeta.imdbRating === 'number' ? imdbMeta.imdbRating : item.imdbRating ?? null
+      };
+    },
+    IMDB_ENRICH_CONCURRENCY
+  );
+  return rows;
+}
+
 async function validateUrls(urls) {
   const unique = uniqueNonEmpty(urls);
   const result = new Map();
@@ -235,7 +267,8 @@ export async function scrapeAndStore({ jobType = 'incremental' }) {
   let totalSources = 0;
 
   if (enabledMoviesSeries) {
-    const [movies, series] = await Promise.all([fetchTrendingMovies(25), fetchTrendingSeries(25)]);
+    const [moviesRaw, seriesRaw] = await Promise.all([fetchTrendingMovies(25), fetchTrendingSeries(25)]);
+    const [movies, series] = await Promise.all([enrichItemsWithImdb(moviesRaw), enrichItemsWithImdb(seriesRaw)]);
 
     const movieTitles = toTitleRows('movies', movies, 'official');
     const seriesTitles = toTitleRows('series', series, 'official');
@@ -291,6 +324,41 @@ export async function scrapeAndStore({ jobType = 'incremental' }) {
     jobType,
     sourceCount: totalSources,
     zonesProcessed: 3
+  };
+}
+
+export async function backfillImdbRatings({ limit = 120 } = {}) {
+  const titles = await listTitlesForImdbBackfill(limit);
+  const tasks = titles.filter((row) => row.zone === 'movies' || row.zone === 'series');
+
+  const rows = await runWithConcurrency(
+    tasks,
+    async (row) => {
+      const imdbMeta = await resolveImdbMetadataCached(row.title);
+      if (!imdbMeta.imdbUrl && typeof imdbMeta.imdbRating !== 'number') {
+        return { updated: false, withRating: false };
+      }
+      const updated = await updateTitleImdbMetadata({
+        externalId: row.externalId,
+        zone: row.zone,
+        imdbUrl: imdbMeta.imdbUrl || row.imdbUrl || '',
+        imdbRating: typeof imdbMeta.imdbRating === 'number' ? imdbMeta.imdbRating : null
+      });
+      return {
+        updated: Boolean(updated),
+        withRating: Boolean(updated && typeof updated.imdbRating === 'number')
+      };
+    },
+    IMDB_ENRICH_CONCURRENCY
+  );
+
+  const updated = rows.filter((x) => x.updated).length;
+  const withRating = rows.filter((x) => x.withRating).length;
+  return {
+    ok: true,
+    scanned: tasks.length,
+    updated,
+    withRating
   };
 }
 
