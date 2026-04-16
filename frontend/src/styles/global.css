@@ -127,6 +127,52 @@
   --btn-bg: #be123c;
 }
 
+.shad-switch {
+  width: 2.7rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: #e2e8f0;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.shad-switch:hover {
+  border-color: #94a3b8;
+}
+
+.shad-switch[data-state='checked'] {
+  background: #16a34a;
+  border-color: #15803d;
+}
+
+.shad-switch:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(22, 163, 74, 0.35);
+}
+
+.shad-switch:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.shad-switch-thumb {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.22);
+  transform: translateX(0);
+  transition: transform 0.2s ease;
+}
+
+.shad-switch[data-state='checked'] .shad-switch-thumb {
+  transform: translateX(1.16rem);
+}
+
 body {
   margin: 0;
   font-family: 'Avenir Next', 'SF Pro Text', 'Segoe UI', sans-serif;
@@ -199,6 +245,21 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.nsfw-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #dbe4f0;
+  border-radius: 999px;
+  padding: 4px 10px 4px 8px;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1e293b;
 }
 
 .content-area {
@@ -293,6 +354,13 @@ body {
   display: grid;
   align-content: start;
   gap: 8px;
+}
+
+.hero-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .hero-carousel-copy h3 {
@@ -402,6 +470,12 @@ select {
   font-size: 1.15rem;
 }
 
+.zone-empty {
+  margin: 4px 2px 0;
+  color: #64748b;
+  font-weight: 600;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -464,6 +538,17 @@ select {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.card-imdb-rating {
+  margin: 0;
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #0f172a;
+  background: rgba(241, 245, 249, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  border-radius: 999px;
+  padding: 4px 10px;
 }
 
 .card-actions {
@@ -628,6 +713,25 @@ select {
 .detail-copy h1 {
   margin: 10px 0;
   font-size: clamp(1.8rem, 3vw, 2.5rem);
+}
+
+.detail-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.imdb-rating-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: rgba(241, 245, 249, 0.9);
+  color: #0f172a;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 4px 9px;
 }
 
 .detail-copy p {

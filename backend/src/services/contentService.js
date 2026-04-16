@@ -14,6 +14,22 @@ import { buildGameLinks, buildMovieOrSeriesLinks } from './connectors/linkBuilde
 const MEDIA_VALIDATION_TTL_MS = 20 * 60 * 1000;
 const MEDIA_VALIDATION_CONCURRENCY = 8;
 const mediaValidationCache = new Map();
+const NSFW_MARKERS = [
+  'kamasutra',
+  'erotic',
+  'explicit',
+  'porn',
+  'pornhub',
+  'xvideos',
+  'sex',
+  'nsfw',
+  'nude',
+  'nudity',
+  'softcore',
+  'hardcore',
+  'fetish',
+  'adult only'
+];
 
 function cleanQueryText(value = '') {
   return String(value).replace(/[^\w\s-]/g, ' ').replace(/\s+/g, ' ').trim();
@@ -21,6 +37,17 @@ function cleanQueryText(value = '') {
 
 function uniqueNonEmpty(values = []) {
   return [...new Set(values.filter(Boolean))];
+}
+
+function isNsfwContent({ title = '', synopsis = '', links = [] }) {
+  const linkText = links
+    .map((link) => `${link?.label || ''} ${link?.url || ''}`)
+    .join(' ');
+  const haystack = `${title} ${synopsis} ${linkText}`.toLowerCase();
+  if (!haystack.trim()) return false;
+
+  if (/\b18\+\b/.test(haystack)) return true;
+  return NSFW_MARKERS.some((marker) => haystack.includes(marker));
 }
 
 function posterToBackdrop(posterUrl = '') {
@@ -153,6 +180,7 @@ function toTitleRows(zone, items, sourceType) {
     zone,
     title: item.title,
     imdbUrl: item.imdbUrl || '',
+    imdbRating: typeof item.imdbRating === 'number' ? item.imdbRating : null,
     posterUrl: item.posterUrl || '',
     synopsis: item.synopsis || '',
     freshness: now,
@@ -164,6 +192,7 @@ export async function listZone(zone) {
   const rows = await listZoneTitles(zone);
   const enriched = rows.map((row) => ({
     ...row,
+    isNsfw: isNsfwContent(row),
     media: buildMedia(row.zone, row.title, row.posterUrl),
     fallbackMedia: buildFallbackMedia(row.zone, row.title, row.posterUrl)
   }));

@@ -427,3 +427,23 @@ This document tracks major and minor project decisions, alternatives considered,
   - Show mixed source images even if weakly related.
 - Rationale: You reported irrelevant photos in Photo Wall; relevance is more important than always-filled tiles.
 - Impact: Photo Wall now hides when no relevant images are available instead of displaying unrelated visuals.
+
+## 2026-04-16 23:43 IST
+
+### D-046: User-Controllable NSFW Content Filter
+- Decision: Add service-layer `isNsfw` enrichment (heuristic classification) and a topbar `Allow 18+` switch (default OFF, persisted in `localStorage`) that filters hero, zone cards, and detail routing.
+- Alternatives considered:
+  - Hard-block adult titles with no user override.
+  - Frontend-only filtering without backend content flags.
+- Rationale: You requested filtering 18+ content by default while still allowing an explicit opt-in switch for users.
+- Impact: Safer default browsing experience with user choice preserved; same filtering behavior is consistently applied across list/detail/hero views.
+
+## 2026-04-16 23:56 IST
+
+### D-047: End-to-End IMDb Rating Field and UI Exposure
+- Decision: Add nullable `imdb_rating` to title persistence and API payloads, ingest rating from connector context when available, and render `IMDb` rating on cards, hero, and detail pages with `N/A` fallback.
+- Alternatives considered:
+  - Client-only inferred rating without DB persistence.
+  - Hide rating element when missing.
+- Rationale: You requested IMDb rating visibility across home, other listing surfaces, and detail pages; persisting at the backend keeps responses consistent and avoids repeat parsing on every render.
+- Impact: Unified rating display across UI surfaces, backward-compatible null handling for missing ratings, and easier future connector upgrades for higher rating accuracy.

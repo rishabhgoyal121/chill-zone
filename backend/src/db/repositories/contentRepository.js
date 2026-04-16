@@ -5,12 +5,13 @@ export async function upsertTitlesAndLinks({ titles = [], links = [], jobType, s
   await withTransaction(async (client) => {
     for (const title of titles) {
       await client.query(
-        `INSERT INTO titles (id, external_id, zone, title, imdb_url, poster_url, synopsis, freshness, source_type)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+        `INSERT INTO titles (id, external_id, zone, title, imdb_url, imdb_rating, poster_url, synopsis, freshness, source_type)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
          ON CONFLICT (external_id, zone)
          DO UPDATE SET
            title = EXCLUDED.title,
            imdb_url = EXCLUDED.imdb_url,
+           imdb_rating = EXCLUDED.imdb_rating,
            poster_url = EXCLUDED.poster_url,
            synopsis = EXCLUDED.synopsis,
            freshness = EXCLUDED.freshness,
@@ -22,6 +23,7 @@ export async function upsertTitlesAndLinks({ titles = [], links = [], jobType, s
           title.zone,
           title.title,
           title.imdbUrl || null,
+          title.imdbRating ?? null,
           title.posterUrl || null,
           title.synopsis || null,
           title.freshness || null,
@@ -57,7 +59,7 @@ export async function upsertTitlesAndLinks({ titles = [], links = [], jobType, s
 
 export async function listZoneTitles(zone) {
   const titlesResult = await query(
-    `SELECT external_id, zone, title, imdb_url, poster_url, synopsis, freshness, source_type, updated_at
+    `SELECT external_id, zone, title, imdb_url, imdb_rating, poster_url, synopsis, freshness, source_type, updated_at
      FROM titles
      WHERE zone = $1
      ORDER BY updated_at DESC
@@ -93,6 +95,7 @@ export async function listZoneTitles(zone) {
     zone: row.zone,
     title: row.title,
     imdbUrl: row.imdb_url,
+    imdbRating: row.imdb_rating !== null ? Number(row.imdb_rating) : null,
     posterUrl: row.poster_url,
     synopsis: row.synopsis,
     freshness: row.freshness,

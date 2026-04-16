@@ -5,6 +5,7 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Separator } from '../components/ui/separator';
+import { Switch } from '../components/ui/switch';
 
 const ZONES = [
   { key: 'movies', label: 'Movies', emoji: '🎬' },
@@ -54,6 +55,11 @@ function PosterImage({ title, zone, posterUrl, className = 'poster' }) {
 
 function formatZone(zone) {
   return ZONES.find((z) => z.key === zone)?.label || zone;
+}
+
+function formatImdbRating(value) {
+  if (typeof value !== 'number' || Number.isNaN(value)) return 'IMDb: N/A';
+  return `IMDb: ${value.toFixed(1)}`;
 }
 
 function parseRoute(pathname) {
@@ -237,6 +243,32 @@ function longDescription(item) {
   return shortBlurb(item);
 }
 
+const NSFW_HINTS = [
+  'kamasutra',
+  'erotic',
+  'explicit',
+  'porn',
+  'pornhub',
+  'xvideos',
+  'sex',
+  'nsfw',
+  'nude',
+  'nudity',
+  'adult only',
+  'softcore',
+  'hardcore',
+  'fetish'
+];
+
+function inferNsfw(item) {
+  if (item?.isNsfw === true) return true;
+  const links = (item?.links || []).map((l) => `${l?.label || ''} ${l?.url || ''}`).join(' ');
+  const haystack = `${item?.title || ''} ${item?.synopsis || ''} ${links}`.toLowerCase();
+  if (!haystack.trim()) return false;
+  if (/\b18\+\b/.test(haystack)) return true;
+  return NSFW_HINTS.some((hint) => haystack.includes(hint));
+}
+
 function DetailPage({ item, onBack }) {
   const [photoOpen, setPhotoOpen] = useState(false);
   const [activePhoto, setActivePhoto] = useState('');
@@ -302,10 +334,14 @@ function DetailPage({ item, onBack }) {
           </div>
 
           <div className="detail-copy">
-            <Badge variant="soft">{formatZone(item.zone)}</Badge>
+            <div className="detail-badge-row">
+              <Badge variant="soft">{formatZone(item.zone)}</Badge>
+              <span className="imdb-rating-chip">{formatImdbRating(item.imdbRating)}</span>
+            </div>
             <h1>{item.title}</h1>
             <p>{longDescription(item)}</p>
             <div className="detail-meta">
+              <div><strong>IMDb Rating:</strong> {formatImdbRating(item.imdbRating).replace('IMDb: ', '')}</div>
               <div><strong>Length:</strong> {itemLength(item)}</div>
               <div><strong>Region Coverage:</strong> IN, US</div>
               <div><strong>Last Updated:</strong> {item.updatedAt ? new Date(item.updatedAt).toLocaleString() : 'N/A'}</div>
@@ -407,7 +443,10 @@ function HeroCarousel({ slides, activeIndex, onPrev, onNext, onGoTo, onOpen }) {
           <PosterImage title={active.title} zone={active.zone} posterUrl={active.posterUrl} className="hero-poster" />
         </div>
         <div className="hero-carousel-copy">
-          <Badge variant="soft">{formatZone(active.zone)}</Badge>
+          <div className="hero-badge-row">
+            <Badge variant="soft">{formatZone(active.zone)}</Badge>
+            <span className="imdb-rating-chip">{formatImdbRating(active.imdbRating)}</span>
+          </div>
           <h3>{active.title}</h3>
           <p>{shortBlurb(active)}</p>
           <div className="hero-carousel-actions">
@@ -451,12 +490,26 @@ export function App() {
   const [route, setRoute] = useState(() => parseRoute(window.location.pathname));
   const [heroIndex, setHeroIndex] = useState(0);
   const [heroPaused, setHeroPaused] = useState(false);
+  const [allowNsfw, setAllowNsfw] = useState(() => window.localStorage.getItem('allowNsfw') === 'true');
 
   const isAdmin = useMemo(() => ['super_admin', 'content_admin', 'moderator'].includes(user?.role), [user]);
 
+  useEffect(() => {
+    window.localStorage.setItem('allowNsfw', String(allowNsfw));
+  }, [allowNsfw]);
+
+  const filteredZoneData = useMemo(() => {
+    const filterItems = (items = []) => (allowNsfw ? items : items.filter((item) => !inferNsfw(item)));
+    return {
+      movies: filterItems(zoneData.movies),
+      series: filterItems(zoneData.series),
+      games: filterItems(zoneData.games)
+    };
+  }, [zoneData, allowNsfw]);
+
   const allItems = useMemo(
-    () => [...zoneData.movies, ...zoneData.series, ...zoneData.games],
-    [zoneData]
+    () => [...filteredZoneData.movies, ...filteredZoneData.series, ...filteredZoneData.games],
+    [filteredZoneData]
   );
 
   const detailItem = useMemo(() => {
@@ -611,6 +664,14 @@ export function App() {
           CHILL ZONE
         </div>
         <nav className="top-actions">
+          <div className="nsfw-toggle" title="Show or hide 18+ titles">
+            <span>Allow 18+</span>
+            <Switch
+              checked={allowNsfw}
+              onCheckedChange={setAllowNsfw}
+              aria-label="Allow 18 plus and NSFW titles"
+            />
+          </div>
           <Badge variant={dataMode === 'live' ? 'success' : 'warning'}>
             {dataMode === 'live' ? 'Live' : 'Fallback'}
           </Badge>
@@ -677,41 +738,46 @@ export function App() {
               {ZONES.map((zone) => (
                 <div key={zone.key} id={`zone-${zone.key}`} className="zone-wrap">
                   <h2 className="zone-title"><span>{zone.emoji}</span> {zone.label}</h2>
-                  <div className="grid">
-                    {zoneData[zone.key].map((item) => {
-                      const fav = favourites.some((f) => f.titleExternalId === item.externalId);
-                      return (
-                        <Card
-                          key={item.externalId}
-                          className="card-rich modern-card clickable-card"
-                          onClick={() => navigateDetail(item)}
-                        >
-                          <CardContent className="card-content">
-                            <div className="media-wrap">
-                              <PosterImage title={item.title} zone={item.zone} posterUrl={item.posterUrl} className="poster" />
-                              <Button
-                                variant="secondary"
-                                size="icon"
-                                className={`heart-btn ${fav ? 'active' : ''}`}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  toggleFavourite(item.externalId);
-                                }}
-                                aria-label={fav ? 'Remove favourite' : 'Add favourite'}
-                                title={fav ? 'Remove favourite' : 'Add favourite'}
-                              >
-                                {fav ? '♥' : '♡'}
-                              </Button>
-                              <div className="hover-blurb">
-                                {shortBlurb(item)}
+                  {filteredZoneData[zone.key].length ? (
+                    <div className="grid">
+                      {filteredZoneData[zone.key].map((item) => {
+                        const fav = favourites.some((f) => f.titleExternalId === item.externalId);
+                        return (
+                          <Card
+                            key={item.externalId}
+                            className="card-rich modern-card clickable-card"
+                            onClick={() => navigateDetail(item)}
+                          >
+                            <CardContent className="card-content">
+                              <div className="media-wrap">
+                                <PosterImage title={item.title} zone={item.zone} posterUrl={item.posterUrl} className="poster" />
+                                <Button
+                                  variant="secondary"
+                                  size="icon"
+                                  className={`heart-btn ${fav ? 'active' : ''}`}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    toggleFavourite(item.externalId);
+                                  }}
+                                  aria-label={fav ? 'Remove favourite' : 'Add favourite'}
+                                  title={fav ? 'Remove favourite' : 'Add favourite'}
+                                >
+                                  {fav ? '♥' : '♡'}
+                                </Button>
+                                <div className="hover-blurb">
+                                  {shortBlurb(item)}
+                                </div>
                               </div>
-                            </div>
-                            <CardTitle>{item.title}</CardTitle>
-                          </CardContent>
-                        </Card>
-                      );
-                    })}
-                  </div>
+                              <CardTitle>{item.title}</CardTitle>
+                              <p className="card-imdb-rating">{formatImdbRating(item.imdbRating)}</p>
+                            </CardContent>
+                          </Card>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <p className="zone-empty">No titles in this zone for the current content safety setting.</p>
+                  )}
                 </div>
               ))}
             </section>
