@@ -13,6 +13,9 @@ const ZONES = [
   { key: 'series', label: 'TV Series', emoji: '📺' },
   { key: 'games', label: 'Games', emoji: '🎮' }
 ];
+const ZONE_SKELETON_COUNT = 4;
+const EMERGENCY_POSTER =
+  "data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 960'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%231f2937'/%3E%3Cstop offset='100%25' stop-color='%23374151'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='720' height='960' fill='url(%23g)'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23f8fafc' font-family='Arial,sans-serif' font-size='46' font-weight='700'%3EChill Zone%3C/text%3E%3C/svg%3E";
 
 function fallbackPoster(title, zone) {
   const colors =
@@ -47,8 +50,15 @@ function PosterImage({ title, zone, posterUrl, className = 'poster' }) {
       alt={title}
       className={className}
       loading="lazy"
+      decoding="async"
       onError={() => {
-        if (src !== fallback) setSrc(fallback);
+        if (src !== fallback) {
+          setSrc(fallback);
+          return;
+        }
+        if (src !== EMERGENCY_POSTER) {
+          setSrc(EMERGENCY_POSTER);
+        }
       }}
     />
   );
@@ -464,6 +474,22 @@ function HeroCarousel({ slides, activeIndex, onPrev, onNext, onGoTo, onOpen }) {
           />
         ))}
       </div>
+    </div>
+  );
+}
+
+function ZoneSkeletonGrid({ zoneLabel }) {
+  return (
+    <div className="grid skeleton-grid" aria-label={`${zoneLabel} loading`}>
+      {Array.from({ length: ZONE_SKELETON_COUNT }, (_, idx) => (
+        <Card key={`${zoneLabel}-${idx}`} className="card-rich modern-card skeleton-card" aria-hidden="true">
+          <CardContent className="card-content">
+            <div className="media-wrap skeleton-block skeleton-poster" />
+            <div className="skeleton-block skeleton-title" />
+            <div className="skeleton-block skeleton-subtitle" />
+          </CardContent>
+        </Card>
+      ))}
     </div>
   );
 }
@@ -961,6 +987,7 @@ export function App() {
                   ) : (
                     <p className="zone-empty">No titles in this zone for the current content safety setting.</p>
                   )}
+                  {zonesLoading ? <ZoneSkeletonGrid zoneLabel={zone.label} /> : null}
                 </div>
               ))}
             </section>

@@ -587,3 +587,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Show no full-screen loading state and wait on blank shell until API resolves.
 - Rationale: Backend responses can be slow; users need immediate visual feedback and progress context during both JS chunk and API wait phases.
 - Impact: Faster perceived startup, clearer loading affordance, and explicit sync indicator (`Syncing` badge) during zone refresh operations.
+
+## 2026-04-19 18:18 IST
+
+### D-062: Add Refresh Skeleton Cards + Multi-Stage Card Image Fallback
+- Decision: Show per-zone skeleton cards during background zone refresh and strengthen card image resilience with a two-step fallback chain (generated poster fallback, then emergency inline SVG poster).
+- Alternatives considered:
+  - Show only a `Syncing` badge without visual card placeholders.
+  - Keep single-step image fallback.
+- Rationale: You requested richer loading feedback and robust handling when card images fail to load due to network or asset issues.
+- Impact: Better perceived responsiveness during refresh and fewer broken-image states in card UI.
