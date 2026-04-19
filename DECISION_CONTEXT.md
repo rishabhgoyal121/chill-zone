@@ -537,3 +537,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Keep backend hosted locally with Caddy/SSLIP.
 - Rationale: You requested deploying backend on Render so auth and favourites/wishlist work for real users.
 - Impact: Backend deployment is reproducible and versioned; startup is resilient even if bootstrap content scraping fails.
+
+## 2026-04-19 16:56 IST
+
+### D-057: Render Web-Only Blueprint to Avoid Managed DB Billing Block
+- Decision: Convert `render.yaml` to provision only the backend web service and require explicit `DATABASE_URL` env configuration.
+- Alternatives considered:
+  - Keep blueprint-managed Render Postgres provisioning.
+  - Abandon Render deployment.
+- Rationale: Render prompted for billing when provisioning another managed DB via blueprint; web-only deploy removes that blocker.
+- Impact: Backend can still auto-deploy from `main`; database can be provided from existing/free external Postgres.
