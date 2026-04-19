@@ -513,6 +513,7 @@ export function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
+  const [activeNav, setActiveNav] = useState('home');
   const [initialLoadPending, setInitialLoadPending] = useState(true);
   const [zonesLoading, setZonesLoading] = useState(false);
   const lastScrollYRef = useRef(0);
@@ -631,13 +632,25 @@ export function App() {
     setLoginModalOpen(false);
   }, [route.page, route.zone, route.id]);
 
+  useEffect(() => {
+    if (route.page === 'detail' && route.zone) {
+      setActiveNav(route.zone);
+      return;
+    }
+    if (route.page === 'home') {
+      setActiveNav('home');
+    }
+  }, [route.page, route.zone]);
+
   function navigateHome() {
     setSidebarOpen(false);
+    setActiveNav('home');
     window.history.pushState({}, '', '/');
     setRoute({ page: 'home' });
   }
 
   function navigateDetail(item) {
+    setActiveNav(item.zone || 'home');
     const path = `/detail/${item.zone}/${encodeURIComponent(item.externalId)}`;
     window.history.pushState({}, '', path);
     setRoute({ page: 'detail', zone: item.zone, id: item.externalId });
@@ -650,6 +663,7 @@ export function App() {
 
   function openZoneFromNav(zoneKey) {
     setSidebarOpen(false);
+    setActiveNav(zoneKey);
     if (route.page !== 'home') {
       navigateHome();
       window.setTimeout(() => jumpTo(`zone-${zoneKey}`), 70);
@@ -660,6 +674,7 @@ export function App() {
 
   function openAdminFromNav() {
     setSidebarOpen(false);
+    setActiveNav('admin');
     if (route.page !== 'home') {
       navigateHome();
       window.setTimeout(() => jumpTo('admin-root'), 70);
@@ -781,7 +796,7 @@ export function App() {
   }
 
   if (initialLoadPending) {
-    return <AppLoader subtitle="Fetching movies, series and games from backend..." />;
+    return <AppLoader subtitle="Fetching movies, series and games..." />;
   }
 
   return (
@@ -808,15 +823,15 @@ export function App() {
           <Separator />
           <nav className="sidebar-nav">
             <p className="sidebar-group-title">Browse</p>
-            <Button variant="ghost" className="sidebar-link" onClick={navigateHome}><span className="sidebar-link-icon">⌂</span>Home</Button>
-            <Button variant="ghost" className="sidebar-link" onClick={() => openZoneFromNav('movies')}><span className="sidebar-link-icon">🎬</span>Movies</Button>
-            <Button variant="ghost" className="sidebar-link" onClick={() => openZoneFromNav('series')}><span className="sidebar-link-icon">📺</span>Series</Button>
-            <Button variant="ghost" className="sidebar-link" onClick={() => openZoneFromNav('games')}><span className="sidebar-link-icon">🎮</span>Games</Button>
+            <Button variant="ghost" className={`sidebar-link ${activeNav === 'home' ? 'is-active' : ''}`} onClick={navigateHome}><span className="sidebar-link-icon">⌂</span>Home</Button>
+            <Button variant="ghost" className={`sidebar-link ${activeNav === 'movies' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('movies')}><span className="sidebar-link-icon">🎬</span>Movies</Button>
+            <Button variant="ghost" className={`sidebar-link ${activeNav === 'series' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('series')}><span className="sidebar-link-icon">📺</span>Series</Button>
+            <Button variant="ghost" className={`sidebar-link ${activeNav === 'games' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('games')}><span className="sidebar-link-icon">🎮</span>Games</Button>
             {isAdmin && token ? (
               <>
                 <Separator />
                 <p className="sidebar-group-title">Admin</p>
-                <Button variant="ghost" className="sidebar-link" onClick={openAdminFromNav}><span className="sidebar-link-icon">⚙</span>Admin</Button>
+                <Button variant="ghost" className={`sidebar-link ${activeNav === 'admin' ? 'is-active' : ''}`} onClick={openAdminFromNav}><span className="sidebar-link-icon">⚙</span>Admin</Button>
               </>
             ) : null}
           </nav>

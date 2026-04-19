@@ -607,3 +607,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Keep inline login card below hero carousel.
 - Rationale: You requested a less outdated sidebar and cleaner top-level page hierarchy while preserving profile-centric account actions.
 - Impact: Sidebar is visually modern and structured; homepage is cleaner; login is now contextual from profile menu with modal UX.
+
+## 2026-04-19 18:43 IST
+
+### D-064: Sidebar Active-State Highlighting + Loader Copy Cleanup
+- Decision: Add route-aware active styling for sidebar navigation items and remove backend-facing wording from user-visible loader subtitles.
+- Alternatives considered:
+  - Keep static sidebar buttons with no active indication.
+  - Keep technical wording referencing backend in UI copy.
+- Rationale: You requested clearer nav orientation and cleaner product-facing loading language.
+- Impact: Users can immediately identify current nav context, and loading text is now user-centric instead of implementation-centric.
