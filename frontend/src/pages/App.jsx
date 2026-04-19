@@ -484,7 +484,10 @@ export function App() {
   const [heroPaused, setHeroPaused] = useState(false);
   const [allowNsfw, setAllowNsfw] = useState(() => window.localStorage.getItem('allowNsfw') === 'true');
   const [mobileHeaderHidden, setMobileHeaderHidden] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const lastScrollYRef = useRef(0);
+  const userMenuRef = useRef(null);
 
   const isAdmin = useMemo(() => ['super_admin', 'content_admin', 'moderator'].includes(user?.role), [user]);
 
@@ -570,7 +573,36 @@ export function App() {
     };
   }, []);
 
+  useEffect(() => {
+    function onPointerDown(event) {
+      if (!userMenuRef.current) return;
+      if (!userMenuRef.current.contains(event.target)) {
+        setUserMenuOpen(false);
+      }
+    }
+
+    function onKeyDown(event) {
+      if (event.key === 'Escape') {
+        setUserMenuOpen(false);
+        setSidebarOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
+    setSidebarOpen(false);
+    setUserMenuOpen(false);
+  }, [route.page, route.zone, route.id]);
+
   function navigateHome() {
+    setSidebarOpen(false);
     window.history.pushState({}, '', '/');
     setRoute({ page: 'home' });
   }
@@ -584,6 +616,26 @@ export function App() {
   function jumpTo(id) {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function openZoneFromNav(zoneKey) {
+    setSidebarOpen(false);
+    if (route.page !== 'home') {
+      navigateHome();
+      window.setTimeout(() => jumpTo(`zone-${zoneKey}`), 70);
+      return;
+    }
+    jumpTo(`zone-${zoneKey}`);
+  }
+
+  function openAdminFromNav() {
+    setSidebarOpen(false);
+    if (route.page !== 'home') {
+      navigateHome();
+      window.setTimeout(() => jumpTo('admin-root'), 70);
+      return;
+    }
+    jumpTo('admin-root');
   }
 
   async function loadZones() {
@@ -676,40 +728,107 @@ export function App() {
 
   return (
     <main className="app-shell modern-shell">
-      <header className={`topbar modern-topbar ${mobileHeaderHidden ? 'is-hidden-mobile' : ''}`}>
-        <div
-          className="brand brand-clickable"
-          role="button"
-          tabIndex={0}
-          onClick={navigateHome}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              navigateHome();
-            }
-          }}
-          aria-label="Go to home page"
-        >
-          CHILL ZONE
-        </div>
-        <nav className="top-actions">
-          <div className="nsfw-toggle" title="Show or hide 18+ titles">
-            <span>Allow 18+</span>
-            <Switch
-              checked={allowNsfw}
-              onCheckedChange={setAllowNsfw}
-              aria-label="Allow 18 plus and NSFW titles"
-            />
+      <div className={`sidebar-backdrop ${sidebarOpen ? 'open' : ''}`} onClick={() => setSidebarOpen(false)} />
+      <div className="app-layout">
+        <aside className={`app-sidebar modern-card ${sidebarOpen ? 'open' : ''}`}>
+          <div className="sidebar-head">
+            <div className="sidebar-brand">CHILL ZONE</div>
+            <Badge variant={dataMode === 'live' ? 'success' : 'warning'}>
+              {dataMode === 'live' ? 'Live' : 'Fallback'}
+            </Badge>
           </div>
-          <Badge variant={dataMode === 'live' ? 'success' : 'warning'}>
-            {dataMode === 'live' ? 'Live' : 'Fallback'}
-          </Badge>
-          <Button variant="secondary" onClick={navigateHome}>Home</Button>
-          <Button variant="secondary" onClick={() => jumpTo('zones-root')}>Browse</Button>
-        </nav>
-      </header>
+          <nav className="sidebar-nav">
+            <Button variant="ghost" className="sidebar-link" onClick={navigateHome}>Home</Button>
+            <Button variant="ghost" className="sidebar-link" onClick={() => openZoneFromNav('movies')}>Movies</Button>
+            <Button variant="ghost" className="sidebar-link" onClick={() => openZoneFromNav('series')}>Series</Button>
+            <Button variant="ghost" className="sidebar-link" onClick={() => openZoneFromNav('games')}>Games</Button>
+            {isAdmin && token ? (
+              <Button variant="ghost" className="sidebar-link" onClick={openAdminFromNav}>Admin</Button>
+            ) : null}
+          </nav>
+        </aside>
 
-      <section className="content-area">
+        <div className="app-main">
+          <header className={`topbar modern-topbar ${mobileHeaderHidden ? 'is-hidden-mobile' : ''}`}>
+            <div className="topbar-left">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="sidebar-toggle-btn"
+                onClick={() => setSidebarOpen((x) => !x)}
+                aria-label="Toggle sidebar"
+              >
+                ☰
+              </Button>
+              <div
+                className="brand brand-clickable"
+                role="button"
+                tabIndex={0}
+                onClick={navigateHome}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navigateHome();
+                  }
+                }}
+                aria-label="Go to home page"
+              >
+                CHILL ZONE
+              </div>
+            </div>
+
+            <nav className="top-actions">
+              <div className="nsfw-toggle" title="Show or hide 18+ titles">
+                <span>Allow 18+</span>
+                <Switch
+                  checked={allowNsfw}
+                  onCheckedChange={setAllowNsfw}
+                  aria-label="Allow 18 plus and NSFW titles"
+                />
+              </div>
+
+              <div className="user-menu-wrap" ref={userMenuRef}>
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  className="user-menu-trigger"
+                  onClick={() => setUserMenuOpen((x) => !x)}
+                  aria-label="Open user menu"
+                >
+                  👤
+                </Button>
+                {userMenuOpen ? (
+                  <div className="user-menu-dropdown">
+                    {token ? (
+                      <>
+                        <div className="user-menu-email">{user?.email || 'user'}</div>
+                        <div className="user-menu-role">{user?.role || 'member'}</div>
+                        <Button
+                          variant="ghost"
+                          className="user-menu-item"
+                          onClick={() => {
+                            logout();
+                            setUserMenuOpen(false);
+                          }}
+                        >
+                          Logout
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        <div className="user-menu-email">Not logged in</div>
+                        <Button variant="ghost" className="user-menu-item" onClick={() => setUserMenuOpen(false)}>
+                          Close
+                        </Button>
+                      </>
+                    )}
+                  </div>
+                ) : null}
+              </div>
+            </nav>
+          </header>
+
+          <section className="content-area">
         {route.page === 'detail' && detailItem ? (
           <DetailPage item={detailItem} onBack={navigateHome} />
         ) : (
@@ -753,10 +872,7 @@ export function App() {
                 </form>
               ) : (
                 <div className="auth-row">
-                  <span>
-                    Logged in as <strong>{user?.email || 'user'}</strong> ({user?.role})
-                  </span>
-                  <Button variant="secondary" onClick={logout}>Logout</Button>
+                  <span>Welcome back, <strong>{user?.email || 'user'}</strong></span>
                 </div>
               )}
             </section>
@@ -856,39 +972,9 @@ export function App() {
             ) : null}
           </>
         )}
-      </section>
-
-      <nav className="bottombar modern-card">
-        <Button
-          variant="ghost"
-          className={`dock-btn ${route.page === 'home' ? 'is-active' : ''}`}
-          aria-current={route.page === 'home' ? 'page' : undefined}
-          onClick={navigateHome}
-        >
-          Home
-        </Button>
-        <Button
-          variant="ghost"
-          className={`dock-btn ${route.page === 'detail' && route.zone === 'movies' ? 'is-active' : ''}`}
-          onClick={() => jumpTo('zone-movies')}
-        >
-          Movies
-        </Button>
-        <Button
-          variant="ghost"
-          className={`dock-btn ${route.page === 'detail' && route.zone === 'series' ? 'is-active' : ''}`}
-          onClick={() => jumpTo('zone-series')}
-        >
-          Series
-        </Button>
-        <Button
-          variant="ghost"
-          className={`dock-btn ${route.page === 'detail' && route.zone === 'games' ? 'is-active' : ''}`}
-          onClick={() => jumpTo('zone-games')}
-        >
-          Games
-        </Button>
-      </nav>
+          </section>
+        </div>
+      </div>
     </main>
   );
 }

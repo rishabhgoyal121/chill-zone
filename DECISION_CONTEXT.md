@@ -557,3 +557,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Trigger seeding only via live source scraping refresh endpoints.
 - Rationale: You requested script-driven remote seeding from local terminal and wanted non-destructive behavior.
 - Impact: Repeatable demo content population for remote Neon DB while preserving existing titles and user data.
+
+## 2026-04-19 17:38 IST
+
+### D-059: Introduce Sidebar Navigation + User Icon Submenu in Top Bar
+- Decision: Replace topbar-heavy navigation with a dedicated sidebar (persistent desktop, off-canvas mobile) and move account details/actions into a user submenu opened from a right-side user icon.
+- Alternatives considered:
+  - Keep existing topbar nav buttons and append user details inline.
+  - Keep bottom dock as primary mobile navigation.
+- Rationale: You requested cleaner topbar UX and explicit user submenu behavior; sidebar improves information hierarchy and reduces header clutter.
+- Impact: Navigation is now clearer and scalable, with account actions discoverable via user icon dropdown and improved mobile drawer behavior.
