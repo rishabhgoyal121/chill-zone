@@ -497,3 +497,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Move all controls into one expanded mobile header row.
 - Rationale: Mobile view looked crowded and non-native due to wrapped controls and dense content blocks.
 - Impact: Cleaner app-like mobile composition, improved readability, and better touch ergonomics while preserving desktop layout.
+
+## 2026-04-19 16:02 IST
+
+### D-053: Hybrid Netflix + IMDb Color Theme
+- Decision: Apply a warm cinematic palette with Netflix-style red for primary actions and IMDb-style yellow for highlights, while keeping neutral surfaces for readability.
+- Alternatives considered:
+  - Keep monochrome grayscale UI.
+  - Use pure red or pure yellow across all surfaces.
+- Rationale: You requested a stronger branded look, and mixed accent usage preserves visual energy without hurting text contrast.
+- Impact: Buttons, badges, header, hero, cards, and detail sections now use a cohesive red/yellow theme across desktop and mobile.
