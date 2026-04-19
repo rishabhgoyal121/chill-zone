@@ -778,15 +778,6 @@ export function App() {
             </div>
 
             <nav className="top-actions">
-              <div className="nsfw-toggle" title="Show or hide 18+ titles">
-                <span>Allow 18+</span>
-                <Switch
-                  checked={allowNsfw}
-                  onCheckedChange={setAllowNsfw}
-                  aria-label="Allow 18 plus and NSFW titles"
-                />
-              </div>
-
               <div className="user-menu-wrap" ref={userMenuRef}>
                 <Button
                   variant="secondary"
@@ -803,6 +794,14 @@ export function App() {
                       <>
                         <div className="user-menu-email">{user?.email || 'user'}</div>
                         <div className="user-menu-role">{user?.role || 'member'}</div>
+                        <div className="user-menu-toggle-row" title="Show or hide 18+ titles">
+                          <span>Allow 18+</span>
+                          <Switch
+                            checked={allowNsfw}
+                            onCheckedChange={setAllowNsfw}
+                            aria-label="Allow 18 plus and NSFW titles"
+                          />
+                        </div>
                         <Button
                           variant="ghost"
                           className="user-menu-item"
@@ -817,6 +816,14 @@ export function App() {
                     ) : (
                       <>
                         <div className="user-menu-email">Not logged in</div>
+                        <div className="user-menu-toggle-row" title="Show or hide 18+ titles">
+                          <span>Allow 18+</span>
+                          <Switch
+                            checked={allowNsfw}
+                            onCheckedChange={setAllowNsfw}
+                            aria-label="Allow 18 plus and NSFW titles"
+                          />
+                        </div>
                         <Button variant="ghost" className="user-menu-item" onClick={() => setUserMenuOpen(false)}>
                           Close
                         </Button>

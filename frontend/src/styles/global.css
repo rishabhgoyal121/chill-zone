@@ -198,6 +198,7 @@ body {
   grid-template-columns: 250px minmax(0, 1fr);
   gap: 16px;
   align-items: start;
+  margin-top: 64px;
 }
 
 .app-main {
@@ -254,13 +255,16 @@ body {
 }
 
 .modern-topbar {
-  position: sticky;
-  top: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 58px;
   z-index: 25;
-  border-radius: 14px;
+  border-radius: 0;
   background: linear-gradient(125deg, rgba(255, 245, 225, 0.95), rgba(255, 237, 199, 0.92));
-  border: 1px solid rgba(255, 232, 193, 0.96);
+  border: 0;
+  border-bottom: 1px solid rgba(255, 232, 193, 0.96);
   box-shadow: 0 8px 24px rgba(45, 29, 16, 0.16);
   display: flex;
   align-items: center;
@@ -353,6 +357,20 @@ body {
   justify-content: flex-start;
   min-height: 34px;
   border-radius: 9px;
+}
+
+.user-menu-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border: 1px solid rgba(232, 209, 166, 0.85);
+  border-radius: 10px;
+  background: rgba(255, 241, 212, 0.7);
+  padding: 7px 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #3c2f1d;
 }
 
 .nsfw-toggle {
@@ -1071,16 +1089,20 @@ select {
   }
 
   .modern-topbar {
-    top: 0;
-    min-height: 52px;
+    top: env(safe-area-inset-top);
+    min-height: 50px;
     height: auto;
-    padding: 6px 8px;
-    border-radius: 18px;
+    padding: 6px 10px;
+    border-radius: 0;
     backdrop-filter: blur(16px);
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 6px;
     align-items: center;
+  }
+
+  .app-layout {
+    margin-top: calc(58px + env(safe-area-inset-top));
   }
 
   .modern-topbar.is-hidden-mobile {
@@ -1111,24 +1133,19 @@ select {
     max-width: none;
   }
 
-  .nsfw-toggle {
-    gap: 5px;
-    padding: 4px 7px;
-    border-radius: 999px;
-    border-color: rgba(226, 191, 122, 0.9);
-    background: rgba(255, 241, 212, 0.95);
+  .user-menu-toggle-row {
+    padding: 7px 8px;
   }
 
-  .nsfw-toggle > span {
+  .user-menu-toggle-row > span {
     font-size: 0;
     line-height: 1;
   }
 
-  .nsfw-toggle > span::after {
-    content: '18+';
+  .user-menu-toggle-row > span::after {
+    content: 'Allow 18+';
     font-size: 0.72rem;
     font-weight: 800;
-    letter-spacing: 0.02em;
   }
 
   .cinematic-detail {
@@ -1248,10 +1265,6 @@ select {
 
   .brand-clickable {
     max-width: none;
-  }
-
-  .nsfw-toggle {
-    padding-right: 6px;
   }
 
   .shad-switch {

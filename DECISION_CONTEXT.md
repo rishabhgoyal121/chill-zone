@@ -567,3 +567,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Keep bottom dock as primary mobile navigation.
 - Rationale: You requested cleaner topbar UX and explicit user submenu behavior; sidebar improves information hierarchy and reduces header clutter.
 - Impact: Navigation is now clearer and scalable, with account actions discoverable via user icon dropdown and improved mobile drawer behavior.
+
+## 2026-04-19 17:46 IST
+
+### D-060: Full-Width Top Bar + Move NSFW Control into Profile Submenu
+- Decision: Make top bar full-bleed across viewport and relocate `Allow 18+` control from visible header chrome into the profile dropdown submenu.
+- Alternatives considered:
+  - Keep NSFW toggle always visible in top bar.
+  - Keep top bar constrained to content width.
+- Rationale: You requested cleaner top-level header hierarchy with account-related controls grouped under profile interactions.
+- Impact: Top bar is visually simpler and full-width, while NSFW preference remains accessible via the user icon menu.
