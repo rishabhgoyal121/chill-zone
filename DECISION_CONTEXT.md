@@ -597,3 +597,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Keep single-step image fallback.
 - Rationale: You requested richer loading feedback and robust handling when card images fail to load due to network or asset issues.
 - Impact: Better perceived responsiveness during refresh and fewer broken-image states in card UI.
+
+## 2026-04-19 18:33 IST
+
+### D-063: Shadcn-Style Lightweight Sidebar + Profile-Triggered Login Modal
+- Decision: Modernize sidebar into grouped shadcn-style navigation (using existing `Card`, `Button`, `Separator`, `Badge`) with refreshed branding iconography and move login interaction into profile submenu-triggered modal.
+- Alternatives considered:
+  - Keep previous plain sidebar button list.
+  - Keep inline login card below hero carousel.
+- Rationale: You requested a less outdated sidebar and cleaner top-level page hierarchy while preserving profile-centric account actions.
+- Impact: Sidebar is visually modern and structured; homepage is cleaner; login is now contextual from profile menu with modal UX.

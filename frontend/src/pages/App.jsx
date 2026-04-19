@@ -504,7 +504,6 @@ export function App() {
   const [users, setUsers] = useState([]);
   const [sources, setSources] = useState([]);
   const [scrapeJobs, setScrapeJobs] = useState([]);
-  const [dataMode, setDataMode] = useState('live');
   const [newUser, setNewUser] = useState({ email: '', password: '', role: 'moderator' });
   const [route, setRoute] = useState(() => parseRoute(window.location.pathname));
   const [heroIndex, setHeroIndex] = useState(0);
@@ -513,6 +512,7 @@ export function App() {
   const [mobileHeaderHidden, setMobileHeaderHidden] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [initialLoadPending, setInitialLoadPending] = useState(true);
   const [zonesLoading, setZonesLoading] = useState(false);
   const lastScrollYRef = useRef(0);
@@ -628,6 +628,7 @@ export function App() {
   useEffect(() => {
     setSidebarOpen(false);
     setUserMenuOpen(false);
+    setLoginModalOpen(false);
   }, [route.page, route.zone, route.id]);
 
   function navigateHome() {
@@ -676,7 +677,6 @@ export function App() {
         api('/api/content/games')
       ]);
       setZoneData({ movies, series, games });
-      setDataMode('live');
     } catch {
       const fallbackRes = await fetch('/fallback-content.json');
       if (!fallbackRes.ok) throw new Error('Both live API and fallback content are unavailable');
@@ -686,7 +686,6 @@ export function App() {
         series: fallback.series || [],
         games: fallback.games || []
       });
-      setDataMode('fallback');
     } finally {
       if (!silent) setZonesLoading(false);
     }
@@ -745,6 +744,8 @@ export function App() {
     try {
       await login(email, password);
       setMessage('Login successful');
+      setLoginModalOpen(false);
+      setUserMenuOpen(false);
     } catch (err) {
       setMessage(err.message);
     }
@@ -789,19 +790,34 @@ export function App() {
       <div className="app-layout">
         <aside className={`app-sidebar modern-card ${sidebarOpen ? 'open' : ''}`}>
           <div className="sidebar-head">
+            <div className="sidebar-logo" aria-hidden="true">
+              <svg viewBox="0 0 64 64" role="img">
+                <defs>
+                  <linearGradient id="czg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#d61f2c" />
+                    <stop offset="100%" stopColor="#f7c843" />
+                  </linearGradient>
+                </defs>
+                <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#czg)" />
+                <path d="M16 33c2-8 7-13 15-13 4 0 8 1 11 4l-4 5c-2-1-4-2-7-2-5 0-8 3-9 8-1 5 1 9 7 9 3 0 6-1 8-3l3 5c-3 2-7 4-12 4-9 0-15-6-12-17z" fill="#fff8ed" />
+              </svg>
+            </div>
             <div className="sidebar-brand">CHILL ZONE</div>
-            <Badge variant={dataMode === 'live' ? 'success' : 'warning'}>
-              {dataMode === 'live' ? 'Live' : 'Fallback'}
-            </Badge>
             {zonesLoading ? <Badge variant="warning">Syncing</Badge> : null}
           </div>
+          <Separator />
           <nav className="sidebar-nav">
-            <Button variant="ghost" className="sidebar-link" onClick={navigateHome}>Home</Button>
-            <Button variant="ghost" className="sidebar-link" onClick={() => openZoneFromNav('movies')}>Movies</Button>
-            <Button variant="ghost" className="sidebar-link" onClick={() => openZoneFromNav('series')}>Series</Button>
-            <Button variant="ghost" className="sidebar-link" onClick={() => openZoneFromNav('games')}>Games</Button>
+            <p className="sidebar-group-title">Browse</p>
+            <Button variant="ghost" className="sidebar-link" onClick={navigateHome}><span className="sidebar-link-icon">⌂</span>Home</Button>
+            <Button variant="ghost" className="sidebar-link" onClick={() => openZoneFromNav('movies')}><span className="sidebar-link-icon">🎬</span>Movies</Button>
+            <Button variant="ghost" className="sidebar-link" onClick={() => openZoneFromNav('series')}><span className="sidebar-link-icon">📺</span>Series</Button>
+            <Button variant="ghost" className="sidebar-link" onClick={() => openZoneFromNav('games')}><span className="sidebar-link-icon">🎮</span>Games</Button>
             {isAdmin && token ? (
-              <Button variant="ghost" className="sidebar-link" onClick={openAdminFromNav}>Admin</Button>
+              <>
+                <Separator />
+                <p className="sidebar-group-title">Admin</p>
+                <Button variant="ghost" className="sidebar-link" onClick={openAdminFromNav}><span className="sidebar-link-icon">⚙</span>Admin</Button>
+              </>
             ) : null}
           </nav>
         </aside>
@@ -844,7 +860,12 @@ export function App() {
                   onClick={() => setUserMenuOpen((x) => !x)}
                   aria-label="Open user menu"
                 >
-                  👤
+                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                    <path
+                      d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Zm0 2c-4 0-7.2 2.2-8 5.3-.1.4.2.7.6.7h14.8c.4 0 .7-.3.6-.7C19.2 16.2 16 14 12 14Z"
+                      fill="currentColor"
+                    />
+                  </svg>
                 </Button>
                 {userMenuOpen ? (
                   <div className="user-menu-dropdown">
@@ -882,8 +903,15 @@ export function App() {
                             aria-label="Allow 18 plus and NSFW titles"
                           />
                         </div>
-                        <Button variant="ghost" className="user-menu-item" onClick={() => setUserMenuOpen(false)}>
-                          Close
+                        <Button
+                          variant="ghost"
+                          className="user-menu-item"
+                          onClick={() => {
+                            setLoginModalOpen(true);
+                            setUserMenuOpen(false);
+                          }}
+                        >
+                          Login
                         </Button>
                       </>
                     )}
@@ -926,20 +954,6 @@ export function App() {
                   onOpen={navigateDetail}
                 />
               </div>
-            </section>
-
-            <section className="panel auth-panel modern-card">
-              {!token ? (
-                <form onSubmit={onLogin} className="login-grid">
-                  <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-                  <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
-                  <Button type="submit">Login</Button>
-                </form>
-              ) : (
-                <div className="auth-row">
-                  <span>Welcome back, <strong>{user?.email || 'user'}</strong></span>
-                </div>
-              )}
             </section>
 
             {message ? <p className="notice">{message}</p> : null}
@@ -1041,6 +1055,26 @@ export function App() {
           </section>
         </div>
       </div>
+
+      {loginModalOpen ? (
+        <div className="login-modal-backdrop" role="dialog" aria-modal="true" onClick={() => setLoginModalOpen(false)}>
+          <Card className="login-modal-card modern-card" onClick={(e) => e.stopPropagation()}>
+            <CardHeader>
+              <CardTitle>Sign In</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={onLogin} className="login-grid">
+                <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
+                <div className="login-modal-actions">
+                  <Button variant="secondary" type="button" onClick={() => setLoginModalOpen(false)}>Cancel</Button>
+                  <Button type="submit">Login</Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
+      ) : null}
     </main>
   );
 }
