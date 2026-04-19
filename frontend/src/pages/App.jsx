@@ -517,7 +517,6 @@ export function App() {
   const [heroPaused, setHeroPaused] = useState(false);
   const [allowNsfw, setAllowNsfw] = useState(() => window.localStorage.getItem('allowNsfw') === 'true');
   const [mobileHeaderHidden, setMobileHeaderHidden] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [activeNav, setActiveNav] = useState('home');
@@ -621,7 +620,6 @@ export function App() {
     function onKeyDown(event) {
       if (event.key === 'Escape') {
         setUserMenuOpen(false);
-        setSidebarOpen(false);
       }
     }
 
@@ -634,7 +632,6 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    setSidebarOpen(false);
     setUserMenuOpen(false);
     setLoginModalOpen(false);
   }, [route.page, route.zone, route.id]);
@@ -650,7 +647,6 @@ export function App() {
   }, [route.page, route.zone]);
 
   function navigateHome() {
-    setSidebarOpen(false);
     setActiveNav('home');
     window.history.pushState({}, '', '/');
     setRoute({ page: 'home' });
@@ -669,7 +665,6 @@ export function App() {
   }
 
   function openZoneFromNav(zoneKey) {
-    setSidebarOpen(false);
     setActiveNav(zoneKey);
     if (route.page !== 'home') {
       navigateHome();
@@ -680,7 +675,6 @@ export function App() {
   }
 
   function openAdminFromNav() {
-    setSidebarOpen(false);
     setActiveNav('admin');
     if (route.page !== 'home') {
       navigateHome();
@@ -838,77 +832,10 @@ export function App() {
 
   return (
     <main className="app-shell modern-shell">
-      <div className={`sidebar-backdrop ${sidebarOpen ? 'open' : ''}`} onClick={() => setSidebarOpen(false)} />
       <div className="app-layout">
-        <aside className={`app-sidebar modern-card ${sidebarOpen ? 'open' : ''}`}>
-          {zonesLoading ? <Badge variant="warning" className="sidebar-sync-badge">Syncing</Badge> : null}
-          <nav className="sidebar-nav">
-            <p className="sidebar-group-title">Browse</p>
-            <Button variant="ghost" className={`sidebar-link ${activeNav === 'home' ? 'is-active' : ''}`} onClick={navigateHome}>
-              <span className="sidebar-link-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1v-9.5Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-              Home
-            </Button>
-            <Button variant="ghost" className={`sidebar-link ${activeNav === 'movies' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('movies')}>
-              <span className="sidebar-link-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11Z" stroke="currentColor" strokeWidth="1.8" />
-                  <path d="M4 9h16M9 4v5m6-5v5M8 13l2-1.2L12 13l2-1.2L16 13" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-              Movies
-            </Button>
-            <Button variant="ghost" className={`sidebar-link ${activeNav === 'series' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('series')}>
-              <span className="sidebar-link-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <rect x="3.5" y="5" width="17" height="12" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
-                  <path d="M9 20h6M12 17v3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                </svg>
-              </span>
-              Series
-            </Button>
-            <Button variant="ghost" className={`sidebar-link ${activeNav === 'games' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('games')}>
-              <span className="sidebar-link-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M6.6 9h10.8a3.6 3.6 0 0 1 3.5 4.5l-1.1 4a3 3 0 0 1-4.8 1.6l-1.7-1.4a2 2 0 0 0-2.6 0L9 19.1a3 3 0 0 1-4.8-1.6l-1.1-4A3.6 3.6 0 0 1 6.6 9Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M8.4 13.2v-2.4m-1.2 1.2h2.4M16.5 12h.01M18.2 13.6h.01" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                </svg>
-              </span>
-              Games
-            </Button>
-            {isAdmin && token ? (
-              <>
-                <Separator />
-                <p className="sidebar-group-title">Admin</p>
-                <Button variant="ghost" className={`sidebar-link ${activeNav === 'admin' ? 'is-active' : ''}`} onClick={openAdminFromNav}>
-                  <span className="sidebar-link-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="m12 8.2.9-2.1 2.2.3.8 2.1 2 1.1 1.9-1.1 1.5 1.7-1.1 1.9.7 2.2 2.1.9-.3 2.2-2.1.8-1.1 2 1.1 1.9-1.7 1.5-1.9-1.1-2.2.7-.9 2.1-2.2-.3-.8-2.1-2-1.1-1.9 1.1-1.5-1.7 1.1-1.9-.7-2.2-2.1-.9.3-2.2 2.1-.8 1.1-2-1.1-1.9 1.7-1.5 1.9 1.1 2.2-.7Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
-                      <circle cx="12" cy="12" r="2.7" stroke="currentColor" strokeWidth="1.8" />
-                    </svg>
-                  </span>
-                  Admin
-                </Button>
-              </>
-            ) : null}
-          </nav>
-        </aside>
-
         <div className="app-main">
           <header className={`topbar modern-topbar ${mobileHeaderHidden ? 'is-hidden-mobile' : ''}`}>
             <div className="topbar-left">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="sidebar-toggle-btn"
-                onClick={() => setSidebarOpen((x) => !x)}
-                aria-label="Toggle sidebar"
-              >
-                ☰
-              </Button>
               <div
                 className="brand brand-clickable"
                 role="button"
@@ -937,6 +864,17 @@ export function App() {
                 <span className="brand-text">CHILL ZONE</span>
               </div>
             </div>
+
+            <nav className="top-nav">
+              <Button variant="ghost" className={`top-nav-link ${activeNav === 'home' ? 'is-active' : ''}`} onClick={navigateHome}>Home</Button>
+              <Button variant="ghost" className={`top-nav-link ${activeNav === 'movies' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('movies')}>Movies</Button>
+              <Button variant="ghost" className={`top-nav-link ${activeNav === 'series' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('series')}>Series</Button>
+              <Button variant="ghost" className={`top-nav-link ${activeNav === 'games' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('games')}>Games</Button>
+              {isAdmin && token ? (
+                <Button variant="ghost" className={`top-nav-link ${activeNav === 'admin' ? 'is-active' : ''}`} onClick={openAdminFromNav}>Admin</Button>
+              ) : null}
+              {zonesLoading ? <Badge variant="warning" className="top-nav-sync">Syncing</Badge> : null}
+            </nav>
 
             <nav className="top-actions">
               <div className="user-menu-wrap" ref={userMenuRef}>

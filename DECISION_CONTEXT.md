@@ -657,3 +657,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Remove cinematic background treatment entirely on detail pages.
 - Rationale: You reported uneven paddings/margins in detail view, a visible top-left border-radius overlap issue near the poster under the back button, and dark/black background persistence despite light theme.
 - Impact: Detail layout spacing is now consistent, corner rendering is visually clean, and detail background stays cinematic without appearing black in light theme.
+
+## 2026-04-19 18:50 IST
+
+### D-069: Remove Sidebar and Consolidate Navigation into Top Bar
+- Decision: Remove the left sidebar entirely and move primary section navigation (`Home`, `Movies`, `Series`, `Games`, `Admin`) into a dedicated top-bar navigation row with active-state styling and horizontal overflow support on small screens.
+- Alternatives considered:
+  - Keep sidebar as optional desktop-only navigation.
+  - Replace sidebar with a mobile drawer toggle only.
+- Rationale: You requested removing the sidebar while retaining straightforward access to all app sections.
+- Impact: Layout is now single-column with cleaner content focus; navigation remains fully accessible from the header across desktop and mobile.
