@@ -527,3 +527,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Hide topbar immediately without intent thresholds.
 - Rationale: You requested a more native mobile interaction model and persistent top chrome consumed too much viewport while browsing content.
 - Impact: More vertical content space during downward browsing while preserving fast access to top controls when the user scrolls up.
+
+## 2026-04-19 16:41 IST
+
+### D-056: Render Blueprint Deployment for Backend + Managed Postgres
+- Decision: Add `render.yaml` blueprint to provision a Node web service and managed Postgres with auto-wired `DATABASE_URL` and generated `JWT_SECRET`.
+- Alternatives considered:
+  - Manual dashboard-only setup without infra-as-code.
+  - Keep backend hosted locally with Caddy/SSLIP.
+- Rationale: You requested deploying backend on Render so auth and favourites/wishlist work for real users.
+- Impact: Backend deployment is reproducible and versioned; startup is resilient even if bootstrap content scraping fails.

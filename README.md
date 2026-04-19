@@ -71,9 +71,41 @@ Frontend behavior:
    - Build command: `npm run build:frontend`
    - Publish directory: `frontend/dist`
 4. Environment variable:
-   - `VITE_API_URL=https://api.<PUBLIC_IP>.sslip.io` (set once backend HTTPS is live)
+   - `VITE_API_URL=https://<your-render-backend>.onrender.com`
 
 `netlify.toml` is already included with these defaults.
+
+## Deploy Backend + Postgres to Render (Blueprint)
+
+1. Push this repo to GitHub.
+2. In Render dashboard, click **New +** -> **Blueprint**.
+3. Select this repository and deploy.
+4. Render will provision:
+   - Postgres database: `chill-zone-db`
+   - Web service: `chill-zone-backend`
+5. After deploy, copy backend URL:
+   - `https://<your-render-backend>.onrender.com`
+6. Set Netlify env var:
+   - `VITE_API_URL=https://<your-render-backend>.onrender.com`
+7. Trigger a Netlify redeploy.
+
+Render blueprint config lives at:
+- `render.yaml`
+
+Notes:
+- `JWT_SECRET` is auto-generated in Render from blueprint.
+- `DATABASE_URL` is wired from Render Postgres to backend automatically.
+- On startup, if content bootstrap scraping fails, API still starts so auth/favourites remain available.
+
+Quick checks after deploy:
+
+```bash
+curl -s https://<your-render-backend>.onrender.com/health
+
+curl -s -X POST https://<your-render-backend>.onrender.com/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"admin@chillzone.local","password":"ChangeMe123!"}'
+```
 
 ## Expose Backend from Laptop with Caddy + SSLIP
 

@@ -8,7 +8,11 @@ import { refreshCore } from './core/controllers/contentCoreController.js';
 async function start() {
   await initDb();
   await bootstrapSuperAdminIfMissing();
-  await refreshCore('bootstrap');
+  try {
+    await refreshCore('bootstrap');
+  } catch (err) {
+    console.warn('[startup] bootstrap refresh failed, continuing server start:', err?.message || err);
+  }
   startScrapeScheduler();
 
   const app = createApp();
