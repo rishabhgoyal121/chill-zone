@@ -507,3 +507,23 @@ This document tracks major and minor project decisions, alternatives considered,
   - Use pure red or pure yellow across all surfaces.
 - Rationale: You requested a stronger branded look, and mixed accent usage preserves visual energy without hurting text contrast.
 - Impact: Buttons, badges, header, hero, cards, and detail sections now use a cohesive red/yellow theme across desktop and mobile.
+
+## 2026-04-19 16:16 IST
+
+### D-054: Mobile Top/Bottom Navigation Usability Refresh
+- Decision: Refine mobile nav chrome by compressing topbar controls (brand stays single-line, status badge hidden, 18+ toggle compact) and restyling bottom nav as native app tabs with active state highlighting.
+- Alternatives considered:
+  - Keep existing nav spacing and only tweak colors.
+  - Remove topbar controls entirely on mobile.
+- Rationale: You reported top bar and side/bottom navigation looking poor on mobile; the previous layout still felt crowded and low hierarchy.
+- Impact: Cleaner header density, less control wrapping, and clearer tab affordance in bottom nav on small screens.
+
+## 2026-04-19 16:24 IST
+
+### D-055: Auto-Hide Mobile Top Bar on Scroll
+- Decision: Add mobile-only topbar hide-on-scroll-down and reveal-on-scroll-up behavior with threshold-based scroll intent detection.
+- Alternatives considered:
+  - Keep topbar always visible.
+  - Hide topbar immediately without intent thresholds.
+- Rationale: You requested a more native mobile interaction model and persistent top chrome consumed too much viewport while browsing content.
+- Impact: More vertical content space during downward browsing while preserving fast access to top controls when the user scrolls up.

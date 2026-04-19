@@ -219,6 +219,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 14px;
+  transition: transform 0.24s ease, opacity 0.24s ease;
 }
 
 .brand {
@@ -927,7 +928,7 @@ select {
 @media (max-width: 920px) {
   .modern-shell {
     grid-template-columns: 1fr;
-    padding: calc(86px + env(safe-area-inset-top)) 10px calc(96px + env(safe-area-inset-bottom));
+    padding: calc(78px + env(safe-area-inset-top)) 10px calc(96px + env(safe-area-inset-bottom));
     gap: 12px;
   }
 
@@ -935,31 +936,46 @@ select {
     top: calc(8px + env(safe-area-inset-top));
     left: 10px;
     right: 10px;
-    min-height: 56px;
+    min-height: 52px;
     height: auto;
-    padding: 8px 10px;
+    padding: 6px 8px;
     border-radius: 18px;
     backdrop-filter: blur(16px);
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    gap: 8px;
+    gap: 6px;
     align-items: center;
   }
 
+  .modern-topbar.is-hidden-mobile {
+    transform: translateY(calc(-122% - env(safe-area-inset-top)));
+    opacity: 0;
+    pointer-events: none;
+  }
+
   .brand {
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     letter-spacing: 0.08em;
-    line-height: 1.05;
+    line-height: 1;
   }
 
   .brand-clickable {
-    padding: 2px 2px;
-    max-width: 100px;
+    padding: 2px 4px;
+    max-width: none;
+    white-space: nowrap;
   }
 
   .top-actions {
     flex-wrap: nowrap;
-    gap: 6px;
+    gap: 5px;
+    max-width: 60vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+
+  .top-actions::-webkit-scrollbar {
+    display: none;
   }
 
   .top-actions > .shad-btn {
@@ -967,19 +983,27 @@ select {
   }
 
   .top-actions > span {
-    padding: 0.34rem 0.54rem;
-    font-size: 0.62rem;
-    letter-spacing: 0.04em;
+    display: none;
   }
 
   .nsfw-toggle {
-    gap: 6px;
-    padding: 3px 8px 3px 6px;
+    gap: 5px;
+    padding: 4px 7px;
+    border-radius: 999px;
+    border-color: rgba(226, 191, 122, 0.9);
+    background: rgba(255, 241, 212, 0.95);
   }
 
   .nsfw-toggle > span {
-    font-size: 0.72rem;
+    font-size: 0;
     line-height: 1;
+  }
+
+  .nsfw-toggle > span::after {
+    content: '18+';
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
   }
 
   .cinematic-detail {
@@ -1081,12 +1105,34 @@ select {
     left: 12px;
     right: 12px;
     bottom: calc(10px + env(safe-area-inset-bottom));
-    border-radius: 16px;
-    padding: 7px;
+    border-radius: 18px;
+    padding: 6px;
     background: rgba(255, 246, 229, 0.93);
     border: 1px solid rgba(232, 209, 166, 0.95);
     box-shadow: 0 10px 24px rgba(45, 29, 16, 0.2);
     backdrop-filter: blur(14px);
+  }
+
+  .dock-btn {
+    min-height: 40px;
+    padding: 7px 5px;
+    border-radius: 12px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #5a4025;
+    border: 1px solid transparent;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .dock-btn:hover {
+    background: rgba(247, 200, 67, 0.2);
+  }
+
+  .dock-btn.is-active {
+    background: var(--brand-red);
+    color: #fff9ef;
+    border-color: rgba(255, 255, 255, 0.26);
+    box-shadow: 0 8px 18px rgba(214, 31, 44, 0.34);
   }
 
   .top-actions {
@@ -1102,6 +1148,12 @@ select {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .modern-topbar {
+    transition: none;
+  }
+}
+
 @media (max-width: 520px) {
   .modern-shell {
     padding-left: 8px;
@@ -1114,7 +1166,7 @@ select {
   }
 
   .brand-clickable {
-    max-width: 84px;
+    max-width: none;
   }
 
   .nsfw-toggle {
@@ -1136,7 +1188,7 @@ select {
   }
 
   .dock-btn {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     padding: 7px 4px;
   }
 }

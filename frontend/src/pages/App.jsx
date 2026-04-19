@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { api } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/button';
@@ -483,6 +483,8 @@ export function App() {
   const [heroIndex, setHeroIndex] = useState(0);
   const [heroPaused, setHeroPaused] = useState(false);
   const [allowNsfw, setAllowNsfw] = useState(() => window.localStorage.getItem('allowNsfw') === 'true');
+  const [mobileHeaderHidden, setMobileHeaderHidden] = useState(false);
+  const lastScrollYRef = useRef(0);
 
   const isAdmin = useMemo(() => ['super_admin', 'content_admin', 'moderator'].includes(user?.role), [user]);
 
@@ -532,6 +534,41 @@ export function App() {
     }
     setHeroIndex((prev) => (prev >= heroSlides.length ? 0 : prev));
   }, [heroSlides.length]);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 920px)');
+    lastScrollYRef.current = window.scrollY;
+
+    function handleScroll() {
+      if (!mq.matches) {
+        setMobileHeaderHidden(false);
+        lastScrollYRef.current = window.scrollY;
+        return;
+      }
+
+      const y = window.scrollY;
+      const delta = y - lastScrollYRef.current;
+
+      if (y <= 24 || delta <= -8) {
+        setMobileHeaderHidden(false);
+      } else if (delta >= 10 && y >= 88) {
+        setMobileHeaderHidden(true);
+      }
+
+      lastScrollYRef.current = y;
+    }
+
+    function handleViewportChange() {
+      if (!mq.matches) setMobileHeaderHidden(false);
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleViewportChange);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleViewportChange);
+    };
+  }, []);
 
   function navigateHome() {
     window.history.pushState({}, '', '/');
@@ -639,7 +676,7 @@ export function App() {
 
   return (
     <main className="app-shell modern-shell">
-      <header className="topbar modern-topbar">
+      <header className={`topbar modern-topbar ${mobileHeaderHidden ? 'is-hidden-mobile' : ''}`}>
         <div
           className="brand brand-clickable"
           role="button"
@@ -822,10 +859,35 @@ export function App() {
       </section>
 
       <nav className="bottombar modern-card">
-        <Button variant="ghost" className="dock-btn" onClick={navigateHome}>Home</Button>
-        <Button variant="ghost" className="dock-btn" onClick={() => jumpTo('zone-movies')}>Movies</Button>
-        <Button variant="ghost" className="dock-btn" onClick={() => jumpTo('zone-series')}>Series</Button>
-        <Button variant="ghost" className="dock-btn" onClick={() => jumpTo('zone-games')}>Games</Button>
+        <Button
+          variant="ghost"
+          className={`dock-btn ${route.page === 'home' ? 'is-active' : ''}`}
+          aria-current={route.page === 'home' ? 'page' : undefined}
+          onClick={navigateHome}
+        >
+          Home
+        </Button>
+        <Button
+          variant="ghost"
+          className={`dock-btn ${route.page === 'detail' && route.zone === 'movies' ? 'is-active' : ''}`}
+          onClick={() => jumpTo('zone-movies')}
+        >
+          Movies
+        </Button>
+        <Button
+          variant="ghost"
+          className={`dock-btn ${route.page === 'detail' && route.zone === 'series' ? 'is-active' : ''}`}
+          onClick={() => jumpTo('zone-series')}
+        >
+          Series
+        </Button>
+        <Button
+          variant="ghost"
+          className={`dock-btn ${route.page === 'detail' && route.zone === 'games' ? 'is-active' : ''}`}
+          onClick={() => jumpTo('zone-games')}
+        >
+          Games
+        </Button>
       </nav>
     </main>
   );
