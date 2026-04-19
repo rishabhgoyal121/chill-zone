@@ -617,3 +617,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Keep technical wording referencing backend in UI copy.
 - Rationale: You requested clearer nav orientation and cleaner product-facing loading language.
 - Impact: Users can immediately identify current nav context, and loading text is now user-centric instead of implementation-centric.
+
+## 2026-04-19 18:33 IST
+
+### D-065: Shadcn-Style Sign-In Form Primitives + Modal UX Polish
+- Decision: Introduce lightweight reusable `Input` and `Label` primitives under `frontend/src/components/ui/`, then refactor the Sign In modal to use labeled field groups, inline helper/error text, and a stronger responsive action row.
+- Alternatives considered:
+  - Keep raw `<input>` fields with modal-only CSS overrides.
+  - Use browser-default labels/placeholders without reusable form primitives.
+- Rationale: You requested shadcn-style form components and improved login modal visual quality while preserving existing authentication behavior.
+- Impact: Form UI now aligns with existing shadcn-inspired `Button/Card` system, improves accessibility/readability on desktop + mobile, and keeps all login logic unchanged.

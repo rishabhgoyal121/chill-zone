@@ -6,6 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Badge } from '../components/ui/badge';
 import { Separator } from '../components/ui/separator';
 import { Switch } from '../components/ui/switch';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
 import { AppLoader } from '../components/AppLoader.jsx';
 
 const ZONES = [
@@ -1074,16 +1076,41 @@ export function App() {
       {loginModalOpen ? (
         <div className="login-modal-backdrop" role="dialog" aria-modal="true" onClick={() => setLoginModalOpen(false)}>
           <Card className="login-modal-card modern-card" onClick={(e) => e.stopPropagation()}>
-            <CardHeader>
+            <CardHeader className="login-modal-header">
               <CardTitle>Sign In</CardTitle>
+              <p className="login-modal-subtitle">Continue to manage favourites and admin controls.</p>
             </CardHeader>
-            <CardContent>
+            <CardContent className="login-modal-content">
               <form onSubmit={onLogin} className="login-grid">
-                <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-                <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
+                <div className="login-field-group">
+                  <Label htmlFor="login-email">Email</Label>
+                  <Input
+                    id="login-email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="you@example.com"
+                    autoComplete="email"
+                    required
+                  />
+                </div>
+                <div className="login-field-group">
+                  <Label htmlFor="login-password">Password</Label>
+                  <Input
+                    id="login-password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter your password"
+                    type="password"
+                    autoComplete="current-password"
+                    required
+                  />
+                  <p className="login-helper-text">Use the credentials provided by your admin.</p>
+                </div>
+                {message ? <p className="login-error-text">{message}</p> : null}
                 <div className="login-modal-actions">
-                  <Button variant="secondary" type="button" onClick={() => setLoginModalOpen(false)}>Cancel</Button>
-                  <Button type="submit">Login</Button>
+                  <Button className="login-modal-btn" variant="secondary" type="button" onClick={() => setLoginModalOpen(false)}>Cancel</Button>
+                  <Button className="login-modal-btn" type="submit">Login</Button>
                 </div>
               </form>
             </CardContent>
