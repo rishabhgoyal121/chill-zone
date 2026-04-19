@@ -333,11 +333,11 @@ function DetailPage({ item, onBack }) {
               <Badge variant="soft">{formatZone(item.zone)}</Badge>
             </div>
             <h1>{item.title}</h1>
-            <p>{longDescription(item)}</p>
+            <p className="detail-description">{longDescription(item)}</p>
             <div className="detail-meta">
-              <div><strong>Length:</strong> {itemLength(item)}</div>
-              <div><strong>Region Coverage:</strong> IN, US</div>
-              <div><strong>Last Updated:</strong> {item.updatedAt ? new Date(item.updatedAt).toLocaleString() : 'N/A'}</div>
+              <div className="detail-meta-item"><strong>Length:</strong> {itemLength(item)}</div>
+              <div className="detail-meta-item"><strong>Region Coverage:</strong> IN, US</div>
+              <div className="detail-meta-item"><strong>Last Updated:</strong> {item.updatedAt ? new Date(item.updatedAt).toLocaleString() : 'N/A'}</div>
             </div>
 
             {item.imdbUrl ? (
@@ -348,7 +348,7 @@ function DetailPage({ item, onBack }) {
 
             <Separator className="my-3" />
 
-            <h3>Watch / Play Links</h3>
+            <h3 className="detail-section-title">Watch / Play Links</h3>
             <div className="detail-links">
               {item.links?.map((l) => (
                 <a key={`${l.url}-${l.region}-${l.label}`} href={l.url} target="_blank" rel="noreferrer">
@@ -361,7 +361,7 @@ function DetailPage({ item, onBack }) {
 
             {trailerLinks.length ? (
               <>
-                <h3>Trailer / Clips</h3>
+                <h3 className="detail-section-title">Trailer / Clips</h3>
                 <div className="trailer-links-grid">
                   {trailerLinks.map((link) => (
                     <a
@@ -380,7 +380,7 @@ function DetailPage({ item, onBack }) {
 
             {readyPhotos.length ? (
               <>
-                <h3>Photo Wall</h3>
+                <h3 className="detail-section-title">Photo Wall</h3>
                 <div className="photo-grid">
                   {readyPhotos.map((url) => (
                     <button

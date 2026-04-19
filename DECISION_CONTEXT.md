@@ -477,3 +477,23 @@ This document tracks major and minor project decisions, alternatives considered,
   - Require a manual one-off SQL migration outside app startup.
 - Rationale: You explicitly asked to remove IMDb rating data completely; startup migration keeps all environments consistent without manual intervention.
 - Impact: Existing databases automatically remove the obsolete rating column on next backend boot.
+
+## 2026-04-19 15:09 IST
+
+### D-051: Mobile Detail Page Gutter + Readability Refinement
+- Decision: Improve detail-page mobile spacing and content hierarchy by tightening responsive gutters, preventing overflow, introducing structured meta chips, and converting raw link lines into touch-friendly cards.
+- Alternatives considered:
+  - Only increase global shell padding.
+  - Keep existing typography and adjust spacing minimally.
+- Rationale: Detail view felt cramped on mobile and text blocks lacked clear visual structure, making information harder to scan.
+- Impact: Mobile detail layouts now preserve side padding consistently, and detail text/link sections are easier to read and visually cleaner.
+
+## 2026-04-19 15:23 IST
+
+### D-052: Native-Style Mobile UI Chrome and Detail Layout Refresh
+- Decision: Introduce a mobile-first visual pass for top navigation and detail view: compact glassy header, safe-area-aware spacing, removal of duplicate top nav actions (Home/Browse) on mobile, and stronger card/typography rhythm for detail content.
+- Alternatives considered:
+  - Keep existing desktop-first header behavior with minor spacing tweaks.
+  - Move all controls into one expanded mobile header row.
+- Rationale: Mobile view looked crowded and non-native due to wrapped controls and dense content blocks.
+- Impact: Cleaner app-like mobile composition, improved readability, and better touch ergonomics while preserving desktop layout.
