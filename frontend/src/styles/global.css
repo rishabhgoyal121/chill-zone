@@ -1040,13 +1040,13 @@ select {
 
 .detail-page {
   display: grid;
-  gap: 12px;
+  gap: 14px;
   position: relative;
   min-width: 0;
 }
 
 .cinematic-detail {
-  padding: 10px;
+  padding: 12px;
 }
 
 .detail-bg-wrap {
@@ -1065,15 +1065,15 @@ select {
   height: 112vh;
   object-fit: cover;
   transform: translate(-50%, -50%) scale(1.1);
-  filter: saturate(1.08) contrast(1.04) blur(9px) brightness(0.56);
+  filter: saturate(1.03) contrast(1.01) blur(11px) brightness(0.92);
 }
 
 .detail-bg-overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(2, 6, 23, 0.72), rgba(2, 6, 23, 0.88)),
-    radial-gradient(circle at 50% 16%, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.46) 68%, rgba(0, 0, 0, 0.68) 100%);
+    linear-gradient(180deg, rgba(252, 245, 230, 0.82), rgba(247, 236, 213, 0.9)),
+    radial-gradient(circle at 50% 14%, rgba(255, 255, 255, 0.24), rgba(236, 218, 180, 0.42) 66%, rgba(215, 182, 122, 0.5) 100%);
   backdrop-filter: blur(1.5px);
 }
 
@@ -1091,6 +1091,7 @@ select {
   background: rgba(255, 247, 232, 0.94);
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 
 .detail-grid {
@@ -1098,12 +1099,19 @@ select {
   grid-template-columns: 360px 1fr;
   gap: 22px;
   align-items: start;
+  padding: 14px;
 }
 
 .detail-poster-wrap {
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
   aspect-ratio: 3 / 4;
+  box-shadow: 0 8px 22px rgba(45, 29, 16, 0.2);
+}
+
+.detail-copy {
+  display: grid;
+  gap: 11px;
 }
 
 .detail-poster {
@@ -1144,6 +1152,11 @@ select {
   font-weight: 800;
   letter-spacing: 0.01em;
   color: #46361f;
+}
+
+.detail-separator {
+  margin: 4px 0 2px;
+  background: rgba(215, 188, 135, 0.42);
 }
 
 .detail-meta {
@@ -1437,7 +1450,7 @@ select {
   }
 
   .cinematic-detail {
-    padding: 2px 0;
+    padding: 6px 0;
     gap: 10px;
   }
 
@@ -1461,7 +1474,7 @@ select {
 
   .detail-grid {
     gap: 12px;
-    padding: 10px;
+    padding: 12px;
   }
 
   .detail-poster-wrap {

@@ -359,7 +359,7 @@ function DetailPage({ item, onBack }) {
               </a>
             ) : null}
 
-            <Separator className="my-3" />
+            <Separator className="detail-separator" />
 
             <h3 className="detail-section-title">Watch / Play Links</h3>
             <div className="detail-links">
@@ -370,7 +370,7 @@ function DetailPage({ item, onBack }) {
               ))}
             </div>
 
-            <Separator className="my-3" />
+            <Separator className="detail-separator" />
 
             {trailerLinks.length ? (
               <>

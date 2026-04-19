@@ -647,3 +647,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Add a standalone route/page instead of reusing the modal.
 - Rationale: You requested a visible Sign Up path and a dedicated sign-up screen, and also flagged missing spacing/padding in the current sign-in form.
 - Impact: Users can self-register with a safe default role (`moderator`), auth UX is clearer and more spacious, and the existing login behavior remains intact.
+
+## 2026-04-19 18:45 IST
+
+### D-068: Detail Page Layout Spacing + Light Theme Background Correction
+- Decision: Replace non-functional utility spacing on detail separators with explicit project CSS, add internal detail-card padding and overflow clipping to prevent poster corner overlap artifacts, and re-tune cinematic detail background filters/overlay for light-theme readability.
+- Alternatives considered:
+  - Keep existing styles and adjust only margins around the back button.
+  - Remove cinematic background treatment entirely on detail pages.
+- Rationale: You reported uneven paddings/margins in detail view, a visible top-left border-radius overlap issue near the poster under the back button, and dark/black background persistence despite light theme.
+- Impact: Detail layout spacing is now consistent, corner rendering is visually clean, and detail background stays cinematic without appearing black in light theme.
