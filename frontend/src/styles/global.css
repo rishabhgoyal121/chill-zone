@@ -342,27 +342,8 @@ body {
   gap: 12px;
 }
 
-.sidebar-head {
-  display: grid;
-  gap: 10px;
-}
-
-.sidebar-brand {
-  font-size: 0.98rem;
-  letter-spacing: 0.08em;
-  font-weight: 900;
-  color: #251c14;
-}
-
-.sidebar-logo {
-  width: 54px;
-  height: 54px;
-}
-
-.sidebar-logo svg {
-  width: 100%;
-  height: 100%;
-  display: block;
+.sidebar-sync-badge {
+  justify-self: start;
 }
 
 .sidebar-nav {
@@ -400,11 +381,18 @@ body {
 }
 
 .sidebar-link-icon {
-  width: 18px;
+  width: 20px;
+  height: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.92rem;
+  flex: 0 0 auto;
+}
+
+.sidebar-link-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .modern-card {
@@ -445,8 +433,9 @@ body {
 }
 
 .brand {
-  font-size: 1rem;
-  letter-spacing: 0.1em;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   font-weight: 900;
   color: #241c13;
 }
@@ -467,6 +456,24 @@ body {
 .brand-clickable:focus-visible {
   outline: 2px solid var(--brand-red);
   outline-offset: 2px;
+}
+
+.brand-mark {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+}
+
+.brand-mark svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.brand-text {
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  line-height: 1;
 }
 
 .top-actions {
@@ -1550,6 +1557,16 @@ select {
 
   .brand-clickable {
     max-width: none;
+  }
+
+  .brand-mark {
+    width: 24px;
+    height: 24px;
+  }
+
+  .brand-text {
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
   }
 
   .shad-switch {

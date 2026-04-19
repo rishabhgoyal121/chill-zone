@@ -627,3 +627,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Use browser-default labels/placeholders without reusable form primitives.
 - Rationale: You requested shadcn-style form components and improved login modal visual quality while preserving existing authentication behavior.
 - Impact: Form UI now aligns with existing shadcn-inspired `Button/Card` system, improves accessibility/readability on desktop + mobile, and keeps all login logic unchanged.
+
+## 2026-04-19 18:38 IST
+
+### D-066: Move Brand Identity to Top Bar + Modernize Sidebar Icons
+- Decision: Remove sidebar logo/app name block, place logo + `CHILL ZONE` text in the top-bar brand control, and replace emoji sidebar nav icons with consistent modern SVG icons.
+- Alternatives considered:
+  - Keep branding in sidebar and text-only top bar.
+  - Keep emoji/glyph icons for navigation links.
+- Rationale: You requested cleaner sidebar chrome, explicit top-bar branding, and more modern iconography.
+- Impact: Navigation visuals are cleaner and more consistent, top bar now carries primary brand identity, and sidebar remains focused on actions.

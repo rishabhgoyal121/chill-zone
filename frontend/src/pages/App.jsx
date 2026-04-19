@@ -806,34 +806,57 @@ export function App() {
       <div className={`sidebar-backdrop ${sidebarOpen ? 'open' : ''}`} onClick={() => setSidebarOpen(false)} />
       <div className="app-layout">
         <aside className={`app-sidebar modern-card ${sidebarOpen ? 'open' : ''}`}>
-          <div className="sidebar-head">
-            <div className="sidebar-logo" aria-hidden="true">
-              <svg viewBox="0 0 64 64" role="img">
-                <defs>
-                  <linearGradient id="czg" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#d61f2c" />
-                    <stop offset="100%" stopColor="#f7c843" />
-                  </linearGradient>
-                </defs>
-                <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#czg)" />
-                <path d="M16 33c2-8 7-13 15-13 4 0 8 1 11 4l-4 5c-2-1-4-2-7-2-5 0-8 3-9 8-1 5 1 9 7 9 3 0 6-1 8-3l3 5c-3 2-7 4-12 4-9 0-15-6-12-17z" fill="#fff8ed" />
-              </svg>
-            </div>
-            <div className="sidebar-brand">CHILL ZONE</div>
-            {zonesLoading ? <Badge variant="warning">Syncing</Badge> : null}
-          </div>
-          <Separator />
+          {zonesLoading ? <Badge variant="warning" className="sidebar-sync-badge">Syncing</Badge> : null}
           <nav className="sidebar-nav">
             <p className="sidebar-group-title">Browse</p>
-            <Button variant="ghost" className={`sidebar-link ${activeNav === 'home' ? 'is-active' : ''}`} onClick={navigateHome}><span className="sidebar-link-icon">⌂</span>Home</Button>
-            <Button variant="ghost" className={`sidebar-link ${activeNav === 'movies' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('movies')}><span className="sidebar-link-icon">🎬</span>Movies</Button>
-            <Button variant="ghost" className={`sidebar-link ${activeNav === 'series' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('series')}><span className="sidebar-link-icon">📺</span>Series</Button>
-            <Button variant="ghost" className={`sidebar-link ${activeNav === 'games' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('games')}><span className="sidebar-link-icon">🎮</span>Games</Button>
+            <Button variant="ghost" className={`sidebar-link ${activeNav === 'home' ? 'is-active' : ''}`} onClick={navigateHome}>
+              <span className="sidebar-link-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1v-9.5Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              Home
+            </Button>
+            <Button variant="ghost" className={`sidebar-link ${activeNav === 'movies' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('movies')}>
+              <span className="sidebar-link-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11Z" stroke="currentColor" strokeWidth="1.8" />
+                  <path d="M4 9h16M9 4v5m6-5v5M8 13l2-1.2L12 13l2-1.2L16 13" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              Movies
+            </Button>
+            <Button variant="ghost" className={`sidebar-link ${activeNav === 'series' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('series')}>
+              <span className="sidebar-link-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect x="3.5" y="5" width="17" height="12" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
+                  <path d="M9 20h6M12 17v3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
+              </span>
+              Series
+            </Button>
+            <Button variant="ghost" className={`sidebar-link ${activeNav === 'games' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('games')}>
+              <span className="sidebar-link-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M6.6 9h10.8a3.6 3.6 0 0 1 3.5 4.5l-1.1 4a3 3 0 0 1-4.8 1.6l-1.7-1.4a2 2 0 0 0-2.6 0L9 19.1a3 3 0 0 1-4.8-1.6l-1.1-4A3.6 3.6 0 0 1 6.6 9Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M8.4 13.2v-2.4m-1.2 1.2h2.4M16.5 12h.01M18.2 13.6h.01" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
+              </span>
+              Games
+            </Button>
             {isAdmin && token ? (
               <>
                 <Separator />
                 <p className="sidebar-group-title">Admin</p>
-                <Button variant="ghost" className={`sidebar-link ${activeNav === 'admin' ? 'is-active' : ''}`} onClick={openAdminFromNav}><span className="sidebar-link-icon">⚙</span>Admin</Button>
+                <Button variant="ghost" className={`sidebar-link ${activeNav === 'admin' ? 'is-active' : ''}`} onClick={openAdminFromNav}>
+                  <span className="sidebar-link-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="m12 8.2.9-2.1 2.2.3.8 2.1 2 1.1 1.9-1.1 1.5 1.7-1.1 1.9.7 2.2 2.1.9-.3 2.2-2.1.8-1.1 2 1.1 1.9-1.7 1.5-1.9-1.1-2.2.7-.9 2.1-2.2-.3-.8-2.1-2-1.1-1.9 1.1-1.5-1.7 1.1-1.9-.7-2.2-2.1-.9.3-2.2 2.1-.8 1.1-2-1.1-1.9 1.7-1.5 1.9 1.1 2.2-.7Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+                      <circle cx="12" cy="12" r="2.7" stroke="currentColor" strokeWidth="1.8" />
+                    </svg>
+                  </span>
+                  Admin
+                </Button>
               </>
             ) : null}
           </nav>
@@ -864,7 +887,19 @@ export function App() {
                 }}
                 aria-label="Go to home page"
               >
-                CHILL ZONE
+                <span className="brand-mark" aria-hidden="true">
+                  <svg viewBox="0 0 64 64" role="img">
+                    <defs>
+                      <linearGradient id="czg-topbar" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stopColor="#d61f2c" />
+                        <stop offset="100%" stopColor="#f7c843" />
+                      </linearGradient>
+                    </defs>
+                    <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#czg-topbar)" />
+                    <path d="M16 33c2-8 7-13 15-13 4 0 8 1 11 4l-4 5c-2-1-4-2-7-2-5 0-8 3-9 8-1 5 1 9 7 9 3 0 6-1 8-3l3 5c-3 2-7 4-12 4-9 0-15-6-12-17z" fill="#fff8ed" />
+                  </svg>
+                </span>
+                <span className="brand-text">CHILL ZONE</span>
               </div>
             </div>
 
