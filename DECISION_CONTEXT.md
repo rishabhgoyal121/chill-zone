@@ -637,3 +637,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Keep emoji/glyph icons for navigation links.
 - Rationale: You requested cleaner sidebar chrome, explicit top-bar branding, and more modern iconography.
 - Impact: Navigation visuals are cleaner and more consistent, top bar now carries primary brand identity, and sidebar remains focused on actions.
+
+## 2026-04-19 18:42 IST
+
+### D-067: Add Public Signup Flow + Dual-Mode Auth Modal
+- Decision: Add a public `POST /api/auth/signup` path through the full layered architecture (`api controller -> core controller -> service -> db`), auto-login users after signup, and upgrade the auth modal into explicit `Sign In` / `Sign Up` screens with improved spacing and helper/error layout.
+- Alternatives considered:
+  - Keep login-only auth and require admin-created accounts for every user.
+  - Add a standalone route/page instead of reusing the modal.
+- Rationale: You requested a visible Sign Up path and a dedicated sign-up screen, and also flagged missing spacing/padding in the current sign-in form.
+- Impact: Users can self-register with a safe default role (`moderator`), auth UX is clearer and more spacious, and the existing login behavior remains intact.

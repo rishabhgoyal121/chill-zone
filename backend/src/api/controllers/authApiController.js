@@ -1,4 +1,4 @@
-import { createUserCore, listUsersCore, loginCore, meCore } from '../../core/controllers/authCoreController.js';
+import { createUserCore, listUsersCore, loginCore, meCore, signupCore } from '../../core/controllers/authCoreController.js';
 
 export async function loginApi(req, res) {
   try {
@@ -6,6 +6,15 @@ export async function loginApi(req, res) {
     return res.json(data);
   } catch (err) {
     return res.status(401).json({ error: err.message });
+  }
+}
+
+export async function signupApi(req, res) {
+  try {
+    const data = await signupCore(req.body);
+    return res.status(201).json(data);
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
   }
 }
 

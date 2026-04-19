@@ -558,7 +558,7 @@ body {
 .login-modal-header {
   display: grid;
   gap: 4px;
-  padding-bottom: 8px;
+  padding: 20px 20px 10px;
 }
 
 .login-modal-subtitle {
@@ -569,7 +569,7 @@ body {
 }
 
 .login-modal-content {
-  padding-top: 0;
+  padding: 4px 20px 20px;
 }
 
 .login-field-group {
@@ -578,7 +578,7 @@ body {
 }
 
 .login-helper-text {
-  margin: -1px 0 0;
+  margin: 2px 0 0;
   font-size: 0.76rem;
   color: #7a6750;
 }
@@ -783,7 +783,22 @@ body {
 .login-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 14px;
+}
+
+.auth-mode-switch {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: #6f5d47;
+}
+
+.auth-mode-switch-btn {
+  min-height: 30px;
+  padding: 0 8px;
+  font-size: 0.82rem;
 }
 
 .auth-row {
@@ -1521,6 +1536,11 @@ select {
 
   .login-modal-btn {
     width: 100%;
+  }
+
+  .auth-mode-switch {
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .hero-carousel-card {

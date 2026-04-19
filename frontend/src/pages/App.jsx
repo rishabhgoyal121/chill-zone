@@ -497,9 +497,14 @@ function ZoneSkeletonGrid({ zoneLabel }) {
 }
 
 export function App() {
-  const { user, token, login, logout } = useAuth();
+  const { user, token, login, signup, logout } = useAuth();
   const [email, setEmail] = useState('admin@chillzone.local');
   const [password, setPassword] = useState('ChangeMe123!');
+  const [signupEmail, setSignupEmail] = useState('');
+  const [signupPassword, setSignupPassword] = useState('');
+  const [signupConfirmPassword, setSignupConfirmPassword] = useState('');
+  const [authMode, setAuthMode] = useState('signin');
+  const [authError, setAuthError] = useState('');
   const [zoneData, setZoneData] = useState({ movies: [], series: [], games: [] });
   const [favourites, setFavourites] = useState([]);
   const [message, setMessage] = useState('');
@@ -758,12 +763,42 @@ export function App() {
 
   async function onLogin(e) {
     e.preventDefault();
+    setAuthError('');
     try {
       await login(email, password);
       setMessage('Login successful');
       setLoginModalOpen(false);
       setUserMenuOpen(false);
     } catch (err) {
+      setAuthError(err.message);
+      setMessage(err.message);
+    }
+  }
+
+  async function onSignup(e) {
+    e.preventDefault();
+    setAuthError('');
+
+    if (signupPassword !== signupConfirmPassword) {
+      setAuthError('Passwords do not match');
+      return;
+    }
+    if (signupPassword.length < 8) {
+      setAuthError('Password must be at least 8 characters');
+      return;
+    }
+
+    try {
+      await signup(signupEmail, signupPassword);
+      setMessage('Sign up successful');
+      setLoginModalOpen(false);
+      setUserMenuOpen(false);
+      setAuthMode('signin');
+      setSignupEmail('');
+      setSignupPassword('');
+      setSignupConfirmPassword('');
+    } catch (err) {
+      setAuthError(err.message);
       setMessage(err.message);
     }
   }
@@ -959,6 +994,8 @@ export function App() {
                           variant="ghost"
                           className="user-menu-item"
                           onClick={() => {
+                            setAuthMode('signin');
+                            setAuthError('');
                             setLoginModalOpen(true);
                             setUserMenuOpen(false);
                           }}
@@ -1109,45 +1146,135 @@ export function App() {
       </div>
 
       {loginModalOpen ? (
-        <div className="login-modal-backdrop" role="dialog" aria-modal="true" onClick={() => setLoginModalOpen(false)}>
+        <div
+          className="login-modal-backdrop"
+          role="dialog"
+          aria-modal="true"
+          onClick={() => {
+            setLoginModalOpen(false);
+            setAuthMode('signin');
+            setAuthError('');
+          }}
+        >
           <Card className="login-modal-card modern-card" onClick={(e) => e.stopPropagation()}>
             <CardHeader className="login-modal-header">
-              <CardTitle>Sign In</CardTitle>
-              <p className="login-modal-subtitle">Continue to manage favourites and admin controls.</p>
+              <CardTitle>{authMode === 'signin' ? 'Sign In' : 'Sign Up'}</CardTitle>
+              <p className="login-modal-subtitle">
+                {authMode === 'signin'
+                  ? 'Continue to manage favourites and admin controls.'
+                  : 'Create your account to save favourites and access your profile.'}
+              </p>
             </CardHeader>
             <CardContent className="login-modal-content">
-              <form onSubmit={onLogin} className="login-grid">
-                <div className="login-field-group">
-                  <Label htmlFor="login-email">Email</Label>
-                  <Input
-                    id="login-email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@example.com"
-                    autoComplete="email"
-                    required
-                  />
-                </div>
-                <div className="login-field-group">
-                  <Label htmlFor="login-password">Password</Label>
-                  <Input
-                    id="login-password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Enter your password"
-                    type="password"
-                    autoComplete="current-password"
-                    required
-                  />
-                  <p className="login-helper-text">Use the credentials provided by your admin.</p>
-                </div>
-                {message ? <p className="login-error-text">{message}</p> : null}
-                <div className="login-modal-actions">
-                  <Button className="login-modal-btn" variant="secondary" type="button" onClick={() => setLoginModalOpen(false)}>Cancel</Button>
-                  <Button className="login-modal-btn" type="submit">Login</Button>
-                </div>
-              </form>
+              {authMode === 'signin' ? (
+                <form onSubmit={onLogin} className="login-grid">
+                  <div className="login-field-group">
+                    <Label htmlFor="login-email">Email</Label>
+                    <Input
+                      id="login-email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="you@example.com"
+                      autoComplete="email"
+                      required
+                    />
+                  </div>
+                  <div className="login-field-group">
+                    <Label htmlFor="login-password">Password</Label>
+                    <Input
+                      id="login-password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Enter your password"
+                      type="password"
+                      autoComplete="current-password"
+                      required
+                    />
+                    <p className="login-helper-text">Use your account credentials to continue.</p>
+                  </div>
+                  {authError ? <p className="login-error-text">{authError}</p> : null}
+                  <div className="login-modal-actions">
+                    <Button
+                      className="login-modal-btn"
+                      variant="secondary"
+                      type="button"
+                      onClick={() => {
+                        setLoginModalOpen(false);
+                        setAuthError('');
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                    <Button className="login-modal-btn" type="submit">Login</Button>
+                  </div>
+                  <div className="auth-mode-switch">
+                    <span>Don&apos;t have an account?</span>
+                    <Button className="auth-mode-switch-btn" variant="ghost" type="button" onClick={() => {
+                      setAuthMode('signup');
+                      setAuthError('');
+                    }}
+                    >
+                      Sign up
+                    </Button>
+                  </div>
+                </form>
+              ) : (
+                <form onSubmit={onSignup} className="login-grid">
+                  <div className="login-field-group">
+                    <Label htmlFor="signup-email">Email</Label>
+                    <Input
+                      id="signup-email"
+                      type="email"
+                      value={signupEmail}
+                      onChange={(e) => setSignupEmail(e.target.value)}
+                      placeholder="you@example.com"
+                      autoComplete="email"
+                      required
+                    />
+                  </div>
+                  <div className="login-field-group">
+                    <Label htmlFor="signup-password">Password</Label>
+                    <Input
+                      id="signup-password"
+                      value={signupPassword}
+                      onChange={(e) => setSignupPassword(e.target.value)}
+                      placeholder="Create a password"
+                      type="password"
+                      autoComplete="new-password"
+                      required
+                    />
+                  </div>
+                  <div className="login-field-group">
+                    <Label htmlFor="signup-confirm-password">Confirm Password</Label>
+                    <Input
+                      id="signup-confirm-password"
+                      value={signupConfirmPassword}
+                      onChange={(e) => setSignupConfirmPassword(e.target.value)}
+                      placeholder="Re-enter your password"
+                      type="password"
+                      autoComplete="new-password"
+                      required
+                    />
+                    <p className="login-helper-text">Use at least 8 characters for your password.</p>
+                  </div>
+                  {authError ? <p className="login-error-text">{authError}</p> : null}
+                  <div className="login-modal-actions">
+                    <Button
+                      className="login-modal-btn"
+                      variant="secondary"
+                      type="button"
+                      onClick={() => {
+                        setAuthMode('signin');
+                        setAuthError('');
+                      }}
+                    >
+                      Back to Sign In
+                    </Button>
+                    <Button className="login-modal-btn" type="submit">Create Account</Button>
+                  </div>
+                </form>
+              )}
             </CardContent>
           </Card>
         </div>

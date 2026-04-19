@@ -4,7 +4,8 @@ import {
   createUserApi,
   listUsersApi,
   loginApi,
-  meApi
+  meApi,
+  signupApi
 } from './api/controllers/authApiController.js';
 import {
   addOverrideApi,
@@ -31,6 +32,7 @@ export function createApp() {
   app.get('/health', (_, res) => res.json({ ok: true }));
 
   app.post('/api/auth/login', loginApi);
+  app.post('/api/auth/signup', signupApi);
   app.get('/api/auth/me', requireAuth, meApi);
 
   app.get('/api/content/movies', listMoviesApi);
