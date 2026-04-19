@@ -57,11 +57,6 @@ function formatZone(zone) {
   return ZONES.find((z) => z.key === zone)?.label || zone;
 }
 
-function formatImdbRating(value) {
-  if (typeof value !== 'number' || Number.isNaN(value)) return 'IMDb: N/A';
-  return `IMDb: ${value.toFixed(1)}`;
-}
-
 function parseRoute(pathname) {
   const parts = pathname.split('/').filter(Boolean);
   if (parts[0] === 'detail' && parts.length >= 3) {
@@ -336,12 +331,10 @@ function DetailPage({ item, onBack }) {
           <div className="detail-copy">
             <div className="detail-badge-row">
               <Badge variant="soft">{formatZone(item.zone)}</Badge>
-              <span className="imdb-rating-chip">{formatImdbRating(item.imdbRating)}</span>
             </div>
             <h1>{item.title}</h1>
             <p>{longDescription(item)}</p>
             <div className="detail-meta">
-              <div><strong>IMDb Rating:</strong> {formatImdbRating(item.imdbRating).replace('IMDb: ', '')}</div>
               <div><strong>Length:</strong> {itemLength(item)}</div>
               <div><strong>Region Coverage:</strong> IN, US</div>
               <div><strong>Last Updated:</strong> {item.updatedAt ? new Date(item.updatedAt).toLocaleString() : 'N/A'}</div>
@@ -445,7 +438,6 @@ function HeroCarousel({ slides, activeIndex, onPrev, onNext, onGoTo, onOpen }) {
         <div className="hero-carousel-copy">
           <div className="hero-badge-row">
             <Badge variant="soft">{formatZone(active.zone)}</Badge>
-            <span className="imdb-rating-chip">{formatImdbRating(active.imdbRating)}</span>
           </div>
           <h3>{active.title}</h3>
           <p>{shortBlurb(active)}</p>
@@ -633,15 +625,6 @@ export function App() {
     setMessage(`Admin refresh triggered: ${jobType}`);
   }
 
-  async function runImdbBackfill() {
-    const result = await api('/api/admin/backfill-imdb-ratings', {
-      method: 'POST',
-      body: JSON.stringify({ limit: 250 })
-    });
-    await loadZones();
-    setMessage(`IMDb ratings backfill complete: ${result.withRating}/${result.scanned} titles now have ratings`);
-  }
-
   async function createUser() {
     await api('/api/admin/users', { method: 'POST', body: JSON.stringify(newUser) });
     setNewUser({ email: '', password: '', role: 'moderator' });
@@ -778,7 +761,6 @@ export function App() {
                                 </div>
                               </div>
                               <CardTitle>{item.title}</CardTitle>
-                              <p className="card-imdb-rating">{formatImdbRating(item.imdbRating)}</p>
                             </CardContent>
                           </Card>
                         );
@@ -801,7 +783,6 @@ export function App() {
                       <div className="button-row">
                         <Button onClick={() => triggerRefresh('incremental')}>Run Incremental</Button>
                         <Button variant="secondary" onClick={() => triggerRefresh('full')}>Run Full Refresh</Button>
-                        <Button variant="secondary" onClick={runImdbBackfill}>Backfill IMDb Ratings</Button>
                       </div>
                     </CardContent>
                   </Card>

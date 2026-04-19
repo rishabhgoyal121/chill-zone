@@ -63,7 +63,6 @@ export async function fetchTrendingGames(limit = 20) {
         externalId,
         title: node.title.trim(),
         gameUrl: `https://www.crazygames.com/game/${node.slug}`,
-        imdbRating: null,
         synopsis: 'Trending game discovered from CrazyGames.',
         posterUrl: node.posterUrl
       });
@@ -109,7 +108,6 @@ export async function fetchTrendingGames(limit = 20) {
       externalId,
       title,
       gameUrl: fullUrl,
-      imdbRating: null,
       synopsis: 'Trending game discovered from CrazyGames.',
       posterUrl
     });

@@ -21,16 +21,6 @@ function normalizeImageUrl(url) {
   return value;
 }
 
-function parseImdbRating(value) {
-  if (!value) return null;
-  const text = String(value).replace(/\s+/g, ' ').trim();
-  const match = text.match(/(?:imdb[^0-9]{0,12})?([0-9](?:\.[0-9])?)\s*\/\s*10/i);
-  if (!match) return null;
-  const rating = Number.parseFloat(match[1]);
-  if (!Number.isFinite(rating) || rating < 0 || rating > 10) return null;
-  return Number(rating.toFixed(1));
-}
-
 function parseCards(html, entryType, zonePrefix) {
   const $ = cheerio.load(html);
   const items = [];
@@ -57,20 +47,11 @@ function parseCards(html, entryType, zonePrefix) {
       .replace(/\s+/g, ' ');
     const noisy = /^(free|free tv|tv|watch now)$/i.test(rawText) || rawText.length < 3;
     const title = noisy ? titleFromSlug(slug) : rawText;
-    const contextText = [
-      rawText,
-      $(el).text(),
-      $(el).parent().text(),
-      $(el).closest('article,li,div').first().text()
-    ].join(' ');
-    const imdbRating = parseImdbRating(contextText);
-
     seen.add(externalId);
     items.push({
       externalId,
       title,
       imdbUrl: `https://www.imdb.com/find/?q=${encodeURIComponent(title)}`,
-      imdbRating,
       synopsis: 'A trending pick currently popular on JustWatch.',
       posterUrl
     });

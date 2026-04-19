@@ -8,7 +8,6 @@ import {
 } from './api/controllers/authApiController.js';
 import {
   addOverrideApi,
-  backfillImdbRatingsApi,
   listGamesApi,
   listMoviesApi,
   listRecentScrapeJobsApi,
@@ -49,7 +48,6 @@ export function createApp() {
   app.get('/api/admin/scrape-jobs', requireAuth, requireRole(['super_admin', 'content_admin', 'moderator']), listRecentScrapeJobsApi);
   app.patch('/api/admin/sources/:sourceId', requireAuth, requireRole(['super_admin', 'content_admin']), setSourceEnabledApi);
   app.post('/api/admin/overrides', requireAuth, requireRole(['super_admin', 'content_admin', 'moderator']), addOverrideApi);
-  app.post('/api/admin/backfill-imdb-ratings', requireAuth, requireRole(['super_admin', 'content_admin']), backfillImdbRatingsApi);
 
   return app;
 }

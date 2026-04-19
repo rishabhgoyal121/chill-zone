@@ -31,7 +31,7 @@ export async function removeFavourite({ userId, titleExternalId }) {
 export async function listFavourites(userId) {
   const result = await query(
     `SELECT f.id AS fav_id, f.user_id, f.title_external_id, f.created_at,
-            t.zone, t.title, t.imdb_url, t.imdb_rating, t.synopsis, t.freshness
+            t.zone, t.title, t.imdb_url, t.synopsis, t.freshness
      FROM favourites f
      LEFT JOIN titles t ON t.external_id = f.title_external_id
      WHERE f.user_id = $1
@@ -51,7 +51,6 @@ export async function listFavourites(userId) {
         zone: row.zone,
         title: row.title,
         imdbUrl: row.imdb_url,
-        imdbRating: row.imdb_rating !== null ? Number(row.imdb_rating) : null,
         synopsis: row.synopsis,
         freshness: row.freshness
       }

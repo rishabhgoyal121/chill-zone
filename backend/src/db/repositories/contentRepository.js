@@ -5,13 +5,12 @@ export async function upsertTitlesAndLinks({ titles = [], links = [], jobType, s
   await withTransaction(async (client) => {
     for (const title of titles) {
       await client.query(
-        `INSERT INTO titles (id, external_id, zone, title, imdb_url, imdb_rating, poster_url, synopsis, freshness, source_type)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+        `INSERT INTO titles (id, external_id, zone, title, imdb_url, poster_url, synopsis, freshness, source_type)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
          ON CONFLICT (external_id, zone)
          DO UPDATE SET
            title = EXCLUDED.title,
            imdb_url = EXCLUDED.imdb_url,
-           imdb_rating = EXCLUDED.imdb_rating,
            poster_url = EXCLUDED.poster_url,
            synopsis = EXCLUDED.synopsis,
            freshness = EXCLUDED.freshness,
@@ -23,7 +22,6 @@ export async function upsertTitlesAndLinks({ titles = [], links = [], jobType, s
           title.zone,
           title.title,
           title.imdbUrl || null,
-          title.imdbRating ?? null,
           title.posterUrl || null,
           title.synopsis || null,
           title.freshness || null,
@@ -59,7 +57,7 @@ export async function upsertTitlesAndLinks({ titles = [], links = [], jobType, s
 
 export async function listZoneTitles(zone) {
   const titlesResult = await query(
-    `SELECT external_id, zone, title, imdb_url, imdb_rating, poster_url, synopsis, freshness, source_type, updated_at
+    `SELECT external_id, zone, title, imdb_url, poster_url, synopsis, freshness, source_type, updated_at
      FROM titles
      WHERE zone = $1
      ORDER BY updated_at DESC
@@ -95,7 +93,6 @@ export async function listZoneTitles(zone) {
     zone: row.zone,
     title: row.title,
     imdbUrl: row.imdb_url,
-    imdbRating: row.imdb_rating !== null ? Number(row.imdb_rating) : null,
     posterUrl: row.poster_url,
     synopsis: row.synopsis,
     freshness: row.freshness,
@@ -103,48 +100,6 @@ export async function listZoneTitles(zone) {
     updatedAt: row.updated_at,
     links: linksByExternal.get(row.external_id) || []
   }));
-}
-
-export async function listTitlesForImdbBackfill(limit = 120) {
-  const safeLimit = Math.max(1, Math.min(Number(limit) || 120, 500));
-  const result = await query(
-    `SELECT external_id, zone, title, imdb_url, imdb_rating
-     FROM titles
-     WHERE zone IN ('movies', 'series')
-     ORDER BY updated_at DESC
-     LIMIT $1`,
-    [safeLimit]
-  );
-
-  return result.rows.map((row) => ({
-    externalId: row.external_id,
-    zone: row.zone,
-    title: row.title,
-    imdbUrl: row.imdb_url,
-    imdbRating: row.imdb_rating !== null ? Number(row.imdb_rating) : null
-  }));
-}
-
-export async function updateTitleImdbMetadata({ externalId, zone, imdbUrl, imdbRating }) {
-  const result = await query(
-    `UPDATE titles
-     SET
-       imdb_url = COALESCE($3, imdb_url),
-       imdb_rating = COALESCE($4, imdb_rating),
-       updated_at = NOW()
-     WHERE external_id = $1 AND zone = $2
-     RETURNING external_id, zone, imdb_url, imdb_rating`,
-    [externalId, zone, imdbUrl || null, typeof imdbRating === 'number' ? imdbRating : null]
-  );
-
-  if (!result.rowCount) return null;
-  const row = result.rows[0];
-  return {
-    externalId: row.external_id,
-    zone: row.zone,
-    imdbUrl: row.imdb_url,
-    imdbRating: row.imdb_rating !== null ? Number(row.imdb_rating) : null
-  };
 }
 
 export async function listSources() {

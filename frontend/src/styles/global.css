@@ -540,17 +540,6 @@ select {
   overflow: hidden;
 }
 
-.card-imdb-rating {
-  margin: 0;
-  font-size: 0.84rem;
-  font-weight: 800;
-  color: #0f172a;
-  background: rgba(241, 245, 249, 0.9);
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  border-radius: 999px;
-  padding: 4px 10px;
-}
-
 .card-actions {
   display: flex;
   gap: 8px;
@@ -720,18 +709,6 @@ select {
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-}
-
-.imdb-rating-chip {
-  display: inline-flex;
-  align-items: center;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  background: rgba(241, 245, 249, 0.9);
-  color: #0f172a;
-  font-size: 0.78rem;
-  font-weight: 800;
-  padding: 4px 9px;
 }
 
 .detail-copy p {

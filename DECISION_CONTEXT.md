@@ -457,3 +457,23 @@ This document tracks major and minor project decisions, alternatives considered,
   - Manual SQL updates for ratings without API workflow support.
 - Rationale: You reported persistent `IMDb: N/A`; this required a real secondary metadata enrichment pass rather than relying on sparse source snippets.
 - Impact: New and existing catalog entries can now be populated with real IMDb ratings through a repeatable admin workflow, while preserving architecture layering and safe fallback behavior.
+
+## 2026-04-19 14:40 IST
+
+### D-049: Remove IMDb Rating Feature Due to Reliability and Compliance Risk
+- Decision: Remove all `imdbRating` ingestion, persistence, API exposure, admin backfill flow, and frontend rendering; keep non-rating metadata flows intact.
+- Alternatives considered:
+  - Keep existing IMDb GraphQL/HTML scraping path and retry with connector tweaks.
+  - Keep `imdbRating` schema/API fields with permanent `N/A` UI fallback.
+- Rationale: Rating acquisition depended on brittle and challenge-prone scraping/undocumented endpoints and produced unstable availability; removing the feature is safer than serving unreliable metadata.
+- Impact: No IMDb rating appears in cards/hero/detail/admin flows, contracts are simplified, and scrape/list behavior remains stable for titles/links/media.
+
+## 2026-04-19 14:48 IST
+
+### D-050: Auto-Migrate Existing DBs by Dropping `titles.imdb_rating`
+- Decision: Execute `ALTER TABLE titles DROP COLUMN IF EXISTS imdb_rating` during DB initialization.
+- Alternatives considered:
+  - Leave legacy column in place as unused data.
+  - Require a manual one-off SQL migration outside app startup.
+- Rationale: You explicitly asked to remove IMDb rating data completely; startup migration keeps all environments consistent without manual intervention.
+- Impact: Existing databases automatically remove the obsolete rating column on next backend boot.
