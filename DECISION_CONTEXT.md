@@ -667,3 +667,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Replace sidebar with a mobile drawer toggle only.
 - Rationale: You requested removing the sidebar while retaining straightforward access to all app sections.
 - Impact: Layout is now single-column with cleaner content focus; navigation remains fully accessible from the header across desktop and mobile.
+
+## 2026-04-19 18:52 IST
+
+### D-070: Remove Home Admin Panel and Use Initial-Based User Trigger
+- Decision: Remove the admin management card section from the home page and switch the top-right user trigger from a profile icon to a text avatar using the logged-in user’s email initial (with `?` fallback when logged out).
+- Alternatives considered:
+  - Keep admin card visible only for high-privilege roles.
+  - Keep static profile icon regardless of auth state.
+- Rationale: You requested cleaner home-page presentation without admin cards and preferred a more personal identity cue than a generic icon.
+- Impact: Home page is less cluttered, user identity is immediately visible in the header when authenticated, and auth menu behavior stays unchanged.

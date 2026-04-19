@@ -508,10 +508,6 @@ export function App() {
   const [zoneData, setZoneData] = useState({ movies: [], series: [], games: [] });
   const [favourites, setFavourites] = useState([]);
   const [message, setMessage] = useState('');
-  const [users, setUsers] = useState([]);
-  const [sources, setSources] = useState([]);
-  const [scrapeJobs, setScrapeJobs] = useState([]);
-  const [newUser, setNewUser] = useState({ email: '', password: '', role: 'moderator' });
   const [route, setRoute] = useState(() => parseRoute(window.location.pathname));
   const [heroIndex, setHeroIndex] = useState(0);
   const [heroPaused, setHeroPaused] = useState(false);
@@ -674,16 +670,6 @@ export function App() {
     jumpTo(`zone-${zoneKey}`);
   }
 
-  function openAdminFromNav() {
-    setActiveNav('admin');
-    if (route.page !== 'home') {
-      navigateHome();
-      window.setTimeout(() => jumpTo('admin-root'), 70);
-      return;
-    }
-    jumpTo('admin-root');
-  }
-
   async function loadZones({ silent = false } = {}) {
     if (!silent) setZonesLoading(true);
     try {
@@ -713,18 +699,6 @@ export function App() {
     setFavourites(data);
   }
 
-  async function loadAdmin() {
-    if (!token || !isAdmin) return;
-    const [src, userList, jobs] = await Promise.all([
-      api('/api/admin/sources'),
-      user?.role === 'super_admin' || user?.role === 'content_admin' ? api('/api/admin/users') : Promise.resolve([]),
-      api('/api/admin/scrape-jobs?limit=25')
-    ]);
-    setSources(src);
-    setUsers(userList);
-    setScrapeJobs(jobs);
-  }
-
   useEffect(() => {
     let active = true;
     const startedAt = Date.now();
@@ -752,8 +726,7 @@ export function App() {
 
   useEffect(() => {
     loadFavourites().catch((err) => setMessage(err.message));
-    loadAdmin().catch((err) => setMessage(err.message));
-  }, [token, isAdmin]);
+  }, [token]);
 
   async function onLogin(e) {
     e.preventDefault();
@@ -808,24 +781,6 @@ export function App() {
     await loadFavourites();
   }
 
-  async function triggerRefresh(jobType) {
-    await api('/api/admin/refresh', { method: 'POST', body: JSON.stringify({ jobType }) });
-    await loadZones();
-    setMessage(`Admin refresh triggered: ${jobType}`);
-  }
-
-  async function createUser() {
-    await api('/api/admin/users', { method: 'POST', body: JSON.stringify(newUser) });
-    setNewUser({ email: '', password: '', role: 'moderator' });
-    await loadAdmin();
-    setMessage('User created by admin');
-  }
-
-  async function toggleSource(sourceId, enabled) {
-    await api(`/api/admin/sources/${sourceId}`, { method: 'PATCH', body: JSON.stringify({ enabled }) });
-    await loadAdmin();
-  }
-
   if (initialLoadPending) {
     return <AppLoader subtitle="Fetching movies, series and games..." />;
   }
@@ -870,9 +825,6 @@ export function App() {
               <Button variant="ghost" className={`top-nav-link ${activeNav === 'movies' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('movies')}>Movies</Button>
               <Button variant="ghost" className={`top-nav-link ${activeNav === 'series' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('series')}>Series</Button>
               <Button variant="ghost" className={`top-nav-link ${activeNav === 'games' ? 'is-active' : ''}`} onClick={() => openZoneFromNav('games')}>Games</Button>
-              {isAdmin && token ? (
-                <Button variant="ghost" className={`top-nav-link ${activeNav === 'admin' ? 'is-active' : ''}`} onClick={openAdminFromNav}>Admin</Button>
-              ) : null}
               {zonesLoading ? <Badge variant="warning" className="top-nav-sync">Syncing</Badge> : null}
             </nav>
 
@@ -885,12 +837,9 @@ export function App() {
                   onClick={() => setUserMenuOpen((x) => !x)}
                   aria-label="Open user menu"
                 >
-                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                    <path
-                      d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Zm0 2c-4 0-7.2 2.2-8 5.3-.1.4.2.7.6.7h14.8c.4 0 .7-.3.6-.7C19.2 16.2 16 14 12 14Z"
-                      fill="currentColor"
-                    />
-                  </svg>
+                  <span className="user-menu-initial" aria-hidden="true">
+                    {token ? (user?.email?.trim()?.charAt(0)?.toUpperCase() || 'U') : '?'}
+                  </span>
                 </Button>
                 {userMenuOpen ? (
                   <div className="user-menu-dropdown">
@@ -1033,50 +982,6 @@ export function App() {
               ))}
             </section>
 
-            {isAdmin && token ? (
-              <section id="admin-root" className="admin modern-card">
-                <h2>Admin Panel</h2>
-                <div className="admin-grid">
-                  <Card className="modern-card">
-                    <CardHeader><CardTitle>Refresh</CardTitle></CardHeader>
-                    <CardContent>
-                      <div className="button-row">
-                        <Button onClick={() => triggerRefresh('incremental')}>Run Incremental</Button>
-                        <Button variant="secondary" onClick={() => triggerRefresh('full')}>Run Full Refresh</Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="modern-card">
-                    <CardHeader><CardTitle>Sources</CardTitle></CardHeader>
-                    <CardContent>
-                      {sources.map((s) => (
-                        <label key={s.id} className="switch-row">
-                          <span>{s.name} ({s.type})</span>
-                          <input type="checkbox" checked={s.enabled} onChange={(e) => toggleSource(s.id, e.target.checked)} />
-                        </label>
-                      ))}
-                    </CardContent>
-                  </Card>
-
-                  {(user?.role === 'super_admin' || user?.role === 'content_admin') && (
-                    <Card className="modern-card">
-                      <CardHeader><CardTitle>Create User</CardTitle></CardHeader>
-                      <CardContent>
-                        <input value={newUser.email} placeholder="Email" onChange={(e) => setNewUser((x) => ({ ...x, email: e.target.value }))} />
-                        <input value={newUser.password} placeholder="Password" type="password" onChange={(e) => setNewUser((x) => ({ ...x, password: e.target.value }))} />
-                        <select value={newUser.role} onChange={(e) => setNewUser((x) => ({ ...x, role: e.target.value }))}>
-                          <option value="moderator">moderator</option>
-                          <option value="content_admin">content_admin</option>
-                          <option value="super_admin">super_admin</option>
-                        </select>
-                        <Button onClick={createUser}>Create Account</Button>
-                      </CardContent>
-                    </Card>
-                  )}
-                </div>
-              </section>
-            ) : null}
           </>
         )}
           </section>
