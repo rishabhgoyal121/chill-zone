@@ -6,7 +6,8 @@
     "dev": "node --watch src/server.js",
     "start": "node src/server.js",
     "lint": "node -e \"console.log('No lint configured yet')\"",
-    "export:fallback": "node scripts/exportFallbackContent.js"
+    "export:fallback": "node scripts/exportFallbackContent.js",
+    "seed:demo": "node scripts/seedDemoData.js"
   },
   "dependencies": {
     "axios": "^1.9.0",

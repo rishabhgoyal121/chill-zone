@@ -547,3 +547,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Abandon Render deployment.
 - Rationale: Render prompted for billing when provisioning another managed DB via blueprint; web-only deploy removes that blocker.
 - Impact: Backend can still auto-deploy from `main`; database can be provided from existing/free external Postgres.
+
+## 2026-04-19 17:10 IST
+
+### D-058: Add Deterministic Non-Destructive Demo Seed Script
+- Decision: Add `backend/scripts/seedDemoData.js` and `npm --workspace backend run seed:demo` to upsert curated movies/series/games plus links without deleting existing production data.
+- Alternatives considered:
+  - Seed via direct SQL manually each time.
+  - Trigger seeding only via live source scraping refresh endpoints.
+- Rationale: You requested script-driven remote seeding from local terminal and wanted non-destructive behavior.
+- Impact: Repeatable demo content population for remote Neon DB while preserving existing titles and user data.
