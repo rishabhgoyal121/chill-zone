@@ -577,3 +577,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Keep top bar constrained to content width.
 - Rationale: You requested cleaner top-level header hierarchy with account-related controls grouped under profile interactions.
 - Impact: Top bar is visually simpler and full-width, while NSFW preference remains accessible via the user icon menu.
+
+## 2026-04-19 18:07 IST
+
+### D-061: Add Suspense Boundary + Cinematic API Loading Experience
+- Decision: Introduce lazy loading for the root app module with `Suspense` fallback and add a dedicated cinematic `AppLoader` screen for slow initial backend data fetches.
+- Alternatives considered:
+  - Keep synchronous root render and rely only on static text placeholders.
+  - Show no full-screen loading state and wait on blank shell until API resolves.
+- Rationale: Backend responses can be slow; users need immediate visual feedback and progress context during both JS chunk and API wait phases.
+- Impact: Faster perceived startup, clearer loading affordance, and explicit sync indicator (`Syncing` badge) during zone refresh operations.

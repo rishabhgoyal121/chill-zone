@@ -12,6 +12,87 @@
 
 * { box-sizing: border-box; }
 
+.app-loader {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(214, 31, 44, 0.24), transparent 40%),
+    radial-gradient(circle at 90% 12%, rgba(247, 200, 67, 0.28), transparent 38%),
+    radial-gradient(circle at 50% 95%, rgba(255, 255, 255, 0.16), transparent 45%),
+    #120b07;
+}
+
+.app-loader-card {
+  width: min(560px, 92vw);
+  padding: 28px 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(252, 231, 195, 0.32);
+  background: linear-gradient(140deg, rgba(35, 20, 14, 0.86), rgba(72, 38, 22, 0.74));
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+  color: #fff6e9;
+  text-align: center;
+}
+
+.app-loader-kicker {
+  margin: 0;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  color: #ffd56d;
+}
+
+.app-loader-card h1 {
+  margin: 8px 0 6px;
+  font-size: clamp(1.6rem, 3.6vw, 2.3rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.app-loader-subtitle {
+  margin: 0;
+  color: rgba(255, 240, 210, 0.86);
+  font-size: 0.97rem;
+}
+
+.app-loader-orbit {
+  margin: 22px auto 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-loader-orbit span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #ffd56d;
+  box-shadow: 0 0 0 0 rgba(255, 213, 109, 0.35);
+  animation: loaderPulse 1.2s ease-in-out infinite;
+}
+
+.app-loader-orbit span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.app-loader-orbit span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes loaderPulse {
+  0%, 100% {
+    transform: translateY(0) scale(0.95);
+    opacity: 0.5;
+    box-shadow: 0 0 0 0 rgba(255, 213, 109, 0.25);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.08);
+    opacity: 1;
+    box-shadow: 0 0 0 7px rgba(255, 213, 109, 0);
+  }
+}
+
 .shad-btn {
   --btn-bg: #0f172a;
   --btn-fg: #ffffff;
@@ -1254,6 +1335,12 @@ select {
 @media (prefers-reduced-motion: reduce) {
   .modern-topbar {
     transition: none;
+  }
+
+  .app-loader-orbit span {
+    animation: none;
+    transform: none;
+    opacity: 0.9;
   }
 }
 

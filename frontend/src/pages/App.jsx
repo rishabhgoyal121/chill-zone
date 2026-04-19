@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Badge } from '../components/ui/badge';
 import { Separator } from '../components/ui/separator';
 import { Switch } from '../components/ui/switch';
+import { AppLoader } from '../components/AppLoader.jsx';
 
 const ZONES = [
   { key: 'movies', label: 'Movies', emoji: '🎬' },
@@ -486,6 +487,8 @@ export function App() {
   const [mobileHeaderHidden, setMobileHeaderHidden] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [initialLoadPending, setInitialLoadPending] = useState(true);
+  const [zonesLoading, setZonesLoading] = useState(false);
   const lastScrollYRef = useRef(0);
   const userMenuRef = useRef(null);
 
@@ -638,7 +641,8 @@ export function App() {
     jumpTo('admin-root');
   }
 
-  async function loadZones() {
+  async function loadZones({ silent = false } = {}) {
+    if (!silent) setZonesLoading(true);
     try {
       const [movies, series, games] = await Promise.all([
         api('/api/content/movies'),
@@ -657,6 +661,8 @@ export function App() {
         games: fallback.games || []
       });
       setDataMode('fallback');
+    } finally {
+      if (!silent) setZonesLoading(false);
     }
   }
 
@@ -679,7 +685,28 @@ export function App() {
   }
 
   useEffect(() => {
-    loadZones().catch((err) => setMessage(err.message));
+    let active = true;
+    const startedAt = Date.now();
+
+    async function boot() {
+      try {
+        await loadZones({ silent: true });
+      } catch (err) {
+        if (active) setMessage(err.message);
+      } finally {
+        const elapsed = Date.now() - startedAt;
+        const wait = Math.max(0, 1100 - elapsed);
+        window.setTimeout(() => {
+          if (!active) return;
+          setInitialLoadPending(false);
+        }, wait);
+      }
+    }
+
+    boot();
+    return () => {
+      active = false;
+    };
   }, []);
 
   useEffect(() => {
@@ -726,6 +753,10 @@ export function App() {
     await loadAdmin();
   }
 
+  if (initialLoadPending) {
+    return <AppLoader subtitle="Fetching movies, series and games from backend..." />;
+  }
+
   return (
     <main className="app-shell modern-shell">
       <div className={`sidebar-backdrop ${sidebarOpen ? 'open' : ''}`} onClick={() => setSidebarOpen(false)} />
@@ -736,6 +767,7 @@ export function App() {
             <Badge variant={dataMode === 'live' ? 'success' : 'warning'}>
               {dataMode === 'live' ? 'Live' : 'Fallback'}
             </Badge>
+            {zonesLoading ? <Badge variant="warning">Syncing</Badge> : null}
           </div>
           <nav className="sidebar-nav">
             <Button variant="ghost" className="sidebar-link" onClick={navigateHome}>Home</Button>
