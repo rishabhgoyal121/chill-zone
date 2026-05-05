@@ -16,80 +16,213 @@
   min-height: 100vh;
   display: grid;
   place-items: center;
-  padding: 20px;
+  padding: 20px 16px;
   background:
-    radial-gradient(circle at 10% 10%, rgba(214, 31, 44, 0.24), transparent 40%),
-    radial-gradient(circle at 90% 12%, rgba(247, 200, 67, 0.28), transparent 38%),
-    radial-gradient(circle at 50% 95%, rgba(255, 255, 255, 0.16), transparent 45%),
+    radial-gradient(circle at 10% 10%, rgba(214, 31, 44, 0.3), transparent 40%),
+    radial-gradient(circle at 90% 12%, rgba(247, 200, 67, 0.3), transparent 38%),
+    radial-gradient(circle at 50% 95%, rgba(255, 255, 255, 0.18), transparent 45%),
     #120b07;
 }
 
 .app-loader-card {
-  width: min(560px, 92vw);
-  padding: 28px 24px;
-  border-radius: 18px;
+  width: min(620px, 96vw);
+  padding: 26px 22px;
+  border-radius: 20px;
   border: 1px solid rgba(252, 231, 195, 0.32);
-  background: linear-gradient(140deg, rgba(35, 20, 14, 0.86), rgba(72, 38, 22, 0.74));
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(138deg, rgba(35, 20, 14, 0.9), rgba(76, 42, 24, 0.78));
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.44);
   color: #fff6e9;
-  text-align: center;
+  text-align: left;
+  backdrop-filter: blur(2px);
 }
 
 .app-loader-kicker {
   margin: 0;
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 900;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   color: #ffd56d;
 }
 
 .app-loader-card h1 {
-  margin: 8px 0 6px;
-  font-size: clamp(1.6rem, 3.6vw, 2.3rem);
-  line-height: 1.1;
+  margin: 8px 0 4px;
+  font-size: clamp(1.5rem, 3.6vw, 2.2rem);
+  line-height: 1.14;
   letter-spacing: -0.015em;
 }
 
 .app-loader-subtitle {
-  margin: 0;
+  margin: 0 0 16px;
   color: rgba(255, 240, 210, 0.86);
   font-size: 0.97rem;
 }
 
-.app-loader-orbit {
-  margin: 22px auto 2px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+.app-loader-progress-wrap {
+  margin-bottom: 14px;
 }
 
-.app-loader-orbit span {
-  width: 10px;
+.app-loader-progress-track {
+  width: 100%;
   height: 10px;
   border-radius: 999px;
-  background: #ffd56d;
-  box-shadow: 0 0 0 0 rgba(255, 213, 109, 0.35);
-  animation: loaderPulse 1.2s ease-in-out infinite;
+  border: 1px solid rgba(252, 231, 195, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
 }
 
-.app-loader-orbit span:nth-child(2) {
-  animation-delay: 0.15s;
+.app-loader-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #f97316, #facc15);
+  transition: width 0.9s ease;
 }
 
-.app-loader-orbit span:nth-child(3) {
-  animation-delay: 0.3s;
+.app-loader-progress-meta {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: rgba(255, 240, 210, 0.85);
+  font-size: 0.82rem;
+  font-weight: 700;
 }
 
-@keyframes loaderPulse {
+.app-loader-stage-list {
+  margin: 0 0 14px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.app-loader-stage-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: rgba(255, 240, 210, 0.68);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.app-loader-stage-item::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 240, 210, 0.5);
+  background: transparent;
+}
+
+.app-loader-stage-item.is-active {
+  color: #fff6e8;
+}
+
+.app-loader-stage-item.is-active::before {
+  border-color: #facc15;
+  background: #facc15;
+  box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.22);
+}
+
+.app-loader-stage-item.is-complete {
+  color: rgba(240, 253, 244, 0.92);
+}
+
+.app-loader-stage-item.is-complete::before {
+  border-color: #86efac;
+  background: #86efac;
+}
+
+.app-loader-tip-card {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(252, 231, 195, 0.26);
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.app-loader-tip-card p {
+  margin: 0;
+  color: rgba(255, 245, 225, 0.9);
+  font-size: 0.84rem;
+}
+
+.app-loader-boost-btn {
+  border: 1px solid rgba(255, 214, 117, 0.58);
+  background: rgba(250, 204, 21, 0.18);
+  color: #fff4cf;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.16s ease, background 0.16s ease;
+}
+
+.app-loader-boost-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(250, 204, 21, 0.28);
+}
+
+.app-loader-boost-btn:active {
+  transform: translateY(0);
+}
+
+.app-loader-footnote {
+  margin: 12px 0 0;
+  font-size: 0.8rem;
+  color: rgba(255, 240, 210, 0.73);
+}
+
+.loading-journey-ticker {
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #e7d5af;
+  background: linear-gradient(140deg, rgba(255, 248, 230, 0.98), rgba(255, 236, 193, 0.78));
+  color: #433525;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loading-journey-ticker p {
+  margin: 0;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.loading-journey-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #d61f2c;
+  box-shadow: 0 0 0 0 rgba(214, 31, 44, 0.36);
+  animation: journeyPulse 1.25s ease-in-out infinite;
+}
+
+@keyframes journeyPulse {
   0%, 100% {
-    transform: translateY(0) scale(0.95);
-    opacity: 0.5;
-    box-shadow: 0 0 0 0 rgba(255, 213, 109, 0.25);
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(214, 31, 44, 0.28);
   }
   50% {
-    transform: translateY(-4px) scale(1.08);
-    opacity: 1;
-    box-shadow: 0 0 0 7px rgba(255, 213, 109, 0);
+    transform: scale(1.1);
+    box-shadow: 0 0 0 8px rgba(214, 31, 44, 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .app-loader-card {
+    padding: 22px 16px;
+  }
+
+  .app-loader-tip-card {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -1505,10 +1638,18 @@ select {
     transition: none;
   }
 
-  .app-loader-orbit span {
+  .loading-journey-dot {
     animation: none;
     transform: none;
     opacity: 0.9;
+  }
+
+  .app-loader-progress-fill {
+    transition: none;
+  }
+
+  .app-loader-boost-btn {
+    transition: none;
   }
 
   .skeleton-block {

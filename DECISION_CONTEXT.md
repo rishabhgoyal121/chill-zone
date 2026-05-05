@@ -677,3 +677,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Keep static profile icon regardless of auth state.
 - Rationale: You requested cleaner home-page presentation without admin cards and preferred a more personal identity cue than a generic icon.
 - Impact: Home page is less cluttered, user identity is immediately visible in the header when authenticated, and auth menu behavior stays unchanged.
+
+## 2026-05-05 22:07 IST
+
+### D-071: Replace Passive Loader Dots with Active Micro-Progress Journey
+- Decision: Replace the passive orbit-dot initial loader with a stage-based loading journey (progress bar, named loading stages, rotating engagement tips, and optional `Boost mood` micro-interaction), and add a compact inline loading ticker during zone refresh while retaining skeleton cards.
+- Alternatives considered:
+  - Keep existing cinematic loader with passive dots and static subtitle.
+  - Use fun-facts loader with random trivia rotation.
+- Rationale: You selected option 3 (non-facts path) to reduce bounce by making wait time feel active, guided, and interactive rather than passive.
+- Impact: Initial loading now communicates concrete progress context and keeps users occupied; background refreshes also provide active micro-feedback beyond structural skeletons.
