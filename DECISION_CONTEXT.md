@@ -697,3 +697,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Silently suppress auth token errors without user feedback.
 - Rationale: You requested removing `Invalid auth token` from UI; this preserves clarity for users while avoiding backend/internal wording leaks.
 - Impact: Users now see friendly auth-state feedback and stale tokens are cleared proactively, preventing repeated raw-token error notices.
+
+## 2026-05-05 22:30 IST
+
+### D-073: Align Browser Favicon with In-App Brand Logo
+- Decision: Replace the standalone `CZ` favicon artwork with the exact same red-yellow square mark + glyph used in the topbar brand logo.
+- Alternatives considered:
+  - Keep the previous favicon and accept logo mismatch between tab icon and in-app branding.
+  - Introduce a third, new logo variant just for favicon usage.
+- Rationale: You requested favicon/logo visual consistency for stronger brand coherence.
+- Impact: Browser tab icon now matches in-app branding, reducing brand drift across touchpoints.
