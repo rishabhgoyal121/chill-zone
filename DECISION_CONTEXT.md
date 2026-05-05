@@ -687,3 +687,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Use fun-facts loader with random trivia rotation.
 - Rationale: You selected option 3 (non-facts path) to reduce bounce by making wait time feel active, guided, and interactive rather than passive.
 - Impact: Initial loading now communicates concrete progress context and keeps users occupied; background refreshes also provide active micro-feedback beyond structural skeletons.
+
+## 2026-05-05 22:23 IST
+
+### D-072: Hide Raw Auth Token Errors from UI with Session-Expired Copy
+- Decision: Normalize backend auth token failures (`Invalid auth token`, `Missing auth token`) in the frontend API client to a user-facing session-expired message and auto-logout stale sessions when favourites calls hit that condition.
+- Alternatives considered:
+  - Keep showing backend raw auth error strings directly in the notice area.
+  - Silently suppress auth token errors without user feedback.
+- Rationale: You requested removing `Invalid auth token` from UI; this preserves clarity for users while avoiding backend/internal wording leaks.
+- Impact: Users now see friendly auth-state feedback and stale tokens are cleared proactively, preventing repeated raw-token error notices.

@@ -16,6 +16,7 @@ const ZONES = [
   { key: 'games', label: 'Games', emoji: '🎮' }
 ];
 const ZONE_SKELETON_COUNT = 4;
+const SESSION_EXPIRED_MESSAGE = 'Session expired. Please log in again.';
 const EMERGENCY_POSTER =
   "data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 960'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%231f2937'/%3E%3Cstop offset='100%25' stop-color='%23374151'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='720' height='960' fill='url(%23g)'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23f8fafc' font-family='Arial,sans-serif' font-size='46' font-weight='700'%3EChill Zone%3C/text%3E%3C/svg%3E";
 
@@ -496,6 +497,10 @@ function ZoneSkeletonGrid({ zoneLabel }) {
   );
 }
 
+function isSessionExpiredError(err) {
+  return String(err?.message || '').trim() === SESSION_EXPIRED_MESSAGE;
+}
+
 export function App() {
   const { user, token, login, signup, logout } = useAuth();
   const [email, setEmail] = useState('admin@chillzone.local');
@@ -725,7 +730,14 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    loadFavourites().catch((err) => setMessage(err.message));
+    loadFavourites().catch((err) => {
+      if (isSessionExpiredError(err)) {
+        logout();
+        setMessage(SESSION_EXPIRED_MESSAGE);
+        return;
+      }
+      setMessage(err.message);
+    });
   }, [token]);
 
   async function onLogin(e) {
@@ -775,10 +787,17 @@ export function App() {
       setMessage('Login required for favourites');
       return;
     }
-    const already = favourites.find((f) => f.titleExternalId === titleExternalId);
-    if (already) await api(`/api/favourites/${titleExternalId}`, { method: 'DELETE' });
-    else await api('/api/favourites', { method: 'POST', body: JSON.stringify({ titleExternalId }) });
-    await loadFavourites();
+    try {
+      const already = favourites.find((f) => f.titleExternalId === titleExternalId);
+      if (already) await api(`/api/favourites/${titleExternalId}`, { method: 'DELETE' });
+      else await api('/api/favourites', { method: 'POST', body: JSON.stringify({ titleExternalId }) });
+      await loadFavourites();
+    } catch (err) {
+      if (isSessionExpiredError(err)) {
+        logout();
+      }
+      setMessage(err.message);
+    }
   }
 
   if (initialLoadPending) {
