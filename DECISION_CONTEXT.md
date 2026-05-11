@@ -727,3 +727,24 @@ This document tracks major and minor project decisions, alternatives considered,
   - Convert file paths and internal references to clickable links in the same pass.
 - Rationale: You explicitly requested clickable links for real URLs only, and preserving placeholders/code examples avoids accidental confusion or broken-link noise.
 - Impact: README readability improves for external references (GitHub, Netlify, Render, JustWatch, CrazyGames, Caddy, sslip) with no behavior change to setup/deploy command guidance.
+
+## 2026-05-12 00:07 IST
+
+### D-076: Expand README Linkification to Internal Reference Paths
+- Decision: Convert selected internal documentation and placeholder asset paths (for example `render.yaml`, `DECISION_CONTEXT.md`, and screenshot placeholders) to relative Markdown links.
+- Alternatives considered:
+  - Keep internal references as plain/code text.
+  - Linkify only external URLs.
+- Rationale: Maintaining one clickable reference style improves navigation consistency for reviewers inside the repository.
+- Impact: README now supports one-click access for both external resources and key internal reference files.
+- Supersedes: D-075 scope restriction on internal linkification.
+
+## 2026-05-11 23:53 IST
+
+### D-076: Replace Backend URL Placeholders in README With Live Render Endpoint
+- Decision: Replace README backend placeholder references (`https://<your-render-backend>.onrender.com`) with the concrete deployed backend URL `https://chill-zone-zombie-be.onrender.com` for Netlify env setup and production smoke-check examples.
+- Alternatives considered:
+  - Keep placeholders and require manual replacement during setup.
+  - Replace local `localhost:4000` development examples as well.
+- Rationale: You provided the canonical deployed backend URL and requested docs to use it; local dev commands remain intentionally local.
+- Impact: Deployment/runbook instructions are now immediately copy-paste ready for your live environment, while local-development troubleshooting examples stay accurate.
