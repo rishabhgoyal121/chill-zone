@@ -707,3 +707,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Introduce a third, new logo variant just for favicon usage.
 - Rationale: You requested favicon/logo visual consistency for stronger brand coherence.
 - Impact: Browser tab icon now matches in-app branding, reducing brand drift across touchpoints.
+
+## 2026-05-11 23:25 IST
+
+### D-074: Recruiter-Oriented README Positioning With Operations Detail Preservation
+- Decision: Reorganize README into recruiter-facing sections (why built, features, stack, architecture, summary) while preserving existing setup, refresh, fallback, and deployment runbooks.
+- Alternatives considered:
+  - Leave README unchanged.
+  - Rewrite README with only high-level marketing content.
+- Rationale: This maintains a strong hiring narrative without losing practical project-operability instructions.
+- Impact: README now communicates product engineering value faster while still serving as a complete setup/deploy guide.

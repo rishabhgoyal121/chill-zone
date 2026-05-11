@@ -1,17 +1,55 @@
 # Chill Zone
 
-Full-stack app with React frontend and Node backend.
+A full-stack entertainment discovery application for movies, TV series, and games, built with React, Node.js/Express, and PostgreSQL.
 
-## Architecture Rule
+## Why I Built This
 
-Request flow is intentionally strict:
+I built Chill Zone to demonstrate product-style full-stack delivery: content ingestion, backend architecture, reliability fallbacks, and deployment workflows across frontend and backend services.
 
-`frontend -> api controller -> core controller -> service -> db`
+## Key Features
 
-## Setup
+- Entertainment discovery across movies, series, and games
+- React + Vite frontend
+- Express backend with layered request flow
+- PostgreSQL-backed data and favorites/auth flows
+- Scheduled content refresh jobs
+- Static fallback snapshot for frontend resilience when API is unavailable
+- Netlify (frontend) + Render (backend) deployment path
+
+## Tech Stack
+
+**Frontend:** React, Vite  
+**Backend:** Node.js, Express  
+**Database:** PostgreSQL  
+**Infrastructure/Jobs:** node-cron  
+**Deployment:** Netlify, Render
+
+## Architecture
+
+```txt
+frontend -> api controller -> core controller -> service -> database
+```
+
+## Recruiter Summary
+
+This project highlights:
+- Frontend + backend integration in a real product flow
+- Layered backend architecture with clear separation of responsibilities
+- Operational reliability patterns (scheduled refresh + fallback snapshot)
+- Deployment awareness across distributed frontend/backend hosting
+
+## Screenshots
+
+<!-- TODO: Replace placeholders with actual screenshots from local or deployed environments. -->
+- `docs/screenshots/home-feed.png` (placeholder)
+- `docs/screenshots/category-browsing.png` (placeholder)
+- `docs/screenshots/admin-panel.png` (placeholder)
+- `docs/screenshots/favorites-flow.png` (placeholder)
+
+## Local Setup
 
 1. Ensure PostgreSQL is running.
-2. Create DB:
+2. Create database:
 
 ```bash
 createdb chill_zone
@@ -40,9 +78,9 @@ Change this password by creating a new admin user, then rotate/remove the bootst
 
 ## Sources and Refresh
 
-- Movies/Series: JustWatch scraping connector.
-- Games: CrazyGames scraping connector.
-- Script-extended links include JustWatch and scripted external search links.
+- Movies/Series: JustWatch scraping connector
+- Games: CrazyGames scraping connector
+- Script-extended links include JustWatch and scripted external search links
 - Scheduler:
   - Incremental refresh: `09:00` and `21:00`
   - Full refresh: Sunday `08:00`
@@ -60,8 +98,8 @@ This writes to:
 `frontend/public/fallback-content.json`
 
 Frontend behavior:
-- Uses live API when available.
-- Falls back to `fallback-content.json` automatically if live API fails.
+- Uses live API when available
+- Falls back to `fallback-content.json` automatically if live API fails
 
 ## Deploy Frontend to Netlify
 
@@ -127,7 +165,7 @@ caddy run --config ops/Caddyfile
 ```
 
 6. Router/network setup:
-- Forward ports 80 and 443 to this laptop.
+- Forward ports `80` and `443` to this laptop.
 - Allow incoming firewall rules for Caddy.
 
 ## Quick API Smoke Checks (curl)
@@ -141,3 +179,7 @@ LOGIN=$(curl -s -X POST http://localhost:4000/api/auth/login \
 
 echo "$LOGIN"
 ```
+
+## Decision Context
+
+- See `DECISION_CONTEXT.md`
