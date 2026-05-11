@@ -717,3 +717,13 @@ This document tracks major and minor project decisions, alternatives considered,
   - Rewrite README with only high-level marketing content.
 - Rationale: This maintains a strong hiring narrative without losing practical project-operability instructions.
 - Impact: README now communicates product engineering value faster while still serving as a complete setup/deploy guide.
+
+## 2026-05-11 23:42 IST
+
+### D-075: Restrict README Linkification to Real Public URLs
+- Decision: Convert only genuine public website references in `README.md` to clickable Markdown links, while leaving placeholders (for example `https://<your-render-backend>...`), localhost endpoints, file paths, and command snippets unchanged.
+- Alternatives considered:
+  - Convert all URL-like strings including placeholders and localhost examples.
+  - Convert file paths and internal references to clickable links in the same pass.
+- Rationale: You explicitly requested clickable links for real URLs only, and preserving placeholders/code examples avoids accidental confusion or broken-link noise.
+- Impact: README readability improves for external references (GitHub, Netlify, Render, JustWatch, CrazyGames, Caddy, sslip) with no behavior change to setup/deploy command guidance.

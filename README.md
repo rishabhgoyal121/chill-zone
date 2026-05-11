@@ -41,10 +41,10 @@ This project highlights:
 ## Screenshots
 
 <!-- TODO: Replace placeholders with actual screenshots from local or deployed environments. -->
-- `docs/screenshots/home-feed.png` (placeholder)
-- `docs/screenshots/category-browsing.png` (placeholder)
-- `docs/screenshots/admin-panel.png` (placeholder)
-- `docs/screenshots/favorites-flow.png` (placeholder)
+- [`docs/screenshots/home-feed.png`](docs/screenshots/home-feed.png) (placeholder)
+- [`docs/screenshots/category-browsing.png`](docs/screenshots/category-browsing.png) (placeholder)
+- [`docs/screenshots/admin-panel.png`](docs/screenshots/admin-panel.png) (placeholder)
+- [`docs/screenshots/favorites-flow.png`](docs/screenshots/favorites-flow.png) (placeholder)
 
 ## Local Setup
 
@@ -78,9 +78,9 @@ Change this password by creating a new admin user, then rotate/remove the bootst
 
 ## Sources and Refresh
 
-- Movies/Series: JustWatch scraping connector
-- Games: CrazyGames scraping connector
-- Script-extended links include JustWatch and scripted external search links
+- Movies/Series: [JustWatch](https://www.justwatch.com/) scraping connector
+- Games: [CrazyGames](https://www.crazygames.com/) scraping connector
+- Script-extended links include [JustWatch](https://www.justwatch.com/) and scripted external search links
 - Scheduler:
   - Incremental refresh: `09:00` and `21:00`
   - Full refresh: Sunday `08:00`
@@ -103,8 +103,8 @@ Frontend behavior:
 
 ## Deploy Frontend to Netlify
 
-1. Push this repo to GitHub.
-2. Create a Netlify site from repo.
+1. Push this repo to [GitHub](https://github.com/).
+2. Create a [Netlify](https://www.netlify.com/) site from repo.
 3. Netlify settings:
    - Build command: `npm run build:frontend`
    - Publish directory: `frontend/dist`
@@ -115,8 +115,8 @@ Frontend behavior:
 
 ## Deploy Backend + Postgres to Render (Blueprint)
 
-1. Push this repo to GitHub.
-2. In Render dashboard, click **New +** -> **Blueprint**.
+1. Push this repo to [GitHub](https://github.com/).
+2. In [Render dashboard](https://dashboard.render.com/), click **New +** -> **Blueprint**.
 3. Select this repository and deploy.
 4. Render will provision:
    - Web service: `chill-zone-backend`
@@ -130,7 +130,7 @@ Frontend behavior:
 8. Trigger a Netlify redeploy.
 
 Render blueprint config lives at:
-- `render.yaml`
+- [`render.yaml`](render.yaml)
 
 Notes:
 - `JWT_SECRET` is auto-generated in Render from blueprint.
@@ -147,7 +147,7 @@ curl -s -X POST https://<your-render-backend>.onrender.com/api/auth/login \
   -d '{"email":"admin@chillzone.local","password":"ChangeMe123!"}'
 ```
 
-## Expose Backend from Laptop with Caddy + SSLIP
+## Expose Backend from Laptop with [Caddy](https://caddyserver.com/) + [SSLIP](https://sslip.io/)
 
 1. Install Caddy on laptop.
 2. Copy `ops/Caddyfile.example` to `ops/Caddyfile`.
@@ -182,4 +182,4 @@ echo "$LOGIN"
 
 ## Decision Context
 
-- See `DECISION_CONTEXT.md`
+- See [`DECISION_CONTEXT.md`](DECISION_CONTEXT.md)
